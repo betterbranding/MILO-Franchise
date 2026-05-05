@@ -1,0 +1,240 @@
+<style>
+  @import url('../css/portal-styles.css');
+  .milo-portal { font-family: 'Open Sans', sans-serif; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+  .milo-portal * { box-sizing: border-box; }
+  .milo-portal-header { background: linear-gradient(135deg, #1B2A4A 0%, #2a3f6b 100%); color: #fff; padding: 40px; border-radius: 12px; margin-bottom: 30px; text-align: center; }
+  .milo-portal-header h1 { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 700; margin: 12px 0 8px; }
+  .milo-portal-header .subtitle { font-size: 1.05rem; opacity: 0.9; margin-bottom: 16px; }
+  .module-badge { display: inline-block; background: #E87722; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.8rem; padding: 6px 18px; border-radius: 30px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .progress-note { display: inline-block; background: rgba(255,255,255,0.15); padding: 8px 20px; border-radius: 30px; font-size: 0.9rem; margin-top: 8px; }
+  .section-title { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 700; color: #1B2A4A; padding-bottom: 12px; border-bottom: 3px solid #E87722; margin-bottom: 20px; margin-top: 10px; }
+  .content-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 30px; margin-bottom: 20px; border: 1px solid #E5E7EB; }
+  .content-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; color: #1B2A4A; margin-bottom: 12px; }
+  .content-card p { margin-bottom: 10px; }
+  .info-box { background: #FFF7ED; border-left: 4px solid #E87722; padding: 18px 22px; border-radius: 0 12px 12px 0; margin-bottom: 20px; font-size: 0.95rem; }
+  .info-box.info-red { background: #FEF2F2; border-left-color: #EF4444; }
+  .info-box strong { color: #1B2A4A; }
+  .checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid #E5E7EB; }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-item input[type="checkbox"] { width: 20px; height: 20px; min-width: 20px; margin-top: 2px; accent-color: #E87722; cursor: pointer; }
+  .checklist-item .item-content { flex: 1; }
+  .checklist-item .item-title { font-weight: 600; color: #1B2A4A; margin-bottom: 2px; }
+  .checklist-item .item-desc { font-size: 0.88rem; color: #6B7280; }
+  .cta-button { display: inline-block; background: #E87722; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem; padding: 12px 28px; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; text-align: center; }
+  @media (max-width: 768px) { .milo-portal { padding: 12px; } .milo-portal-header { padding: 28px 20px; } .milo-portal-header h1 { font-size: 1.5rem; } .content-card { padding: 20px; } }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="milo-portal">
+
+  <div class="milo-portal-header">
+    <div class="module-badge">MODULE 2</div>
+    <h1>Legal & Business Setup</h1>
+    <p class="subtitle">Establish your legal foundation and get your business entity ready to operate</p>
+    <div class="progress-note">✅ Complete all sections below to unlock the next module</div>
+  </div>
+
+  <div class="info-box info-red">
+    <strong>⚠️ Important:</strong> All legal documents must be completed and submitted before proceeding to the next module. Do not skip any items — each one is required for your franchise to operate legally and in compliance with your Franchise Agreement.
+  </div>
+
+  <!-- Franchise Agreement -->
+  <h2 class="section-title">Franchise Agreement</h2>
+  <div class="content-card">
+    <h3>📄 Your Franchise Agreement</h3>
+    <p>Your signed Franchise Agreement is the foundational legal document for your MILO Insulation franchise. It outlines your rights, obligations, territory, fees, and the terms of your partnership with MILO.</p>
+    <div class="info-box" style="margin-top:16px;">
+      <strong>📁 Access Your Agreement:</strong> Your franchise agreement is available in your <strong>Documents folder</strong> within this portal. Please review it carefully and keep a copy for your records. Contact Corporate Support with any questions.
+    </div>
+  </div>
+
+  <!-- LLC / Business Entity -->
+  <h2 class="section-title">LLC / Business Entity Formation</h2>
+  <div class="content-card">
+    <h3>🏛️ Business Entity Checklist</h3>
+    <p>You must form a legal business entity (typically an LLC) to operate your MILO franchise. Complete each step below:</p>
+
+    <div class="checklist-item">
+      <input type="checkbox" id="llc1">
+      <div class="item-content">
+        <div class="item-title">Choose your business entity type</div>
+        <div class="item-desc">Most franchisees form an LLC (Limited Liability Company). Consult with your attorney or accountant to determine the best structure for your situation.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="llc2">
+      <div class="item-content">
+        <div class="item-title">Select and register your business name</div>
+        <div class="item-desc">Your business name should include "MILO Insulation" as required by the Franchise Agreement (e.g., "MILO Insulation of [Your City], LLC").</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="llc3">
+      <div class="item-content">
+        <div class="item-title">File articles of organization with your state</div>
+        <div class="item-desc">File with your state's Secretary of State office. Filing fees and timelines vary by state.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="llc4">
+      <div class="item-content">
+        <div class="item-title">Create an Operating Agreement</div>
+        <div class="item-desc">Even for single-member LLCs, an operating agreement is recommended. It defines ownership structure and operating procedures.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="llc5">
+      <div class="item-content">
+        <div class="item-title">Obtain a Registered Agent</div>
+        <div class="item-desc">Required in most states. You can serve as your own or use a registered agent service.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EIN Registration -->
+  <h2 class="section-title">EIN Registration</h2>
+  <div class="content-card">
+    <h3>🔢 Employer Identification Number (EIN)</h3>
+    <p>Your EIN is your business's federal tax ID number. You'll need it for banking, taxes, hiring, and vendor accounts.</p>
+    <div class="checklist-item">
+      <input type="checkbox" id="ein1">
+      <div class="item-content">
+        <div class="item-title">Apply for your EIN with the IRS</div>
+        <div class="item-desc">Apply online at <strong>irs.gov</strong> — it's free and you'll receive your EIN immediately. You'll need your LLC formation documents.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="ein2">
+      <div class="item-content">
+        <div class="item-title">Save your EIN confirmation letter</div>
+        <div class="item-desc">Keep a copy of your IRS EIN confirmation (Form CP 575) for your records. You'll need it for bank account setup.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insurance -->
+  <h2 class="section-title">Required Insurance</h2>
+  <div class="content-card">
+    <h3>🛡️ Insurance Coverage Requirements</h3>
+    <p>All MILO franchisees must maintain the following insurance policies. Obtain quotes and bind coverage before beginning operations.</p>
+
+    <div class="checklist-item">
+      <input type="checkbox" id="ins1">
+      <div class="item-content">
+        <div class="item-title">General Liability Insurance</div>
+        <div class="item-desc">Covers third-party bodily injury and property damage claims. Minimum recommended: $1,000,000 per occurrence / $2,000,000 aggregate.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="ins2">
+      <div class="item-content">
+        <div class="item-title">Workers' Compensation Insurance</div>
+        <div class="item-desc">Required in most states once you hire employees. Covers workplace injuries and illness. Check your state requirements — some states require coverage even for the business owner.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="ins3">
+      <div class="item-content">
+        <div class="item-title">Commercial Auto Insurance</div>
+        <div class="item-desc">Required for any vehicles used in business operations (service vans, trucks, etc.). Covers liability and physical damage.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="ins4">
+      <div class="item-content">
+        <div class="item-title">Professional Liability Insurance</div>
+        <div class="item-desc">Also called Errors & Omissions (E&O). Covers claims related to your professional services, advice, or workmanship.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>💡 Tip:</strong> Shop insurance through a commercial insurance broker who has experience with contractor/insulation businesses. Ask about bundled policies (BOP — Business Owner's Policy) to save on premiums.
+  </div>
+
+  <!-- State/Local Licensing -->
+  <h2 class="section-title">State & Local Licensing</h2>
+  <div class="content-card">
+    <h3>📋 Licensing Requirements Checklist</h3>
+    <p>Licensing requirements vary by state and municipality. Research and complete all applicable items:</p>
+
+    <div class="checklist-item">
+      <input type="checkbox" id="lic1">
+      <div class="item-content">
+        <div class="item-title">State contractor's license</div>
+        <div class="item-desc">Many states require a general contractor or specialty insulation contractor license. Check your state licensing board requirements.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="lic2">
+      <div class="item-content">
+        <div class="item-title">Local business license / permit</div>
+        <div class="item-desc">Contact your city or county clerk's office for local business license requirements.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="lic3">
+      <div class="item-content">
+        <div class="item-title">State sales tax registration</div>
+        <div class="item-desc">Register with your state's Department of Revenue to collect and remit sales tax if applicable.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="lic4">
+      <div class="item-content">
+        <div class="item-title">Home improvement contractor registration</div>
+        <div class="item-desc">Some states require specific registration for home improvement contractors. Verify with your state.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="lic5">
+      <div class="item-content">
+        <div class="item-title">EPA Lead-Safe Certification (if applicable)</div>
+        <div class="item-desc">Required if working on homes built before 1978. Obtain through EPA-accredited training providers.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Bank Account -->
+  <h2 class="section-title">Business Bank Account</h2>
+  <div class="content-card">
+    <h3>🏦 Bank Account Setup</h3>
+    <p>Open a dedicated business checking account to keep personal and business finances separate. You'll need:</p>
+
+    <div class="checklist-item">
+      <input type="checkbox" id="bank1">
+      <div class="item-content">
+        <div class="item-title">Open a business checking account</div>
+        <div class="item-desc">Bring your EIN confirmation, LLC formation documents, and operating agreement to a local bank or credit union.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="bank2">
+      <div class="item-content">
+        <div class="item-title">Set up online banking and bill pay</div>
+        <div class="item-desc">Enable online access for managing payments, transfers, and tracking expenses.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="bank3">
+      <div class="item-content">
+        <div class="item-title">Order business debit card and/or credit card</div>
+        <div class="item-desc">A business credit card helps build business credit and track expenses by category.</div>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="bank4">
+      <div class="item-content">
+        <div class="item-title">Set up accounting software</div>
+        <div class="item-desc">QuickBooks Online is recommended. Connect your bank account for automatic transaction tracking.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Next Step -->
+  <div style="text-align:center; margin-top:30px; margin-bottom:20px;">
+    <p style="font-weight:600; color:#1B2A4A; margin-bottom:12px;">Once all legal items are complete and submitted, proceed to Module 3.</p>
+    <a href="#" class="cta-button">Continue to Module 3 →</a>
+  </div>
+
+</div>
