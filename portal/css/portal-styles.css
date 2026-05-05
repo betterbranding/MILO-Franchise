@@ -1,0 +1,562 @@
+/* ============================================
+   MILO Franchise Portal — Global Styles
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --milo-navy: #1B2A4A;
+  --milo-orange: #E87722;
+  --milo-orange-hover: #d46a1d;
+  --milo-light-gray: #F5F6FA;
+  --milo-white: #FFFFFF;
+  --milo-text: #333333;
+  --milo-text-light: #6B7280;
+  --milo-border: #E5E7EB;
+  --milo-success: #10B981;
+  --milo-radius: 12px;
+  --milo-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+/* ── Reset & Base ──────────────────────────── */
+.milo-portal * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.milo-portal {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--milo-text);
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ── Portal Header ─────────────────────────── */
+.milo-portal-header {
+  background: linear-gradient(135deg, var(--milo-navy) 0%, #2a3f6b 100%);
+  color: var(--milo-white);
+  padding: 40px;
+  border-radius: var(--milo-radius);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.milo-portal-header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 12px 0 8px;
+}
+
+.milo-portal-header .subtitle {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+.milo-portal-header .progress-note {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+/* ── Module Badge ──────────────────────────── */
+.module-badge {
+  display: inline-block;
+  background: var(--milo-orange);
+  color: var(--milo-white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 6px 18px;
+  border-radius: 30px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ── Section Title ─────────────────────────── */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--milo-navy);
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--milo-orange);
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+/* ── Content Card ──────────────────────────── */
+.content-card {
+  background: var(--milo-white);
+  border-radius: var(--milo-radius);
+  box-shadow: var(--milo-shadow);
+  padding: 30px;
+  margin-bottom: 20px;
+  border: 1px solid var(--milo-border);
+}
+
+.content-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  color: var(--milo-navy);
+  margin-bottom: 12px;
+}
+
+.content-card p {
+  color: var(--milo-text);
+  margin-bottom: 10px;
+}
+
+/* ── Vendor Card ───────────────────────────── */
+.vendor-card {
+  background: var(--milo-white);
+  border-radius: var(--milo-radius);
+  box-shadow: var(--milo-shadow);
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  border: 1px solid var(--milo-border);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.vendor-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.vendor-logo-placeholder {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  background: var(--milo-light-gray);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.vendor-info {
+  flex: 1;
+}
+
+.vendor-info h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  color: var(--milo-navy);
+  margin-bottom: 4px;
+}
+
+.vendor-info .vendor-desc {
+  font-size: 0.9rem;
+  color: var(--milo-text-light);
+  margin-bottom: 10px;
+}
+
+.vendor-actions {
+  font-size: 0.9rem;
+  color: var(--milo-text);
+}
+
+.vendor-actions li {
+  margin-bottom: 4px;
+  list-style: none;
+  padding-left: 20px;
+  position: relative;
+}
+
+.vendor-actions li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--milo-orange);
+  font-weight: 700;
+}
+
+.vendor-status {
+  margin-top: 12px;
+}
+
+/* ── Checklist Item ────────────────────────── */
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--milo-border);
+}
+
+.checklist-item:last-child {
+  border-bottom: none;
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  margin-top: 2px;
+  accent-color: var(--milo-orange);
+  cursor: pointer;
+}
+
+.checklist-item .item-content {
+  flex: 1;
+}
+
+.checklist-item .item-title {
+  font-weight: 600;
+  color: var(--milo-navy);
+  margin-bottom: 2px;
+}
+
+.checklist-item .item-desc {
+  font-size: 0.88rem;
+  color: var(--milo-text-light);
+}
+
+/* ── Info Box ──────────────────────────────── */
+.info-box {
+  background: #FFF7ED;
+  border-left: 4px solid var(--milo-orange);
+  padding: 18px 22px;
+  border-radius: 0 var(--milo-radius) var(--milo-radius) 0;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.info-box.info-blue {
+  background: #EFF6FF;
+  border-left-color: #3B82F6;
+}
+
+.info-box.info-green {
+  background: #ECFDF5;
+  border-left-color: var(--milo-success);
+}
+
+.info-box strong {
+  color: var(--milo-navy);
+}
+
+/* ── CTA Button ────────────────────────────── */
+.cta-button {
+  display: inline-block;
+  background: var(--milo-orange);
+  color: var(--milo-white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+  text-align: center;
+}
+
+.cta-button:hover {
+  background: var(--milo-orange-hover);
+  transform: translateY(-1px);
+}
+
+.cta-button.cta-navy {
+  background: var(--milo-navy);
+}
+
+.cta-button.cta-navy:hover {
+  background: #2a3f6b;
+}
+
+.cta-button.cta-outline {
+  background: transparent;
+  border: 2px solid var(--milo-orange);
+  color: var(--milo-orange);
+}
+
+.cta-button.cta-outline:hover {
+  background: var(--milo-orange);
+  color: var(--milo-white);
+}
+
+.cta-button.cta-sm {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+}
+
+/* ── Supply Card ───────────────────────────── */
+.supply-card {
+  background: var(--milo-white);
+  border-radius: var(--milo-radius);
+  box-shadow: var(--milo-shadow);
+  border: 1px solid var(--milo-border);
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.supply-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.supply-card-icon {
+  background: var(--milo-light-gray);
+  padding: 24px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.supply-card-body {
+  padding: 20px 24px;
+}
+
+.supply-card-body h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  color: var(--milo-navy);
+  margin-bottom: 6px;
+}
+
+.supply-card-body p {
+  font-size: 0.9rem;
+  color: var(--milo-text-light);
+  margin-bottom: 6px;
+}
+
+.supply-card-body .supplier-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--milo-orange);
+  margin-bottom: 14px;
+}
+
+/* ── Step List ─────────────────────────────── */
+.step-list {
+  list-style: none;
+  counter-reset: step-counter;
+  padding: 0;
+}
+
+.step-list li {
+  counter-increment: step-counter;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--milo-border);
+}
+
+.step-list li:last-child {
+  border-bottom: none;
+}
+
+.step-list li::before {
+  content: counter(step-counter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: var(--milo-navy);
+  color: var(--milo-white);
+  border-radius: 50%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.step-list li .step-content {
+  flex: 1;
+}
+
+.step-list li .step-title {
+  font-weight: 600;
+  color: var(--milo-navy);
+  margin-bottom: 4px;
+}
+
+.step-list li .step-desc {
+  font-size: 0.9rem;
+  color: var(--milo-text-light);
+}
+
+/* ── Supply Grid ───────────────────────────── */
+.supply-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* ── Video Placeholder ─────────────────────── */
+.video-placeholder {
+  background: var(--milo-light-gray);
+  border-radius: var(--milo-radius);
+  padding: 50px 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 2px dashed var(--milo-border);
+}
+
+.video-placeholder .play-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.video-placeholder p {
+  color: var(--milo-text-light);
+  font-size: 0.95rem;
+}
+
+/* ── Contacts Grid ─────────────────────────── */
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.contact-card {
+  background: var(--milo-light-gray);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-card .contact-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.contact-card h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: var(--milo-navy);
+  margin-bottom: 4px;
+}
+
+.contact-card p {
+  font-size: 0.85rem;
+  color: var(--milo-text-light);
+}
+
+/* ── Timeline ──────────────────────────────── */
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--milo-orange);
+  border: 3px solid #FDE8D0;
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background: var(--milo-border);
+  margin-top: 4px;
+}
+
+.timeline-content {
+  flex: 1;
+  padding-bottom: 10px;
+}
+
+.timeline-content h4 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--milo-navy);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.timeline-content p {
+  font-size: 0.9rem;
+  color: var(--milo-text-light);
+}
+
+/* ── Goal Cards ────────────────────────────── */
+.goal-card {
+  background: var(--milo-white);
+  border-radius: var(--milo-radius);
+  box-shadow: var(--milo-shadow);
+  border: 1px solid var(--milo-border);
+  padding: 24px;
+  margin-bottom: 16px;
+  border-top: 4px solid var(--milo-orange);
+}
+
+.goal-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--milo-navy);
+  margin-bottom: 12px;
+}
+
+.goal-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.goal-card ul li {
+  padding: 6px 0;
+  padding-left: 22px;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.goal-card ul li::before {
+  content: '🎯';
+  position: absolute;
+  left: 0;
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 768px) {
+  .milo-portal {
+    padding: 12px;
+  }
+
+  .milo-portal-header {
+    padding: 28px 20px;
+  }
+
+  .milo-portal-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .vendor-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contacts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .supply-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-card {
+    padding: 20px;
+  }
+}
