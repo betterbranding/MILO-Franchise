@@ -13,7 +13,6 @@
 
   var BASE = 'https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main';
   var PAGE = window.MILO_PAGE || 'home'; // set by per-page snippet
-  var NAV_HEIGHT = 72; // px — matches --nav-h CSS variable
 
   function fetchHTML(url) {
     return fetch(url).then(function (r) {
@@ -44,12 +43,32 @@
     }
   }
 
-  function addBodyPadding() {
-    // Offset page content so fixed nav doesn't overlap it
-    var existing = parseInt(document.body.style.paddingTop || '0', 10);
-    if (existing < NAV_HEIGHT) {
-      document.body.style.paddingTop = NAV_HEIGHT + 'px';
+  function hideGHLDefaultNav() {
+    // GHL injects its own built-in nav wrapper (contains #nav-menu-popup)
+    // which creates a gap above our content. Find it and hide it.
+    var ghlNavPopup = document.getElementById('nav-menu-popup');
+    if (ghlNavPopup) {
+      var wrapper = ghlNavPopup;
+      // Walk up to the direct child of #__nuxt
+      while (wrapper.parentElement && wrapper.parentElement.id !== '__nuxt') {
+        wrapper = wrapper.parentElement;
+      }
+      if (wrapper && wrapper.parentElement && wrapper.parentElement.id === '__nuxt') {
+        wrapper.style.cssText = 'display:none!important;height:0!important;overflow:hidden!important;';
+      }
     }
+    // Also target via class in case structure changes
+    var bgCoverSibling = document.querySelector('#__nuxt > div:not([id]):not(.bgCover)');
+    if (bgCoverSibling && bgCoverSibling.querySelector('#nav-menu-popup, .nav-menu')) {
+      bgCoverSibling.style.cssText = 'display:none!important;height:0!important;overflow:hidden!important;';
+    }
+  }
+
+  function addBodyPadding() {
+    // Measure actual nav height after injection and pad body accordingly
+    var nav = document.getElementById('milo-nav');
+    var navHeight = nav ? nav.offsetHeight : 75;
+    document.body.style.paddingTop = navHeight + 'px';
   }
 
   function runInlineScripts(wrapper) {
@@ -84,8 +103,14 @@
       injectHTML('milo-content', pageHTML,   'append');
       injectHTML('milo-footer',  footerHTML, 'append');
 
-      // Add body padding to clear the fixed nav
-      addBodyPadding();
+      // Hide GHL's built-in nav that creates a gap above our content
+      hideGHLDefaultNav();
+
+      // Add body padding to clear the fixed nav (measured after injection)
+      // Use requestAnimationFrame to ensure nav has rendered and has a height
+      requestAnimationFrame(function () {
+        addBodyPadding();
+      });
 
       // Re-run inline scripts from fetched HTML
       ['milo-nav-wrapper', 'milo-content-wrapper', 'milo-footer-wrapper'].forEach(function (id) {
