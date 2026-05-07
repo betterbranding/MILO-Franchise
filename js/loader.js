@@ -6,12 +6,12 @@
  * Usage: paste the per-page embed snippet into GHL page header.
  * Any updates pushed to GitHub are live automatically (CDN cache: ~10 min).
  *
- * Repo: https://github.com/GITHUB_USERNAME/milo-franchise
+ * Repo: https://github.com/betterbranding/MILO-Franchise
  */
 (function () {
   'use strict';
 
-  var BASE = 'https://cdn.jsdelivr.net/gh/GITHUB_USERNAME/milo-franchise@main';
+  var BASE = 'https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main';
   var PAGE = window.MILO_PAGE || 'home'; // set by per-page snippet
 
   function fetchHTML(url) {
