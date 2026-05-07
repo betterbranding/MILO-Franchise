@@ -1,0 +1,158 @@
+<!-- ============================================================
+     MILO Franchise — Global Sticky Nav
+     Paste ONCE into: GHL Site Settings → Header Code
+     Applies to every page automatically. No per-page code needed.
+     ============================================================ -->
+<script>
+(function() {
+  // ── Styles ──────────────────────────────────────────────────
+  var css = `
+    #milo-nav-bar *, #milo-nav-bar *::before, #milo-nav-bar *::after {
+      box-sizing: border-box; margin: 0; padding: 0;
+    }
+    #milo-nav-bar {
+      position: fixed !important;
+      top: 0 !important; left: 0 !important; right: 0 !important;
+      width: 100% !important;
+      height: 75px !important;
+      background: #ffffff !important;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+      z-index: 2147483647 !important;
+      display: flex !important;
+      align-items: center !important;
+      font-family: 'League Spartan','Gotham','Montserrat',Arial,sans-serif !important;
+    }
+    #milo-nav-bar .milo-nav-inner {
+      max-width: 1200px !important; width: 100% !important;
+      margin: 0 auto !important; padding: 0 32px !important;
+      display: flex !important; align-items: center !important;
+      justify-content: space-between !important;
+    }
+    #milo-nav-bar .milo-nav-logo img {
+      height: 52px !important; width: auto !important; display: block !important;
+    }
+    #milo-nav-bar .milo-nav-links {
+      display: flex !important; align-items: center !important;
+      gap: 36px !important; list-style: none !important;
+    }
+    #milo-nav-bar .milo-nav-links a {
+      text-decoration: none !important; color: #074387 !important;
+      font-size: 15px !important; font-weight: 600 !important;
+      letter-spacing: 0.3px !important; text-transform: uppercase !important;
+      transition: color 0.2s !important;
+    }
+    #milo-nav-bar .milo-nav-links a:hover { color: #FF8200 !important; }
+    #milo-nav-bar .milo-nav-cta {
+      background: #FF8200 !important; color: #ffffff !important;
+      padding: 10px 24px !important; border-radius: 4px !important;
+      font-size: 14px !important; font-weight: 700 !important;
+      text-transform: uppercase !important; letter-spacing: 0.5px !important;
+      text-decoration: none !important; white-space: nowrap !important;
+      transition: background 0.2s !important;
+    }
+    #milo-nav-bar .milo-nav-cta:hover { background: #e67300 !important; color: #fff !important; }
+    #milo-nav-bar .milo-nav-toggle {
+      display: none !important; flex-direction: column !important;
+      gap: 5px !important; cursor: pointer !important;
+      background: none !important; border: none !important; padding: 4px !important;
+    }
+    #milo-nav-bar .milo-nav-toggle span {
+      display: block !important; width: 26px !important; height: 2px !important;
+      background: #074387 !important; border-radius: 2px !important;
+      transition: all 0.3s !important;
+    }
+    #milo-nav-drawer {
+      display: none;
+      position: fixed !important; top: 75px !important;
+      left: 0 !important; right: 0 !important;
+      background: #ffffff !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+      z-index: 2147483646 !important;
+      padding: 16px 32px 24px !important;
+      flex-direction: column !important;
+    }
+    #milo-nav-drawer.milo-open { display: flex !important; }
+    #milo-nav-drawer a {
+      display: block !important; padding: 14px 0 !important;
+      border-bottom: 1px solid #f0f0f0 !important;
+      text-decoration: none !important; color: #074387 !important;
+      font-family: 'League Spartan',Arial,sans-serif !important;
+      font-size: 15px !important; font-weight: 600 !important;
+      text-transform: uppercase !important;
+    }
+    #milo-nav-drawer a:last-child { border-bottom: none !important; }
+    #milo-nav-drawer a:hover { color: #FF8200 !important; }
+    #milo-nav-spacer {
+      height: 75px !important; display: block !important;
+    }
+    @media (max-width: 768px) {
+      #milo-nav-bar .milo-nav-links { display: none !important; }
+      #milo-nav-bar .milo-nav-toggle { display: flex !important; }
+      #milo-nav-bar .milo-nav-cta { display: none !important; }
+    }
+  `;
+
+  // ── HTML ─────────────────────────────────────────────────────
+  var navHTML = `
+    <nav id="milo-nav-bar">
+      <div class="milo-nav-inner">
+        <a class="milo-nav-logo" href="/home">
+          <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg"
+               alt="MILO Insulation Franchise" />
+        </a>
+        <ul class="milo-nav-links">
+          <li><a href="/home">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/opportunity">Opportunity</a></li>
+          <li><a href="/support">Support</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact" class="milo-nav-cta">Get Started</a></li>
+        </ul>
+        <button class="milo-nav-toggle" aria-label="Menu" onclick="document.getElementById('milo-nav-drawer').classList.toggle('milo-open')">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+    <div id="milo-nav-drawer">
+      <a href="/home">Home</a>
+      <a href="/about">About</a>
+      <a href="/opportunity">Opportunity</a>
+      <a href="/support">Support</a>
+      <a href="/faq">FAQ</a>
+      <a href="/contact" style="color:#FF8200!important;font-weight:700!important;">Get Started</a>
+    </div>
+    <div id="milo-nav-spacer"></div>
+  `;
+
+  // ── Inject ───────────────────────────────────────────────────
+  function inject() {
+    if (document.getElementById('milo-nav-bar')) return; // already injected
+
+    // Inject CSS
+    var style = document.createElement('style');
+    style.id = 'milo-nav-styles';
+    style.textContent = css;
+    document.head.appendChild(style);
+
+    // Inject nav at top of body
+    var wrapper = document.createElement('div');
+    wrapper.innerHTML = navHTML;
+    document.body.insertBefore(wrapper, document.body.firstChild);
+
+    // Hide GHL's own built-in header if present
+    var ghlNav = document.getElementById('nav-menu-popup');
+    if (ghlNav) {
+      var parent = ghlNav.closest('[id]') || ghlNav.parentElement;
+      if (parent && parent !== document.body) {
+        parent.style.cssText = 'display:none!important;height:0!important;overflow:hidden!important;';
+      }
+    }
+  }
+
+  if (document.body) {
+    inject();
+  } else {
+    document.addEventListener('DOMContentLoaded', inject);
+  }
+})();
+</script>
