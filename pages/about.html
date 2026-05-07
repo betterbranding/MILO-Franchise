@@ -1,143 +1,289 @@
-<!-- MILO Franchise — About Page Fragment -->
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <span class="eyebrow" style="color:#6fd49a;">Our Story</span>
-      <h1 style="color:#fff;">Built on Innovation.<br/>Rooted in Nature.<br/>Growing Nationwide.</h1>
-      <p class="lead" style="color:rgba(255,255,255,0.78);">Discover the story behind MILO Insulation — a 30-year journey from agricultural discovery to the nation's most forward-thinking natural insulation franchise.</p>
-      <a href="https://franchise.miloinsulation.com/contact" class="btn btn-primary btn-lg" style="margin-top:8px;">Request Franchise Information</a>
-    </div>
+<style>
+  /* ===== ABOUT PAGE STYLES ===== */
+  :root {
+    --green: #288D11;
+    --navy: #074387;
+    --orange: #FF8200;
+    --light-blue: #50ACE1;
+    --pale-blue: #EEF7FC;
+    --light-green: #EAF4E7;
+    --off-white: #F8F9FA;
+    --body-font: 'Gotham', 'Century Gothic', 'Futura', sans-serif;
+    --title-font: 'League Spartan', sans-serif;
+  }
+  .milo-ab { box-sizing: border-box; width: 100%; }
+  .milo-ab-container { max-width: 1140px; margin: 0 auto; padding: 0 30px; }
+  .milo-ab-label {
+    display: inline-block; font-family: var(--body-font); font-size: 12px;
+    font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .milo-ab-label-green { color: var(--green); }
+  .milo-ab-label-orange { color: var(--orange); }
+  .milo-ab-headline {
+    font-family: var(--title-font); font-size: 38px; font-weight: 800;
+    color: var(--navy); line-height: 1.15; margin: 0 0 18px;
+  }
+  .milo-ab-body { font-family: var(--body-font); font-size: 16px; color: #444; line-height: 1.7; margin: 0 0 14px; }
+  .milo-ab-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .milo-ab-btn-primary {
+    display: inline-block; background: var(--orange); color: #fff;
+    font-family: var(--body-font); font-size: 16px; font-weight: 700;
+    padding: 14px 30px; border-radius: 8px; text-decoration: none; transition: background 0.2s;
+  }
+  .milo-ab-btn-primary:hover { background: #e07000; }
+  .milo-ab-btn-white {
+    display: inline-block; background: #fff; color: var(--navy);
+    font-family: var(--body-font); font-size: 16px; font-weight: 700;
+    padding: 14px 30px; border-radius: 8px; text-decoration: none;
+  }
+  .milo-ab-btn-white-outline {
+    display: inline-block; background: transparent; color: #fff;
+    font-family: var(--body-font); font-size: 16px; font-weight: 600;
+    padding: 13px 28px; border-radius: 8px; border: 2px solid #fff; text-decoration: none;
+  }
+
+  /* Hero */
+  .milo-ab-hero {
+    position: relative; min-height: 520px; background: linear-gradient(135deg, #042244 0%, #074387 60%, #1C630C 100%);
+    display: flex; align-items: center; padding: 80px 40px;
+  }
+  .milo-ab-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(4,34,68,0.85) 0%, rgba(7,67,135,0.75) 100%);
+  }
+  .milo-ab-hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .milo-ab-hero h1 { font-family: var(--title-font); font-size: 48px; font-weight: 800; color: #fff; line-height: 1.1; margin: 0 0 18px; }
+  .milo-ab-hero h2 { font-family: var(--body-font); font-size: 20px; color: rgba(255,255,255,0.88); line-height: 1.6; margin: 0 0 28px; }
+
+  /* Sections */
+  .milo-ab-origin { background: #fff; padding: 80px 40px; }
+  .milo-ab-discover { background: var(--pale-blue); padding: 80px 40px; }
+  .milo-ab-vertical { background: #fff; padding: 80px 40px; text-align: center; }
+  .milo-ab-mission { background: var(--off-white); padding: 80px 40px; text-align: center; }
+  .milo-ab-awards { background: var(--light-green); padding: 60px 40px; text-align: center; }
+  .milo-ab-testimonials { background: #fff; padding: 80px 40px; }
+  .milo-ab-vision { background: var(--navy); padding: 80px 40px; text-align: center; }
+  .milo-ab-cta { background: var(--orange); padding: 80px 40px; text-align: center; }
+
+  /* Three-col icon row */
+  .milo-ab-three-icons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+  .milo-ab-icon-item { text-align: center; }
+  .milo-ab-icon-item .icon { font-size: 40px; margin-bottom: 12px; }
+  .milo-ab-icon-item h3 { font-family: var(--body-font); font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .milo-ab-icon-item p { font-family: var(--body-font); font-size: 14px; color: #555; line-height: 1.6; }
+
+  /* Value cards */
+  .milo-ab-value-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+  .milo-ab-value-card {
+    background: #fff; border-top: 4px solid var(--green); border-radius: 12px;
+    padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  .milo-ab-value-card h3 { font-family: var(--body-font); font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 10px; }
+  .milo-ab-value-card p { font-family: var(--body-font); font-size: 14px; color: #555; line-height: 1.6; margin: 0; }
+
+  /* Awards bar */
+  .milo-ab-awards-list {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+    list-style: none; margin: 20px 0 0; padding: 0;
+  }
+  .milo-ab-awards-list li {
+    background: #fff; border: 1px solid #c8e6c0; border-radius: 8px;
+    padding: 8px 18px; font-family: var(--body-font); font-size: 13px;
+    font-weight: 600; color: var(--navy);
+  }
+
+  /* Testimonials */
+  .milo-ab-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .milo-ab-test-card {
+    background: #fff; border-radius: 12px; border-left: 4px solid var(--orange);
+    padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .milo-ab-test-card .stars { color: var(--orange); font-size: 18px; margin-bottom: 12px; }
+  .milo-ab-test-card blockquote { font-family: var(--body-font); font-size: 15px; font-style: italic; color: #444; line-height: 1.6; margin: 0 0 14px; padding: 0; }
+  .milo-ab-test-card cite { font-family: var(--body-font); font-size: 14px; font-weight: 700; color: var(--navy); font-style: normal; }
+
+  .milo-ab-btn-row { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+  @media (max-width: 900px) {
+    .milo-ab-two-col { grid-template-columns: 1fr; gap: 32px; }
+    .milo-ab-three-icons { grid-template-columns: 1fr; gap: 24px; }
+    .milo-ab-value-cards { grid-template-columns: 1fr; }
+    .milo-ab-test-grid { grid-template-columns: 1fr; }
+    .milo-ab-hero h1 { font-size: 34px; }
+    .milo-ab-headline { font-size: 28px; }
+  }
+  @media (max-width: 600px) {
+    .milo-ab-hero, .milo-ab-origin, .milo-ab-discover, .milo-ab-vertical,
+    .milo-ab-mission, .milo-ab-awards, .milo-ab-testimonials,
+    .milo-ab-vision, .milo-ab-cta { padding: 60px 20px; }
+  }
+</style>
+
+<!-- ===== HERO ===== -->
+<section class="milo-ab milo-ab-hero" data-milo-page="about">
+  <div class="milo-ab-hero-overlay"></div>
+  <div class="milo-ab-hero-content">
+    <span class="milo-ab-label milo-ab-label-green">Our Story</span>
+    <h1>Built on Innovation. Rooted in Nature. Growing Nationwide.</h1>
+    <h2>Discover the story behind MILO Insulation — a 30-year journey from agricultural discovery to the nation's most forward-thinking natural insulation franchise.</h2>
+    <a href="/contact" class="milo-ab-btn-primary">Request Franchise Information</a>
   </div>
 </section>
 
-<!-- ORIGIN STORY -->
-<section class="section">
-  <div class="container">
-    <div class="grid-2">
+<!-- ===== ORIGIN STORY ===== -->
+<section class="milo-ab milo-ab-origin">
+  <div class="milo-ab-container">
+    <div class="milo-ab-two-col">
       <div>
-        <span class="eyebrow">How It Started</span>
-        <h2>It Began With a Sorghum Seed and a Big Idea.</h2>
-        <p style="margin:20px 0;">More than 30 years ago, our founders identified something remarkable: sorghum grain could be extruded into a natural, biodegradable foam through a patented, polymer-free process. Under the MILEX Corporation banner, we developed this into an environmentally responsible packaging alternative.</p>
-        <p>The real breakthrough: MILEX was one of the most effective natural insulators on the market.</p>
-        <div class="market-highlight" style="margin-top:28px;">
-          <strong>Patented Process</strong>
-          <p>Polymer-free, biodegradable thermal puffs — by reimagining what a simple sorghum seed could do, our founders created MILEX® without plastics or harsh chemicals.</p>
+        <span class="milo-ab-label milo-ab-label-green">How It Started</span>
+        <h2 class="milo-ab-headline">It Began With a Sorghum Seed and a Big Idea.</h2>
+        <p class="milo-ab-body">More than 30 years ago, our founders identified something remarkable: sorghum grain — an agricultural staple grown by American farmers — could be extruded into a natural, biodegradable foam through a patented, polymer-free process.</p>
+        <p class="milo-ab-body">Under the MILEX Corporation banner, we developed this innovation into an environmentally responsible alternative to polystyrene packing peanuts. The market responded. The brand grew. And we kept pushing forward.</p>
+        <p class="milo-ab-body">But the real breakthrough came when we discovered that MILEX™ wasn't just a packaging material — it was one of the most effective natural insulators on the market.</p>
+      </div>
+      <div>
+        <img src="https://miloinsulationfranchise.com/wp-content/uploads/image1.webp" alt="MILO Insulation Origin Story" style="width:100%;border-radius:12px;display:block;" onerror="this.style.display='none'">
+        <div style="background:var(--light-green);border-radius:12px;padding:40px;text-align:center;">
+          <div style="font-size:64px;">🌾</div>
+          <p style="font-family:var(--body-font);color:var(--green);font-weight:600;margin:8px 0 0;font-size:16px;">30+ Years of Agricultural Innovation</p>
         </div>
       </div>
-      <div style="background:var(--off-white);border-radius:16px;padding:48px;display:flex;flex-direction:column;justify-content:center;">
-        <div style="font-family:var(--font-head);font-size:5rem;font-weight:900;color:var(--green);line-height:1;">30+</div>
-        <div style="font-family:var(--font-head);font-weight:700;color:var(--navy);font-size:1.2rem;margin:8px 0;">Years of Innovation</div>
-        <p style="font-size:0.95rem;">From packaging material to the insulation of the future — three decades of real-world field experience now available to franchise owners.</p>
-      </div>
     </div>
   </div>
 </section>
 
-<hr class="divider" />
-
-<!-- BREAKTHROUGH -->
-<section class="section section--off">
-  <div class="container">
-    <div class="grid-2" style="align-items:start;">
-      <div style="background:var(--navy);border-radius:16px;padding:48px;color:#fff;">
-        <span class="eyebrow" style="color:#6fd49a;">The Breakthrough</span>
-        <h2 style="color:#fff;margin-bottom:20px;">From Packing Peanuts to the Insulation of the Future.</h2>
-        <p style="color:rgba(255,255,255,0.72);margin-bottom:24px;">MILEX's outstanding heat transfer resistance, pest resistance, and fire resistance — all without synthetic additives — led us to found MILO Insulation.</p>
-        <ul class="feature-list" style="border-color:rgba(255,255,255,0.1);">
-          <li style="color:rgba(255,255,255,0.82);border-color:rgba(255,255,255,0.1);">Naturally high R-value and thermal performance</li>
-          <li style="color:rgba(255,255,255,0.82);border-color:rgba(255,255,255,0.1);">Resistant to pests and rodents without toxic treatments</li>
-          <li style="color:rgba(255,255,255,0.82);border-color:rgba(255,255,255,0.1);">Fire-resistant characteristics built into the material</li>
-          <li style="color:rgba(255,255,255,0.82);">Fully biodegradable and plant-based, made from sorghum</li>
-        </ul>
-      </div>
+<!-- ===== DISCOVERY & PIVOT ===== -->
+<section class="milo-ab milo-ab-discover">
+  <div class="milo-ab-container">
+    <div class="milo-ab-two-col">
       <div>
-        <span class="eyebrow">Vertical Integration</span>
-        <h2>We Own the Entire Process.</h2>
-        <p style="margin:20px 0 32px;">From the sorghum planted in the soil to the MILEX material blown into an attic, MILO Insulation is vertically integrated. That means more control over quality, consistency, margins, and impact.</p>
-        <div class="grid-3" style="gap:20px;">
-          <div class="card" style="padding:24px 20px;text-align:center;">
-            <div style="font-size:2rem;margin-bottom:10px;">🌾</div>
-            <h4>Source</h4>
-            <p style="font-size:0.85rem;">Partner with local sorghum farmers. Sustainable supply chain.</p>
-          </div>
-          <div class="card" style="padding:24px 20px;text-align:center;">
-            <div style="font-size:2rem;margin-bottom:10px;">🏭</div>
-            <h4>Manufacture</h4>
-            <p style="font-size:0.85rem;">You operate your own plant. Control production and margins.</p>
-          </div>
-          <div class="card" style="padding:24px 20px;text-align:center;">
-            <div style="font-size:2rem;margin-bottom:10px;">🏠</div>
-            <h4>Install</h4>
-            <p style="font-size:0.85rem;">Your crews deliver MILEX into every attic and wall.</p>
-          </div>
+        <img src="https://miloinsulationfranchise.com/wp-content/uploads/image2.webp" alt="MILEX Product Innovation" style="width:100%;border-radius:12px;display:block;" onerror="this.style.display='none'">
+        <div style="background:rgba(80,172,225,0.15);border-radius:12px;padding:40px;text-align:center;">
+          <div style="font-size:64px;">💡</div>
+          <p style="font-family:var(--body-font);color:var(--navy);font-weight:600;margin:8px 0 0;">The Breakthrough Discovery</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- MISSION -->
-<section class="section section--dark">
-  <div class="container text-center">
-    <span class="eyebrow" style="color:#6fd49a;">Our Mission</span>
-    <h2>A Cleaner, Natural, and Better World — One Installation at a Time.</h2>
-    <p class="lead" style="margin:20px auto 56px;">MILO Insulation exists to prove that doing right by homeowners, franchisees, and the planet can be the same decision.</p>
-    <div class="grid-3">
-      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:36px;">
-        <div style="font-size:2.5rem;margin-bottom:16px;">🌱</div>
-        <h3 style="color:#fff;margin-bottom:12px;">Cleaner</h3>
-        <p>MILEX is biodegradable and free from harsh chemicals, supporting cleaner air and cleaner communities.</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:36px;">
-        <div style="font-size:2.5rem;margin-bottom:16px;">🌿</div>
-        <h3 style="color:#fff;margin-bottom:12px;">Natural</h3>
-        <p>Plant-based MILEX turns an agricultural crop into a high-performance building material.</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:36px;">
-        <div style="font-size:2.5rem;margin-bottom:16px;">⚡</div>
-        <h3 style="color:#fff;margin-bottom:12px;">Better</h3>
-        <p>Superior performance means lower energy bills, quieter homes, and franchise owners who stand behind their product.</p>
+      <div>
+        <span class="milo-ab-label milo-ab-label-orange">The Breakthrough</span>
+        <h2 class="milo-ab-headline">From Packing Peanuts to the Insulation of the Future.</h2>
+        <p class="milo-ab-body">When we saw MILEX™'s outstanding heat transfer resistance, pest resistance, and fire resistance — all with zero synthetic additives — we knew we were sitting on something bigger than packaging.</p>
+        <p class="milo-ab-body">We answered the market's growing call for sustainable building materials by founding MILO Insulation. Our goal was simple: give homeowners and builders a green, biodegradable blow-in insulation that outperforms synthetic alternatives — while saving them thousands of dollars over a home's lifetime.</p>
+        <p class="milo-ab-body" style="font-weight:700;color:var(--navy);">It wasn't just a product launch. It was the birth of a movement.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section section--off">
-  <div class="container">
-    <div class="text-center" style="margin-bottom:48px;">
-      <span class="eyebrow">What People Are Saying</span>
-      <h2>Trusted by Customers. Recognized by the Industry.</h2>
-    </div>
-    <div class="grid-3">
-      <div class="testimonial-card">
-        <p class="testimonial-text">"Our home is noticeably quieter and more comfortable, and our energy bills dropped almost immediately. Knowing it's a natural, plant-based material makes it even better."</p>
-        <span class="testimonial-author">Lauren M., Homeowner</span>
+<!-- ===== VERTICAL INTEGRATION ===== -->
+<section class="milo-ab milo-ab-vertical">
+  <div class="milo-ab-container">
+    <span class="milo-ab-label milo-ab-label-green">How We Operate</span>
+    <h2 class="milo-ab-headline" style="text-align:center;">We Don't Just Sell Insulation. We Own the Entire Process.</h2>
+    <p class="milo-ab-body" style="max-width:700px;margin:0 auto 16px;text-align:center;">Most insulation companies depend on third-party manufacturers, multiple distributors, and external installation teams. MILO Insulation does it differently.</p>
+    <p class="milo-ab-body" style="max-width:700px;margin:0 auto;text-align:center;">From sourcing sorghum seeds from local American farmers, to manufacturing MILEX™, to delivering and installing the finished product — we manage every step. This vertical integration model means fewer delays, better quality control, and more value for our franchise owners and their customers.</p>
+    <div class="milo-ab-three-icons">
+      <div class="milo-ab-icon-item">
+        <div class="icon">🌾</div>
+        <h3>Source</h3>
+        <p>Local sorghum farmers supply the raw material — supporting American agriculture at every step.</p>
       </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"As a contractor, I've worked with almost every insulation product. MILEX stands out — it installs beautifully and performs incredibly well in the toughest climates."</p>
-        <span class="testimonial-author">Daniel S., Building Professional</span>
+      <div class="milo-ab-icon-item">
+        <div class="icon">🏭</div>
+        <h3>Manufacture</h3>
+        <p>Franchise owners produce MILEX™ at their own plant — full control over quality and production.</p>
       </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"Joining the MILO Insulation franchise means we're part of something bigger — a brand with real science, real IP, and a real story homeowners connect with."</p>
-        <span class="testimonial-author">Future MILO Franchise Owner</span>
+      <div class="milo-ab-icon-item">
+        <div class="icon">🏠</div>
+        <h3>Install</h3>
+        <p>Trained crews deliver and install for end customers — completing the value chain from seed to ceiling.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section">
-  <div class="container">
-    <div class="cta-banner">
-      <h2>Now, We're Ready to Share What We've Built.</h2>
-      <p class="lead" style="color:rgba(255,255,255,0.82);">After more than three decades refining MILEX, we're expanding MILO Insulation as a franchise opportunity for owners who care about building a legacy business.</p>
-      <div class="btn-group" style="justify-content:center;">
-        <a href="https://franchise.miloinsulation.com/opportunity" class="btn btn-gold btn-lg">Explore the Opportunity</a>
-        <a href="https://franchise.miloinsulation.com/contact" class="btn btn-outline btn-lg">Request Franchise Info</a>
+<!-- ===== MISSION & VALUES ===== -->
+<section class="milo-ab milo-ab-mission">
+  <div class="milo-ab-container">
+    <span class="milo-ab-label milo-ab-label-orange">Our Mission</span>
+    <h2 class="milo-ab-headline">A Cleaner, Natural, and Better World — One Installation at a Time.</h2>
+    <p class="milo-ab-body" style="max-width:720px;margin:0 auto 14px;">Everything we do at MILO Insulation is guided by a single belief: that innovation and environmental responsibility aren't at odds with success — they're the engine of it. We source locally, manufacture sustainably, install expertly, and grow transparently.</p>
+    <p class="milo-ab-body" style="max-width:720px;margin:0 auto;">This isn't a trend for us. It's been our foundation for three decades. And it's the same foundation we offer every franchise owner who joins our family.</p>
+    <div class="milo-ab-value-cards" style="margin-top:40px;">
+      <div class="milo-ab-value-card" style="text-align:left;">
+        <h3>🌿 Cleaner</h3>
+        <p>Biodegradable, non-toxic materials that leave no chemical footprint in the homes and communities we serve.</p>
       </div>
+      <div class="milo-ab-value-card" style="text-align:left;">
+        <h3>🌱 Natural</h3>
+        <p>100% plant-based MILEX™ sourced from American sorghum farms — the real definition of sustainable insulation.</p>
+      </div>
+      <div class="milo-ab-value-card" style="text-align:left;">
+        <h3>💪 Better</h3>
+        <p>Superior insulation performance that saves customers real money while protecting the environment for future generations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RECOGNITION & AWARDS ===== -->
+<section class="milo-ab milo-ab-awards">
+  <div class="milo-ab-container">
+    <h2 class="milo-ab-headline" style="text-align:center;">Trusted by Customers. Recognized by the Industry.</h2>
+    <ul class="milo-ab-awards-list">
+      <li>🏆 Angi 2022 Super Service Award</li>
+      <li>✅ HomeAdvisor Screened &amp; Approved</li>
+      <li>⭐ HomeAdvisor Top Rated</li>
+      <li>🥇 HomeAdvisor 3-Year Elite Service</li>
+      <li>🏅 HomeAdvisor Elite</li>
+    </ul>
+    <p class="milo-ab-body" style="max-width:640px;margin:24px auto 0;text-align:center;">Our commitment to quality and customer service hasn't gone unnoticed. MILO Insulation has earned recognition from Angi, HomeAdvisor, and other leading industry organizations — and our customers keep coming back.</p>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="milo-ab milo-ab-testimonials">
+  <div class="milo-ab-container">
+    <h2 class="milo-ab-headline" style="text-align:center;margin-bottom:36px;">What Our Customers Say</h2>
+    <div class="milo-ab-test-grid">
+      <div class="milo-ab-test-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <blockquote>"They are an amazing company. You will be glad you picked them."</blockquote>
+        <cite>— Blake A. | Amarillo, TX</cite>
+      </div>
+      <div class="milo-ab-test-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <blockquote>"We hired them to blow in this unique insulating product over a built-in garage. The difference was immediately noticed and well worth the cost."</blockquote>
+        <cite>— Wesley H. | Spearman, TX</cite>
+      </div>
+      <div class="milo-ab-test-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <blockquote>"I like the idea of supporting local farmers and using a green product."</blockquote>
+        <cite>— Renee B. | Lubbock, TX</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FRANCHISE VISION ===== -->
+<section class="milo-ab milo-ab-vision">
+  <div class="milo-ab-container" style="max-width:800px;">
+    <h2 style="font-family:var(--title-font);font-size:38px;font-weight:800;color:#fff;line-height:1.2;margin:0 0 20px;">Now, We're Ready to Share What We've Built.</h2>
+    <p class="milo-ab-body" style="color:rgba(255,255,255,0.88);font-size:17px;max-width:680px;margin:0 auto 14px;">After 30+ years of refinement, we have a proven product, a complete operating system, and a growing national demand. MILO Insulation is expanding — and we're looking for driven, values-aligned entrepreneurs to carry our mission into new markets.</p>
+    <p class="milo-ab-body" style="color:rgba(255,255,255,0.88);font-size:17px;max-width:680px;margin:0 auto 32px;">This is your opportunity to be part of something that matters. To build a business on a foundation that's already proven. To own a territory that's exclusively yours.</p>
+    <a href="/opportunity" class="milo-ab-btn-primary">Explore the Franchise Opportunity →</a>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="milo-ab milo-ab-cta">
+  <div class="milo-ab-container" style="max-width:700px;">
+    <h2 style="font-family:var(--title-font);font-size:44px;font-weight:800;color:#fff;margin:0 0 16px;">Ready to Be Part of the Story?</h2>
+    <p style="font-family:var(--body-font);font-size:18px;color:rgba(255,255,255,0.92);line-height:1.6;margin:0 0 32px;">Connect with our team today and learn how MILO Insulation can become the foundation of your entrepreneurial future.</p>
+    <div class="milo-ab-btn-row">
+      <a href="/contact" class="milo-ab-btn-white">Request Franchise Information</a>
+      <a href="tel:8005748456" class="milo-ab-btn-white-outline">Call (800) 574-MILO</a>
     </div>
   </div>
 </section>

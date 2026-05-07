@@ -1,188 +1,354 @@
-<!-- MILO Franchise — Opportunity Page Fragment -->
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <span class="eyebrow" style="color:#6fd49a;">The Opportunity</span>
-      <h1 style="color:#fff;">Own the Only Franchise That Manufactures, Sells, and Installs Its Own Natural Insulation.</h1>
-      <p class="lead" style="color:rgba(255,255,255,0.78);">MILO gives you an exclusive product, a complete business system, and a protected territory. Territories are limited — the first owners into each market will shape how builders and homeowners choose natural insulation for years.</p>
-      <div class="btn-group" style="margin-top:8px;">
-        <a href="https://franchise.miloinsulation.com/contact" class="btn btn-primary btn-lg">Request Franchise Information</a>
-        <a href="#investment" class="btn btn-outline btn-lg">Review Investment Details</a>
-      </div>
-    </div>
-    <div class="stat-grid">
-      <div class="stat-box"><span class="stat-num">$61B+</span><span class="stat-label">Global Insulation Market</span></div>
-      <div class="stat-box"><span class="stat-num">7.6%</span><span class="stat-label">Plant-Based CAGR Through 2033</span></div>
-      <div class="stat-box"><span class="stat-num">40%</span><span class="stat-label">U.S. Consumers Prefer Sustainable</span></div>
+<style>
+  /* ===== OPPORTUNITY PAGE STYLES ===== */
+  :root {
+    --green: #288D11;
+    --navy: #074387;
+    --orange: #FF8200;
+    --light-green: #EAF4E7;
+    --off-white: #F8F9FA;
+    --body-font: 'Gotham', 'Century Gothic', 'Futura', sans-serif;
+    --title-font: 'League Spartan', sans-serif;
+  }
+  .milo-op { box-sizing: border-box; width: 100%; }
+  .milo-op-container { max-width: 1140px; margin: 0 auto; padding: 0 30px; }
+  .milo-op-label {
+    display: inline-block; font-family: var(--body-font); font-size: 12px;
+    font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .milo-op-label-green { color: var(--green); }
+  .milo-op-label-orange { color: var(--orange); }
+  .milo-op-headline {
+    font-family: var(--title-font); font-size: 38px; font-weight: 800;
+    color: var(--navy); line-height: 1.15; margin: 0 0 18px;
+  }
+  .milo-op-body { font-family: var(--body-font); font-size: 16px; color: #444; line-height: 1.7; margin: 0 0 14px; }
+  .milo-op-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .milo-op-btn-primary {
+    display: inline-block; background: var(--orange); color: #fff;
+    font-family: var(--body-font); font-size: 16px; font-weight: 700;
+    padding: 14px 30px; border-radius: 8px; text-decoration: none; transition: background 0.2s;
+  }
+  .milo-op-btn-primary:hover { background: #e07000; }
+  .milo-op-btn-secondary {
+    display: inline-block; background: transparent; color: #fff;
+    font-family: var(--body-font); font-size: 16px; font-weight: 600;
+    padding: 13px 28px; border-radius: 8px; border: 2px solid #fff; text-decoration: none;
+  }
+  .milo-op-btn-outline {
+    display: inline-block; background: transparent; color: var(--navy);
+    font-family: var(--body-font); font-size: 16px; font-weight: 600;
+    padding: 13px 28px; border-radius: 8px; border: 2px solid var(--navy); text-decoration: none;
+  }
+  .milo-op-btn-white {
+    display: inline-block; background: #fff; color: var(--navy);
+    font-family: var(--body-font); font-size: 16px; font-weight: 700;
+    padding: 14px 30px; border-radius: 8px; text-decoration: none;
+  }
+  .milo-op-btn-white-outline {
+    display: inline-block; background: transparent; color: #fff;
+    font-family: var(--body-font); font-size: 16px; font-weight: 600;
+    padding: 13px 28px; border-radius: 8px; border: 2px solid #fff; text-decoration: none;
+  }
+
+  /* Hero */
+  .milo-op-hero {
+    position: relative; min-height: 560px;
+    background: linear-gradient(135deg, #FF8200 0%, #e07000 40%, #074387 100%);
+    display: flex; align-items: center; padding: 80px 40px;
+  }
+  .milo-op-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,130,0,0.6) 0%, rgba(7,67,135,0.75) 100%);
+  }
+  .milo-op-hero-content { position: relative; z-index: 2; max-width: 720px; }
+  .milo-op-hero h1 { font-family: var(--title-font); font-size: 48px; font-weight: 800; color: #fff; line-height: 1.1; margin: 0 0 18px; }
+  .milo-op-hero h2 { font-family: var(--body-font); font-size: 20px; color: rgba(255,255,255,0.90); line-height: 1.6; margin: 0 0 28px; }
+  .milo-op-btn-row { display: flex; flex-wrap: wrap; gap: 16px; }
+
+  /* Sections */
+  .milo-op-green-rev { background: #fff; padding: 80px 40px; text-align: center; }
+  .milo-op-diff { background: var(--off-white); padding: 80px 40px; }
+  .milo-op-stats { background: var(--navy); padding: 80px 40px; text-align: center; }
+  .milo-op-invest { background: var(--light-green); padding: 80px 40px; }
+  .milo-op-ideal { background: #fff; padding: 80px 40px; }
+  .milo-op-plan { background: var(--off-white); padding: 80px 40px; text-align: center; }
+  .milo-op-cta { background: var(--orange); padding: 80px 40px; text-align: center; }
+
+  /* Differentiators grid */
+  .milo-op-diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+  .milo-op-diff-card {
+    background: #fff; border-radius: 12px; padding: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative;
+  }
+  .milo-op-diff-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; background: var(--orange); color: #fff;
+    border-radius: 50%; font-family: var(--title-font); font-size: 16px; font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .milo-op-diff-card .icon { font-size: 28px; display: block; margin-bottom: 8px; }
+  .milo-op-diff-card h3 { font-family: var(--body-font); font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 10px; }
+  .milo-op-diff-card p { font-family: var(--body-font); font-size: 14px; color: #555; line-height: 1.6; margin: 0; }
+
+  /* Stats */
+  .milo-op-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 36px; }
+  .milo-op-stat-item .stat-num { font-family: var(--title-font); font-size: 56px; font-weight: 800; color: var(--orange); }
+  .milo-op-stat-item .stat-label { font-family: var(--body-font); font-size: 15px; color: rgba(255,255,255,0.85); margin: 8px 0 4px; }
+  .milo-op-stat-item .stat-source { font-family: var(--body-font); font-size: 11px; color: rgba(255,255,255,0.5); }
+  .milo-op-stats h2 { font-family: var(--title-font); font-size: 38px; font-weight: 800; color: #fff; margin: 0 0 8px; }
+  .milo-op-stats p.sub { font-family: var(--body-font); font-size: 16px; color: rgba(255,255,255,0.85); margin-top: 32px; }
+
+  /* Investment card */
+  .milo-op-invest-card {
+    background: #fff; border-left: 5px solid var(--orange); border-radius: 12px;
+    padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin: 24px 0;
+  }
+  .milo-op-invest-card .inv-label { font-family: var(--body-font); font-size: 12px; font-weight: 700; color: #999; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .milo-op-invest-card .inv-range { font-family: var(--title-font); font-size: 38px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+  .milo-op-invest-card p { font-family: var(--body-font); font-size: 15px; color: #555; line-height: 1.6; margin: 0 0 8px; }
+  .milo-op-fee-table { margin-top: 20px; }
+  .milo-op-fee-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-family: var(--body-font); font-size: 14px; }
+  .milo-op-fee-row .fee-name { color: #555; }
+  .milo-op-fee-row .fee-val { font-weight: 700; color: var(--navy); }
+
+  /* Ideal owner checklist */
+  .milo-op-check-list { list-style: none; padding: 0; margin: 20px 0; }
+  .milo-op-check-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-family: var(--body-font); font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 12px;
+  }
+  .milo-op-check-list li::before { content: "✅"; flex-shrink: 0; }
+
+  /* Plan steps */
+  .milo-op-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 36px; }
+  .milo-op-step { background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 36px 28px; }
+  .milo-op-step-num {
+    width: 52px; height: 52px; background: var(--orange); border-radius: 50%;
+    font-family: var(--title-font); font-size: 24px; font-weight: 800; color: #fff;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+  }
+  .milo-op-step h3 { font-family: var(--body-font); font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 10px; text-align: center; }
+  .milo-op-step p { font-family: var(--body-font); font-size: 14px; color: #555; line-height: 1.6; margin: 0; text-align: center; }
+
+  @media (max-width: 900px) {
+    .milo-op-two-col { grid-template-columns: 1fr; gap: 32px; }
+    .milo-op-diff-grid { grid-template-columns: repeat(2, 1fr); }
+    .milo-op-stats-grid { grid-template-columns: 1fr; gap: 24px; }
+    .milo-op-steps { grid-template-columns: 1fr; }
+    .milo-op-hero h1 { font-size: 34px; }
+    .milo-op-headline { font-size: 28px; }
+  }
+  @media (max-width: 600px) {
+    .milo-op-diff-grid { grid-template-columns: 1fr; }
+    .milo-op-hero, .milo-op-green-rev, .milo-op-diff, .milo-op-stats,
+    .milo-op-invest, .milo-op-ideal, .milo-op-plan, .milo-op-cta { padding: 60px 20px; }
+  }
+</style>
+
+<!-- ===== HERO ===== -->
+<section class="milo-op milo-op-hero" data-milo-page="opportunity">
+  <div class="milo-op-hero-overlay"></div>
+  <div class="milo-op-hero-content">
+    <span class="milo-op-label milo-op-label-green">The Opportunity</span>
+    <h1>Own the Only Franchise That Manufactures, Sells, and Installs Its Own Natural Insulation.</h1>
+    <h2>MILO Insulation gives you an exclusive product, a complete business system, and a protected territory — everything you need to build something lasting.</h2>
+    <div class="milo-op-btn-row">
+      <a href="/contact" class="milo-op-btn-primary">Request Franchise Information</a>
+      <a href="#investment" class="milo-op-btn-secondary">Review Investment Details</a>
     </div>
   </div>
 </section>
 
-<!-- GREEN REVOLUTION -->
-<section class="section section--off">
-  <div class="container">
-    <div class="grid-2">
-      <div>
-        <span class="eyebrow">Market Timing</span>
-        <h2>Be a Key Player in the Green Revolution.</h2>
-        <p style="margin:20px 0;">The insulation industry is shifting. Homeowners and builders are moving toward sustainable, renewable alternatives. The demand is real. The timing is now. As a MILO franchise owner, you're not entering a crowded market — you're leading an underserved one.</p>
-        <p>As green building codes tighten and customer expectations rise, your franchise stands at the intersection of policy, preference, and performance — giving your territory a future-focused solution that legacy fiberglass competitors simply can't match.</p>
-      </div>
-      <div style="background:var(--green);border-radius:16px;padding:48px;color:#fff;">
-        <h3 style="color:#fff;margin-bottom:24px;">Three Forces Converging in Your Territory:</h3>
-        <div style="display:flex;flex-direction:column;gap:18px;">
-          <div style="display:flex;align-items:flex-start;gap:14px;">
-            <span style="font-size:1.8rem;flex-shrink:0;">💰</span>
-            <div><strong style="color:#fff;font-family:var(--font-head);">Rising Energy Costs</strong><p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-top:4px;">Homeowners are motivated to reduce utility bills — MILEX delivers measurable savings.</p></div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;">
-            <span style="font-size:1.8rem;flex-shrink:0;">📋</span>
-            <div><strong style="color:#fff;font-family:var(--font-head);">Tightening Codes</strong><p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-top:4px;">Energy codes are strengthening nationally, driving demand for high-performance upgrades.</p></div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;">
-            <span style="font-size:1.8rem;flex-shrink:0;">🌍</span>
-            <div><strong style="color:#fff;font-family:var(--font-head);">Sustainability Preference</strong><p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-top:4px;">Consumers actively choose greener options — MILEX gives you the story that wins.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- ===== GREEN REVOLUTION ===== -->
+<section class="milo-op milo-op-green-rev">
+  <div class="milo-op-container" style="max-width:820px;">
+    <h2 class="milo-op-headline" style="text-align:center;">Be a Key Player in the Green Revolution.</h2>
+    <p class="milo-op-body" style="text-align:center;font-size:17px;">The insulation industry is in the middle of a massive shift. Homeowners, builders, and commercial buyers are moving away from synthetic, petroleum-based materials toward sustainable, renewable alternatives. The demand is real. The timing is now. And MILO Insulation has the product, the systems, and the momentum to meet it.</p>
+    <p class="milo-op-body" style="text-align:center;font-size:17px;font-weight:700;color:var(--navy);">As a MILO Insulation franchise owner, you're not entering a crowded market — you're leading an underserved one.</p>
   </div>
 </section>
 
-<!-- WHY MILO -->
-<section class="section">
-  <div class="container">
-    <div class="text-center" style="margin-bottom:48px;">
-      <span class="eyebrow">Why MILO</span>
-      <h2>What Makes the MILO Insulation Opportunity Different?</h2>
-    </div>
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-icon">🎯</div>
+<!-- ===== 7 DIFFERENTIATORS ===== -->
+<section class="milo-op milo-op-diff">
+  <div class="milo-op-container">
+    <span class="milo-op-label milo-op-label-orange">Why MILO</span>
+    <h2 class="milo-op-headline">What Makes the MILO Insulation Opportunity Different?</h2>
+    <div class="milo-op-diff-grid">
+      <div class="milo-op-diff-card">
+        <div class="milo-op-diff-num">1</div>
+        <span class="icon">👥</span>
         <h3>Experienced Franchise Team</h3>
-        <p>30+ years real-world expertise. Your leadership team has scaled brands, opened territories, and guided owners through every economic cycle.</p>
+        <p>We've been guiding the industry for decades. Our expertise isn't borrowed — it's built over 30+ years of real operations.</p>
       </div>
-      <div class="card">
-        <div class="card-icon">🔒</div>
-        <h3>Exclusive MILEX Rights</h3>
-        <p>Only provider in your territory, natural, biodegradable, hypoallergenic. No competitor can offer what you offer in your market.</p>
+      <div class="milo-op-diff-card">
+        <div class="milo-op-diff-num">2</div>
+        <span class="icon">🌾</span>
+        <h3>Exclusive MILEX™ Production Rights</h3>
+        <p>You are the only provider of MILEX™ insulation in your territory. Natural, biodegradable, hypoallergenic, non-shrinking — and customers can't get it anywhere else.</p>
       </div>
-      <div class="card">
-        <div class="card-icon">🏭</div>
+      <div class="milo-op-diff-card">
+        <div class="milo-op-diff-num">3</div>
+        <span class="icon">🏭</span>
         <h3>Vertical Integration</h3>
-        <p>Source, manufacture, install under one roof, more margin. Your plant captures value at every step of the process.</p>
+        <p>Source → Manufacture → Install. You own the whole chain. No third-party delays. No supplier dependencies. More control, more consistency, more margin.</p>
       </div>
-      <div class="card">
-        <div class="card-icon">👨‍👩‍👧</div>
+      <div class="milo-op-diff-card">
+        <div class="milo-op-diff-num">4</div>
+        <span class="icon">🤝</span>
         <h3>Family Approach</h3>
-        <p>We treat owners as partners — transparent and accessible. Open communication and aligned incentives mean your questions get answered quickly.</p>
+        <p>MILO Insulation treats franchise owners as partners, not revenue centers. We work closely with each owner and invest in their growth as if it's our own.</p>
       </div>
-      <div class="card">
-        <div class="card-icon">🏆</div>
+      <div class="milo-op-diff-card">
+        <div class="milo-op-diff-num">5</div>
+        <span class="icon">🏅</span>
         <h3>Established Brand</h3>
-        <p>Award-winning reputation and customer trust. Arrive with a brand that already stands for quality, innovation, and sustainability.</p>
+        <p>We're a recognized leader in natural insulation with a growing customer base, industry awards, and a brand story people believe in.</p>
       </div>
-      <div class="card">
-        <div class="card-icon">📚</div>
-        <h3>Ongoing Training</h3>
-        <p>From pre-opening through years of operation. Marketing, sales, operations, hiring — your team is never left to figure it out alone.</p>
+      <div class="milo-op-diff-card">
+        <div class="milo-op-diff-num">6</div>
+        <span class="icon">🎯</span>
+        <h3>Committed Leadership</h3>
+        <p>Our team refines the model continuously with owner success in mind. We're transparent, accessible, and accountable.</p>
+      </div>
+      <div class="milo-op-diff-card">
+        <div class="milo-op-diff-num">7</div>
+        <span class="icon">📚</span>
+        <h3>Ongoing Training &amp; Support</h3>
+        <p>From pre-opening through years of operation, our support doesn't stop. Our team is always just a call or click away.</p>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="divider" />
-
-<!-- INVESTMENT -->
-<section class="section section--dark" id="investment">
-  <div class="container">
-    <div class="grid-2">
-      <div>
-        <span class="eyebrow" style="color:#6fd49a;">Your Investment</span>
-        <h2>Invest in Yourself. Invest in Your Market. Invest in the Future.</h2>
-        <p style="color:rgba(255,255,255,0.72);margin:20px 0 32px;">Your investment is designed to launch a full-scale plant, not just a service truck — giving your territory the manufacturing capacity, people, and systems required to own the natural insulation category.</p>
-        <h4 style="color:#fff;margin-bottom:14px;">Your investment includes:</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
-          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:center;gap:10px;"><span style="color:#6fd49a;">✓</span> Manufacturing model &amp; plant setup</li>
-          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:center;gap:10px;"><span style="color:#6fd49a;">✓</span> Protected territory</li>
-          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:center;gap:10px;"><span style="color:#6fd49a;">✓</span> Exclusive MILEX production rights</li>
-          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:center;gap:10px;"><span style="color:#6fd49a;">✓</span> Comprehensive training program</li>
-          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:center;gap:10px;"><span style="color:#6fd49a;">✓</span> Operations manual &amp; systems</li>
-          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:center;gap:10px;"><span style="color:#6fd49a;">✓</span> Ongoing support &amp; coaching</li>
-        </ul>
+<!-- ===== INDUSTRY DATA ===== -->
+<section class="milo-op milo-op-stats">
+  <div class="milo-op-container">
+    <span class="milo-op-label" style="color:var(--orange);display:inline-block;margin-bottom:14px;">Market Opportunity</span>
+    <h2>You're Entering a Market That's Growing in Every Direction.</h2>
+    <div class="milo-op-stats-grid">
+      <div class="milo-op-stat-item">
+        <div class="stat-num">$61B+</div>
+        <div class="stat-label">Global insulation market with 6.6% CAGR projected over the next 6 years</div>
+        <div class="stat-source">¹Grand View Research 2022</div>
       </div>
+      <div class="milo-op-stat-item">
+        <div class="stat-num">7.6%</div>
+        <div class="stat-label">Plant-based insulation market growth through 2033</div>
+        <div class="stat-source">²Future Market Insights 2023</div>
+      </div>
+      <div class="milo-op-stat-item">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">Of U.S. consumers more likely to choose a brand with sustainability commitments</div>
+        <div class="stat-source">³Statistica 2024</div>
+      </div>
+    </div>
+    <p class="sub">Sustainable insulation is no longer a niche — it's the direction of the entire market. MILO Insulation is positioned at the center of this shift, and our franchise owners are positioned to grow with it.</p>
+  </div>
+</section>
+
+<!-- ===== INVESTMENT DETAILS ===== -->
+<section class="milo-op milo-op-invest" id="investment">
+  <div class="milo-op-container">
+    <div class="milo-op-two-col">
       <div>
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:40px;">
-          <div style="font-family:var(--font-head);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6fd49a;margin-bottom:8px;">Estimated Initial Investment</div>
-          <div style="font-family:var(--font-head);font-size:2.4rem;font-weight:900;color:#6fd49a;line-height:1.1;margin-bottom:4px;">$521,320</div>
-          <div style="font-family:var(--font-head);font-size:2.4rem;font-weight:900;color:rgba(255,255,255,0.4);line-height:1.1;margin-bottom:28px;">– $880,410</div>
-          <div class="fee-row"><span class="fee-label">Franchise Fee</span><span class="fee-val">$75,000</span></div>
-          <div class="fee-row"><span class="fee-label">Royalty</span><span class="fee-val">5% weekly gross</span></div>
-          <div class="fee-row"><span class="fee-label">Local Marketing</span><span class="fee-val">2% monthly</span></div>
-          <div class="fee-row"><span class="fee-label">Grand Opening</span><span class="fee-val">Min. $15,000</span></div>
-          <div class="fee-row"><span class="fee-label">Brand Fund</span><span class="fee-val">1% of revenues</span></div>
-          <div class="fee-row"><span class="fee-label">Agreement Term</span><span class="fee-val">10 years + renewals</span></div>
-          <p style="color:rgba(255,255,255,0.45);font-size:0.8rem;margin-top:20px;">Refer to the FDD for full investment details and disclosures.</p>
+        <span class="milo-op-label milo-op-label-orange">Your Investment</span>
+        <h2 class="milo-op-headline">Invest in Yourself. Invest in Your Market. Invest in the Future.</h2>
+        <p class="milo-op-body">MILO Insulation was designed to give franchise owners the infrastructure and systems they need to grow — from your first installation to a fully staffed operation.</p>
+        <div class="milo-op-invest-card">
+          <div class="inv-label">Estimated Initial Investment</div>
+          <div class="inv-range">$521,320 – $880,410</div>
+          <p><strong>Includes an initial franchise fee of $75,000</strong></p>
+          <p>What you get: Complete manufacturing, sales, and installation business model | Protected exclusive territory | Access to MILEX™ production rights | Full training and support package | Confidential Operations Manual | Ongoing franchise team guidance</p>
+          <p class="fdd-note" style="font-size:12px;color:#888;font-style:italic;">*See our Franchise Disclosure Document (FDD) for complete details.</p>
+          <div class="milo-op-fee-table">
+            <div class="milo-op-fee-row"><span class="fee-name">Royalty Fee</span><span class="fee-val">5% of weekly gross revenues</span></div>
+            <div class="milo-op-fee-row"><span class="fee-name">Local Marketing</span><span class="fee-val">2% of monthly gross revenues (min.)</span></div>
+            <div class="milo-op-fee-row"><span class="fee-name">Grand Opening</span><span class="fee-val">Minimum $15,000 investment</span></div>
+            <div class="milo-op-fee-row"><span class="fee-name">Brand Marketing Fund</span><span class="fee-val">1% of gross revenues</span></div>
+            <div class="milo-op-fee-row"><span class="fee-name">Initial Agreement Term</span><span class="fee-val">10 years + two 5-year renewals</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;">
+          <a href="/contact" class="milo-op-btn-primary">Request Franchise Information →</a>
+          <a href="/contact" class="milo-op-btn-outline">Schedule a Consultation</a>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <img src="https://miloinsulationfranchise.com/wp-content/uploads/3D-Farmer-Driving-Tractor.webp" alt="MILO Franchise Owner" style="width:100%;max-width:400px;border-radius:12px;" onerror="this.style.display='none'">
+        <div style="background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <div style="font-size:64px;">🚜</div>
+          <p style="font-family:var(--body-font);color:var(--navy);font-weight:700;margin:12px 0 0;">Your Business. Your Territory.</p>
+          <p style="font-family:var(--body-font);font-size:14px;color:#666;margin:8px 0 0;">From plant to installation — you own it all.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- IS THIS YOU -->
-<section class="section section--off">
-  <div class="container">
-    <div class="grid-2">
-      <div>
-        <span class="eyebrow">Is This You?</span>
-        <h2>We're Looking for Driven Entrepreneurs Who Share Our Vision.</h2>
-        <p style="margin:20px 0 28px;">Experience is preferred but not required. We provide the training. You bring the drive.</p>
-        <ul class="feature-list">
-          <li>Believes in business that matters beyond profit</li>
-          <li>Ready to invest in a proven system</li>
-          <li>Wants an exclusive product in an underserved market</li>
-          <li>Values real partnership with leadership</li>
-          <li>Inspired by sustainability and community impact</li>
-          <li>Background in construction, HVAC, ag, or entrepreneurship</li>
-        </ul>
+<!-- ===== IDEAL OWNER ===== -->
+<section class="milo-op milo-op-ideal">
+  <div class="milo-op-container">
+    <div class="milo-op-two-col">
+      <div style="background:var(--off-white);border-radius:12px;padding:40px;text-align:center;">
+        <div style="font-size:64px;">🤔</div>
+        <h3 style="font-family:var(--title-font);font-size:24px;color:var(--navy);margin:16px 0 8px;">Is This You?</h3>
+        <p style="font-family:var(--body-font);font-size:15px;color:#666;">The kind of entrepreneur who builds with purpose.</p>
       </div>
       <div>
-        <span class="eyebrow">How It Works</span>
-        <h2>Your Path to Ownership Is Simpler Than You Think.</h2>
-        <div class="timeline" style="margin-top:32px;">
-          <div class="timeline-item">
-            <div class="timeline-label">Step 1</div>
-            <h4>Request Information</h4>
-            <p>Fill out the form or call our team. We'll schedule time to learn about your background, goals, and market.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-label">Step 2</div>
-            <h4>Review &amp; Get Qualified</h4>
-            <p>Meet the team, review the FDD, confirm your territory. Walk through numbers, expectations, and support structure.</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-label">Step 3</div>
-            <h4>Train, Launch &amp; Grow</h4>
-            <p>Complete training, open your doors, and start serving your market. Our team walks with you the entire way.</p>
-          </div>
-        </div>
+        <span class="milo-op-label milo-op-label-green">Is This You?</span>
+        <h2 class="milo-op-headline">We're Looking for Driven Entrepreneurs Who Share Our Vision.</h2>
+        <p class="milo-op-body">You don't need to be an insulation expert to thrive with MILO Insulation — but you do need to be the kind of person who:</p>
+        <ul class="milo-op-check-list">
+          <li>Believes in building a business that matters beyond profit</li>
+          <li>Is ready to invest in a proven system and work it with commitment</li>
+          <li>Wants the advantage of an exclusive product in an underserved market</li>
+          <li>Values a franchise partner that acts like a partner — not a landlord</li>
+          <li>Is inspired by sustainability, agriculture, and community impact</li>
+        </ul>
+        <p class="milo-op-body" style="color:var(--navy);font-weight:600;">Previous experience in insulation or construction is preferred, but not required. We provide the training. You bring the drive.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section">
-  <div class="container">
-    <div class="cta-banner">
-      <h2>Claim Your Territory. Build Your Future.</h2>
-      <p class="lead" style="color:rgba(255,255,255,0.82);">The territories won't wait — and neither will the market. Once a MILO territory is awarded, it's locked in.</p>
-      <div class="btn-group" style="justify-content:center;">
-        <a href="https://franchise.miloinsulation.com/contact" class="btn btn-gold btn-lg">Start Step 1 — Request Information</a>
-        <a href="tel:18005746456" class="btn btn-outline btn-lg">Call (800) 574-MILO</a>
+<!-- ===== 3-STEP PLAN ===== -->
+<section class="milo-op milo-op-plan">
+  <div class="milo-op-container">
+    <span class="milo-op-label milo-op-label-orange">How It Works</span>
+    <h2 class="milo-op-headline">Your Path to Ownership Is Simpler Than You Think.</h2>
+    <div class="milo-op-steps">
+      <div class="milo-op-step">
+        <div class="milo-op-step-num">1</div>
+        <h3>Request Information</h3>
+        <p>Fill out our quick form or call (800) 574-MILO. We'll send you franchise information and schedule a conversation.</p>
       </div>
+      <div class="milo-op-step">
+        <div class="milo-op-step-num">2</div>
+        <h3>Review &amp; Get Qualified</h3>
+        <p>Meet our team, review our FDD, ask every question you have, and confirm your protected territory.</p>
+      </div>
+      <div class="milo-op-step">
+        <div class="milo-op-step-num">3</div>
+        <h3>Train, Launch &amp; Grow</h3>
+        <p>Complete your training, build out your plant, open your doors, and start serving your market.</p>
+      </div>
+    </div>
+    <div style="margin-top:40px;">
+      <a href="/contact" class="milo-op-btn-primary">Start Step 1 — Request Information →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="milo-op milo-op-cta">
+  <div class="milo-op-container" style="max-width:700px;">
+    <h2 style="font-family:var(--title-font);font-size:44px;font-weight:800;color:#fff;margin:0 0 16px;">Claim Your Territory. Build Your Future.</h2>
+    <p style="font-family:var(--body-font);font-size:18px;color:rgba(255,255,255,0.92);line-height:1.6;margin:0 0 32px;">The territories won't wait — and neither will the market. Request franchise information today and let's talk about your market.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+      <a href="/contact" class="milo-op-btn-white">Request Franchise Information</a>
+      <a href="tel:8005748456" class="milo-op-btn-white-outline">Call (800) 574-MILO</a>
     </div>
   </div>
 </section>

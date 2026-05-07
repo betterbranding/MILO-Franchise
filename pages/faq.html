@@ -1,183 +1,298 @@
-<!-- MILO Franchise — FAQ Page Fragment -->
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <span class="eyebrow" style="color:#6fd49a;">FAQ</span>
-      <h1 style="color:#fff;">Every Great Decision Starts With the Right Questions.</h1>
-      <p class="lead" style="color:rgba(255,255,255,0.78);">We've answered the most common questions from prospective franchise owners. Can't find yours? Call (800) 574-MILO — we'd love to talk.</p>
-      <a href="https://franchise.miloinsulation.com/contact" class="btn btn-primary btn-lg" style="margin-top:8px;">Ask Us a Question</a>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ INTRO -->
-<section class="section section--off">
-  <div class="container text-center">
-    <span class="eyebrow">Curious? Good.</span>
-    <h2>Here's What You Need to Know.</h2>
-    <p class="lead" style="margin:20px auto;">Asking questions is how smart entrepreneurs protect their investments and find the right fit. We welcome every question because we're confident in every answer.</p>
-  </div>
-</section>
-
-<!-- FAQ CONTENT -->
-<section class="section">
-  <div class="container" style="max-width:800px;">
-    <span class="faq-category-label">Getting Started</span>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What experience do I need?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">You don't need to be an insulation expert, though prior industry experience is preferred. What matters is passion for our mission, business skills, and the drive to build. We provide all technical training.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        How do I get started?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">Contact us at (800) 574-MILO or franchise@miloinsulation.com. We'll schedule a discovery call, send the FDD, and guide you through every step. There's no pressure and no obligation at this stage.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        How long does it take to open?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">Timelines vary by market, permitting, and buildout needs, but many new owners are able to launch within 4–6 months of signing their franchise agreement, assuming they stay engaged through training and pre-opening milestones.</div>
-    </div>
-
-    <span class="faq-category-label">Training &amp; Support</span>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What training does MILO provide?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">Franchise owners/managers: 14 days of comprehensive hands-on training (classroom + on-the-job). Staff (operators, installers, sales): 8 days. Our team also travels to your location for 2 days of live Grand Opening support. Ongoing training continues throughout your franchise relationship.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What is in the Operations Manual?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">Manufacturing processes, sales and installation procedures, quality control, reporting, supplier contacts, marketing guidelines, and more — your complete business playbook. It's your franchise bible from day one.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What ongoing support is available?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">Remote franchise team access, training refreshers, marketing campaign support, and operational guidance — always a call or click away. Our support is designed so you never feel like you're building the business alone.</div>
-    </div>
-
-    <span class="faq-category-label">Investment &amp; Fees</span>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        How much does a MILO Insulation franchise cost?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">Estimated initial investment: $521,320 – $880,410, including a $75,000 franchise fee for access to our complete business model and a protected territory. Please refer to our Franchise Disclosure Document (FDD) for full details.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        Is financing available?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">We don't provide direct financing, but may refer you to third-party sources on a case-by-case basis. We're happy to discuss financing options during your discovery call.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What are the ongoing fees?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">
-        <strong>Royalty:</strong> 5% of weekly gross revenues.<br/>
-        <strong>Local marketing:</strong> 2% of monthly gross revenues (minimum).<br/>
-        <strong>Grand Opening:</strong> Minimum $15,000.<br/>
-        <strong>Brand fund:</strong> 1% of gross revenues.<br/><br/>
-        Every dollar is clearly defined up front. No surprises.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What are the agreement terms?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">Initial term: 10 years. Two successor options of 5 years each — up to 20 years of brand partnership. For full details, review our FDD with your advisors.</div>
-    </div>
-
-    <span class="faq-category-label">The Business Model</span>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What is MILEX insulation?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">MILO's proprietary natural insulation made from sorghum grain — 100% biodegradable, hypoallergenic, pest-resistant, fire-resistant, and non-shrinking. It saves homeowners thousands on energy bills. Only MILO franchise owners can manufacture and install it.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What does vertical integration mean for me?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">You control the full chain: sourcing to manufacturing to installation. This means maximum control over quality, timeline, and margin — with no external supplier dependencies. You capture more profit at every step.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="miloToggle(this)">
-        What territories are available?
-        <span class="faq-arrow">▼</span>
-      </button>
-      <div class="faq-a">Currently targeting Texas and Oklahoma, with Midwest expansion planned. Territories are exclusive and protected. Priority markets include Midland-Odessa, Tulsa, Fayetteville, and East DFW. Contact us to check availability in your area.</div>
-    </div>
-  </div>
-</section>
-
-<script>
-function miloToggle(btn) {
-  var answer = btn.nextElementSibling;
-  var isOpen = answer.classList.contains('open');
-  // Close all
-  document.querySelectorAll('.faq-a').forEach(function(a){ a.classList.remove('open'); });
-  document.querySelectorAll('.faq-q').forEach(function(q){ q.classList.remove('open'); });
-  // Open clicked if it was closed
-  if (!isOpen) {
-    answer.classList.add('open');
-    btn.classList.add('open');
+<style>
+  /* ===== FAQ PAGE STYLES ===== */
+  :root {
+    --green: #288D11;
+    --navy: #074387;
+    --dark-navy: #042244;
+    --orange: #FF8200;
+    --light-green: #EAF4E7;
+    --off-white: #F8F9FA;
+    --body-font: 'Gotham', 'Century Gothic', 'Futura', sans-serif;
+    --title-font: 'League Spartan', sans-serif;
   }
-}
-</script>
+  .milo-fq { box-sizing: border-box; width: 100%; }
+  .milo-fq-container { max-width: 900px; margin: 0 auto; padding: 0 30px; }
+  .milo-fq-label {
+    display: inline-block; font-family: var(--body-font); font-size: 12px;
+    font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .milo-fq-label-green { color: var(--green); }
+  .milo-fq-headline {
+    font-family: var(--title-font); font-size: 38px; font-weight: 800;
+    color: var(--navy); line-height: 1.15; margin: 0 0 18px;
+  }
+  .milo-fq-body { font-family: var(--body-font); font-size: 16px; color: #444; line-height: 1.7; margin: 0 0 14px; }
+  .milo-fq-btn-primary {
+    display: inline-block; background: var(--orange); color: #fff;
+    font-family: var(--body-font); font-size: 16px; font-weight: 700;
+    padding: 14px 30px; border-radius: 8px; text-decoration: none;
+  }
+  .milo-fq-btn-white {
+    display: inline-block; background: #fff; color: var(--navy);
+    font-family: var(--body-font); font-size: 16px; font-weight: 700;
+    padding: 14px 30px; border-radius: 8px; text-decoration: none;
+  }
+  .milo-fq-btn-white-outline {
+    display: inline-block; background: transparent; color: #fff;
+    font-family: var(--body-font); font-size: 16px; font-weight: 600;
+    padding: 13px 28px; border-radius: 8px; border: 2px solid #fff; text-decoration: none;
+  }
 
-<!-- DIDN'T FIND ANSWER -->
-<section class="section section--off">
-  <div class="container" style="max-width:700px;text-align:center;">
-    <span class="eyebrow">Still Have Questions?</span>
-    <h2>Didn't Find Your Answer? Let's Talk.</h2>
-    <p class="lead" style="margin:20px auto 36px;">Our team is here to answer every question you have — no pressure, no obligation.</p>
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:40px;text-align:left;">
-      <div style="display:flex;gap:48px;flex-wrap:wrap;">
-        <div>
-          <div style="font-family:var(--font-head);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:8px;">Phone</div>
-          <a href="tel:18005746456" style="font-family:var(--font-head);font-size:1.4rem;font-weight:800;color:var(--navy);">(800) 574-MILO</a>
-        </div>
-        <div>
-          <div style="font-family:var(--font-head);font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:8px;">Email</div>
-          <a href="mailto:franchise@miloinsulation.com" style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--green);">franchise@miloinsulation.com</a>
-        </div>
+  /* Hero */
+  .milo-fq-hero {
+    position: relative; min-height: 480px;
+    background: linear-gradient(135deg, #FF8200 0%, #e07000 30%, #074387 100%);
+    display: flex; align-items: center; padding: 80px 40px;
+  }
+  .milo-fq-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,130,0,0.55) 0%, rgba(7,67,135,0.80) 100%);
+  }
+  .milo-fq-hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .milo-fq-hero h1 { font-family: var(--title-font); font-size: 48px; font-weight: 800; color: #fff; line-height: 1.1; margin: 0 0 18px; }
+  .milo-fq-hero h2 { font-family: var(--body-font); font-size: 20px; color: rgba(255,255,255,0.88); line-height: 1.6; margin: 0 0 28px; }
+
+  /* Sections */
+  .milo-fq-intro { background: #fff; padding: 60px 40px; text-align: center; }
+  .milo-fq-accordion-section { background: #fff; padding: 60px 40px 20px; }
+  .milo-fq-cta-section { background: var(--off-white); padding: 80px 40px; text-align: center; }
+  .milo-fq-final-cta { background: var(--orange); padding: 80px 40px; text-align: center; }
+
+  /* Category labels */
+  .milo-fq-category {
+    margin-bottom: 40px;
+  }
+  .milo-fq-cat-label {
+    display: inline-block; font-family: var(--body-font); font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px;
+    border-radius: 20px; margin-bottom: 16px; color: #fff;
+  }
+  .cat-green { background: var(--green); }
+  .cat-blue { background: var(--navy); }
+  .cat-orange { background: var(--orange); }
+  .cat-dark-navy { background: var(--dark-navy); }
+
+  /* Accordion — pure HTML/CSS with details/summary */
+  .milo-fq-accordion { display: flex; flex-direction: column; gap: 8px; }
+  .milo-fq-item {
+    border: 1px solid #e8e8e8; border-radius: 10px; overflow: hidden;
+    background: #fff; transition: box-shadow 0.2s;
+  }
+  .milo-fq-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .milo-fq-item[open] {
+    border-left: 4px solid var(--green);
+    background: #FAFFF9;
+    box-shadow: 0 4px 16px rgba(40,141,17,0.08);
+  }
+  .milo-fq-item summary {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 22px; cursor: pointer; user-select: none;
+    font-family: var(--body-font); font-size: 16px; font-weight: 700; color: var(--navy);
+    list-style: none;
+  }
+  .milo-fq-item summary::-webkit-details-marker { display: none; }
+  .milo-fq-item summary::after {
+    content: '+'; font-size: 22px; color: var(--orange); flex-shrink: 0; margin-left: 16px;
+    font-weight: 400; line-height: 1;
+  }
+  .milo-fq-item[open] summary::after { content: '−'; }
+  .milo-fq-answer {
+    padding: 0 22px 20px;
+    font-family: var(--body-font); font-size: 15px; color: #555; line-height: 1.7;
+  }
+  .milo-fq-answer p { margin: 0 0 10px; }
+  .milo-fq-answer p:last-child { margin-bottom: 0; }
+
+  /* CTA section */
+  .milo-fq-contact-cards { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 28px; }
+  .milo-fq-contact-card {
+    background: #fff; border-radius: 12px; padding: 24px 32px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08); text-align: center;
+    font-family: var(--body-font); min-width: 200px;
+  }
+  .milo-fq-contact-card .c-icon { font-size: 32px; margin-bottom: 10px; }
+  .milo-fq-contact-card .c-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .milo-fq-contact-card a { font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: none; }
+  .milo-fq-contact-card a:hover { color: var(--orange); }
+
+  @media (max-width: 600px) {
+    .milo-fq-hero h1 { font-size: 32px; }
+    .milo-fq-headline { font-size: 26px; }
+    .milo-fq-hero, .milo-fq-intro, .milo-fq-accordion-section,
+    .milo-fq-cta-section, .milo-fq-final-cta { padding: 60px 20px; }
+    .milo-fq-item summary { font-size: 14px; padding: 14px 16px; }
+    .milo-fq-answer { padding: 0 16px 16px; }
+  }
+</style>
+
+<!-- ===== HERO ===== -->
+<section class="milo-fq milo-fq-hero" data-milo-page="faq">
+  <div class="milo-fq-hero-overlay"></div>
+  <div class="milo-fq-hero-content">
+    <span class="milo-fq-label milo-fq-label-green">FAQ</span>
+    <h1>Every Great Decision Starts With the Right Questions.</h1>
+    <h2>We've answered the questions we hear most often from prospective franchise owners. Can't find yours? Call us at (800) 574-MILO — we'd love to talk.</h2>
+    <a href="/contact" class="milo-fq-btn-primary">Ask Us a Question</a>
+  </div>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section class="milo-fq milo-fq-intro">
+  <div class="milo-fq-container" style="max-width:700px;">
+    <h2 class="milo-fq-headline">Curious? Good. Here's What You Need to Know.</h2>
+    <p class="milo-fq-body" style="font-size:17px;">Asking questions is how smart entrepreneurs protect their investments and find the right fit. We welcome every question — because we're confident in every answer.</p>
+  </div>
+</section>
+
+<!-- ===== FAQ ACCORDION ===== -->
+<section class="milo-fq milo-fq-accordion-section">
+  <div class="milo-fq-container">
+
+    <!-- CATEGORY 1: Getting Started -->
+    <div class="milo-fq-category">
+      <span class="milo-fq-cat-label cat-green">Getting Started</span>
+      <div class="milo-fq-accordion">
+        <details class="milo-fq-item">
+          <summary>What experience do I need to open a MILO Insulation franchise?</summary>
+          <div class="milo-fq-answer">
+            <p>You don't need to be an insulation expert to be a great MILO Insulation franchise owner — though prior experience in insulation or construction is preferred. What matters most is a passion for our mission, business skills, and the drive to build something meaningful. We provide the technical training. You provide the commitment.</p>
+          </div>
+        </details>
+        <details class="milo-fq-item">
+          <summary>How do I get started?</summary>
+          <div class="milo-fq-answer">
+            <p>Connect with us at <strong>(800) 574-MILO</strong> or <strong>franchise@miloinsulation.com</strong> to request franchise information. We'll schedule a discovery conversation, send you our FDD, and walk you through every step of the process together.</p>
+          </div>
+        </details>
       </div>
-      <div style="margin-top:28px;">
-        <a href="https://franchise.miloinsulation.com/contact" class="btn btn-primary">Request Franchise Information</a>
+    </div>
+
+    <!-- CATEGORY 2: Training & Support -->
+    <div class="milo-fq-category">
+      <span class="milo-fq-cat-label cat-blue">Training &amp; Support</span>
+      <div class="milo-fq-accordion">
+        <details class="milo-fq-item">
+          <summary>What training does MILO Insulation provide?</summary>
+          <div class="milo-fq-answer">
+            <p>Your training is thorough and hands-on. Franchise owners, operating principals, and plant managers receive <strong>14 days</strong> of comprehensive training at our MILEX Hands-On Training facility — both classroom and on-the-job. Extruder operators, installation foremen, and salespeople receive <strong>8 days</strong> of training in the same format.</p>
+            <p>When you're ready to open, our team travels to your location for <strong>2 days of on-site Grand Opening support</strong>. And we never truly stop training — ongoing guidance is available throughout your entire franchise relationship.</p>
+          </div>
+        </details>
+        <details class="milo-fq-item">
+          <summary>What is in the Confidential Operations Manual?</summary>
+          <div class="milo-fq-answer">
+            <p>The Operations Manual is your complete business playbook. It includes proprietary manufacturing processes, sales and installation procedures, quality control standards, reporting requirements, supplier contacts, marketing guidelines, and more. It's the operational foundation of your MILO Insulation business.</p>
+          </div>
+        </details>
+        <details class="milo-fq-item">
+          <summary>What ongoing support will I receive after I open?</summary>
+          <div class="milo-fq-answer">
+            <p>Our support never stops. You'll have ongoing access to our remote franchise team for questions, guidance, and troubleshooting. We provide regular training updates for you and your staff, support for marketing campaigns, and continued operational guidance. We're always just a call or click away.</p>
+          </div>
+        </details>
       </div>
+    </div>
+
+    <!-- CATEGORY 3: Investment & Fees -->
+    <div class="milo-fq-category">
+      <span class="milo-fq-cat-label cat-orange">Investment &amp; Fees</span>
+      <div class="milo-fq-accordion">
+        <details class="milo-fq-item">
+          <summary>How much does a MILO Insulation franchise cost?</summary>
+          <div class="milo-fq-answer">
+            <p>The estimated initial investment ranges from <strong>$521,320 to $880,410</strong>, which includes a <strong>$75,000 initial franchise fee</strong>. This gives you access to our complete manufacturing, sales, and installation business model — plus a protected exclusive territory. As with any new business, having adequate capital beyond this range for early growth stages is important.</p>
+          </div>
+        </details>
+        <details class="milo-fq-item">
+          <summary>Is financing available?</summary>
+          <div class="milo-fq-answer">
+            <p>We do not provide direct financing, but we may be able to refer you to third-party financing sources on a case-by-case basis.</p>
+          </div>
+        </details>
+        <details class="milo-fq-item">
+          <summary>What are the ongoing royalty and marketing fees?</summary>
+          <div class="milo-fq-answer">
+            <p><strong>Royalty Fee:</strong> 5% of weekly gross revenues</p>
+            <p><strong>Local Marketing:</strong> 2% of monthly gross revenues (minimum)</p>
+            <p><strong>Grand Opening Investment:</strong> Minimum $15,000</p>
+            <p><strong>Brand Marketing Fund:</strong> 1% of gross revenues</p>
+            <p>These fees fund your continued support services, marketing programs, training updates, and system upgrades — investments in your success.</p>
+          </div>
+        </details>
+        <details class="milo-fq-item">
+          <summary>What are the terms of the franchise agreement?</summary>
+          <div class="milo-fq-answer">
+            <p>The initial franchise agreement term is <strong>10 years</strong>, with two available successor agreements of <strong>5 years each</strong> — giving you a pathway to 20 years of operation under the MILO Insulation brand.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CATEGORY 4: The Business Model -->
+    <div class="milo-fq-category">
+      <span class="milo-fq-cat-label cat-dark-navy">The Business Model</span>
+      <div class="milo-fq-accordion">
+        <details class="milo-fq-item">
+          <summary>What is MILEX™ insulation?</summary>
+          <div class="milo-fq-answer">
+            <p>MILEX™ is MILO Insulation's proprietary natural insulation product, made from sorghum grain through a patented extrusion process. It's <strong>100% biodegradable, hypoallergenic, pest-resistant, fire-resistant, and non-shrinking</strong>. It delivers outstanding heat transfer resistance and can save homeowners thousands of dollars over the lifetime of their home.</p>
+            <p>Only MILO Insulation franchise owners can manufacture and install MILEX™ — giving you a truly exclusive product in your territory.</p>
+          </div>
+        </details>
+        <details class="milo-fq-item">
+          <summary>What does "vertical integration" mean for my franchise?</summary>
+          <div class="milo-fq-answer">
+            <p>It means you own the entire value chain — from sourcing sorghum seeds from local farmers, to manufacturing MILEX™ at your plant, to delivering and installing it for end customers. This gives you maximum control over quality, timeline, and margin — without depending on outside suppliers or distributors.</p>
+          </div>
+        </details>
+        <details class="milo-fq-item">
+          <summary>What territories are available?</summary>
+          <div class="milo-fq-answer">
+            <p>MILO Insulation is currently targeting <strong>Texas and Oklahoma</strong> for our initial franchise expansion, with plans to grow into the Midwest and beyond. Available territories are limited and protected — meaning once your territory is yours, no other MILO franchise can compete within it.</p>
+            <p>Contact us to learn which territories are currently open.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== STILL HAVE QUESTIONS ===== -->
+<section class="milo-fq milo-fq-cta-section">
+  <div class="milo-fq-container">
+    <h2 class="milo-fq-headline" style="text-align:center;">Didn't Find Your Answer? Let's Talk.</h2>
+    <p class="milo-fq-body" style="text-align:center;font-size:17px;max-width:600px;margin:0 auto 24px;">Our franchise team is here to answer every question — no matter how detailed. Reach out directly and we'll get you the information you need to make an informed decision.</p>
+    <div class="milo-fq-contact-cards">
+      <div class="milo-fq-contact-card">
+        <div class="c-icon">📞</div>
+        <div class="c-label">Call Us</div>
+        <a href="tel:8005748456">(800) 574-MILO</a>
+      </div>
+      <div class="milo-fq-contact-card">
+        <div class="c-icon">✉️</div>
+        <div class="c-label">Email Us</div>
+        <a href="mailto:franchise@miloinsulation.com">franchise@miloinsulation.com</a>
+      </div>
+      <div class="milo-fq-contact-card" style="background:var(--orange);">
+        <div class="c-icon">📝</div>
+        <div class="c-label" style="color:rgba(255,255,255,0.8);">Get Info Packet</div>
+        <a href="/contact" style="color:#fff;">Request Franchise Info →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="milo-fq milo-fq-final-cta">
+  <div class="milo-fq-container" style="max-width:700px;">
+    <h2 style="font-family:var(--title-font);font-size:40px;font-weight:800;color:#fff;margin:0 0 16px;">Ready to Take the Next Step?</h2>
+    <p style="font-family:var(--body-font);font-size:17px;color:rgba(255,255,255,0.92);line-height:1.6;margin:0 0 28px;">Every great decision starts with a conversation. Request franchise information today and let's find out if MILO Insulation is the right fit for you and your market.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+      <a href="/contact" class="milo-fq-btn-white">Request Franchise Information</a>
+      <a href="tel:8005748456" class="milo-fq-btn-white-outline">Call (800) 574-MILO</a>
     </div>
   </div>
 </section>
