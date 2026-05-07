@@ -1,7 +1,7 @@
 <nav id="milo-nav">
   <div class="nav-inner">
     <a class="nav-logo" href="https://franchise.miloinsulation.com/home">
-      <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" alt="MILO Franchising, LLC" />
+      <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" alt="MILO Insulation Franchise" />
     </a>
     <div class="nav-hamburger" id="milo-hamburger" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span><span></span><span></span>
@@ -12,24 +12,23 @@
       <a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a>
       <a href="https://franchise.miloinsulation.com/support">Support</a>
       <a href="https://franchise.miloinsulation.com/faq">FAQ</a>
-      <span class="nav-cta"><a href="https://franchise.miloinsulation.com/contact">Get Started</a></span>
+      <span class="nav-cta"><a href="https://franchise.miloinsulation.com/contact">Get Started →</a></span>
     </div>
   </div>
 </nav>
 <script>
 (function(){
-  var ham = document.getElementById('milo-hamburger');
+  var ham   = document.getElementById('milo-hamburger');
   var links = document.getElementById('milo-nav-links');
-  if(ham && links){
+  if (ham && links) {
     ham.addEventListener('click', function(){ links.classList.toggle('open'); });
-    ham.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') links.classList.toggle('open'); });
+    ham.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') links.classList.toggle('open'); });
   }
   // Active link highlighting
-  var path = window.location.pathname;
+  var path = window.location.pathname.toLowerCase();
   document.querySelectorAll('#milo-nav-links a').forEach(function(a){
-    if(a.getAttribute('href') && path.indexOf(a.getAttribute('href').split('/').pop()) > -1){
-      a.classList.add('active');
-    }
+    var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+    if (href && path.indexOf(href) > -1) a.classList.add('active');
   });
 })();
 </script>
