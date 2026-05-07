@@ -1,0 +1,217 @@
+<!-- ============================================================
+     MILO Franchise — Global Sticky Nav (Self-Contained)
+     Paste this into GHL Website Settings → Header
+     or as a Custom HTML block at the top of each page.
+     All styles are embedded — no external dependencies.
+     ============================================================ -->
+<style>
+  /* ── Reset & base ── */
+  #milo-nav-bar *,
+  #milo-nav-bar *::before,
+  #milo-nav-bar *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── Fixed bar ── */
+  #milo-nav-bar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 75px !important;
+    background: #ffffff !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
+    z-index: 2147483647 !important; /* max z-index */
+    display: flex !important;
+    align-items: center !important;
+    font-family: 'League Spartan', 'Gotham', 'Montserrat', Arial, sans-serif !important;
+  }
+
+  /* ── Inner container ── */
+  #milo-nav-bar .milo-nav-inner {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  /* ── Logo ── */
+  #milo-nav-bar .milo-nav-logo img {
+    height: 48px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* ── Desktop links ── */
+  #milo-nav-bar .milo-nav-links {
+    display: flex !important;
+    align-items: center !important;
+    gap: 36px !important;
+    list-style: none !important;
+  }
+
+  #milo-nav-bar .milo-nav-links a {
+    text-decoration: none !important;
+    color: #074387 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    text-transform: uppercase !important;
+    transition: color 0.2s !important;
+  }
+
+  #milo-nav-bar .milo-nav-links a:hover {
+    color: #FF8200 !important;
+  }
+
+  /* ── CTA button ── */
+  #milo-nav-bar .milo-nav-cta {
+    background: #FF8200 !important;
+    color: #ffffff !important;
+    padding: 10px 24px !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: background 0.2s !important;
+  }
+
+  #milo-nav-bar .milo-nav-cta:hover {
+    background: #e67300 !important;
+    color: #ffffff !important;
+  }
+
+  /* ── Hamburger (mobile) ── */
+  #milo-nav-bar .milo-nav-toggle {
+    display: none !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    cursor: pointer !important;
+    background: none !important;
+    border: none !important;
+    padding: 4px !important;
+  }
+
+  #milo-nav-bar .milo-nav-toggle span {
+    display: block !important;
+    width: 26px !important;
+    height: 2px !important;
+    background: #074387 !important;
+    border-radius: 2px !important;
+    transition: all 0.3s !important;
+  }
+
+  /* ── Mobile drawer ── */
+  #milo-nav-drawer {
+    display: none;
+    position: fixed !important;
+    top: 75px !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+    z-index: 2147483646 !important;
+    padding: 16px 32px 24px !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  #milo-nav-drawer.milo-open {
+    display: flex !important;
+  }
+
+  #milo-nav-drawer a {
+    display: block !important;
+    padding: 14px 0 !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    text-decoration: none !important;
+    color: #074387 !important;
+    font-family: 'League Spartan', Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.3px !important;
+  }
+
+  #milo-nav-drawer a:last-child {
+    border-bottom: none !important;
+    margin-top: 12px !important;
+    background: #FF8200 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    padding: 12px !important;
+    border-radius: 4px !important;
+  }
+
+  /* ── Spacer — pushes page content below fixed nav ── */
+  #milo-nav-spacer {
+    height: 75px !important;
+    display: block !important;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    #milo-nav-bar .milo-nav-links,
+    #milo-nav-bar .milo-nav-cta {
+      display: none !important;
+    }
+    #milo-nav-bar .milo-nav-toggle {
+      display: flex !important;
+    }
+  }
+</style>
+
+<!-- Fixed nav bar -->
+<nav id="milo-nav-bar" role="navigation" aria-label="Main navigation">
+  <div class="milo-nav-inner">
+    <!-- Logo -->
+    <a class="milo-nav-logo" href="https://franchise.miloinsulation.com">
+      <img
+        src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main/assets/milo-logo.png"
+        alt="MILO Insulation Franchise"
+        onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'font-size:22px;font-weight:800;color:#074387;letter-spacing:-0.5px;\'>MILO <span style=\'color:#FF8200;\'>Franchise</span></span>'"
+      />
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="milo-nav-links">
+      <li><a href="https://franchise.miloinsulation.com/home">Home</a></li>
+      <li><a href="https://franchise.miloinsulation.com/about">About</a></li>
+      <li><a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a></li>
+      <li><a href="https://franchise.miloinsulation.com/support">Support</a></li>
+      <li><a href="https://franchise.miloinsulation.com/faq">FAQ</a></li>
+    </ul>
+
+    <!-- CTA button -->
+    <a class="milo-nav-cta" href="https://franchise.miloinsulation.com/contact">Get Started</a>
+
+    <!-- Mobile hamburger -->
+    <button class="milo-nav-toggle" id="milo-hamburger" aria-label="Toggle menu" onclick="(function(){var d=document.getElementById('milo-nav-drawer');d.classList.toggle('milo-open');})()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div id="milo-nav-drawer">
+  <a href="https://franchise.miloinsulation.com/home">Home</a>
+  <a href="https://franchise.miloinsulation.com/about">About</a>
+  <a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a>
+  <a href="https://franchise.miloinsulation.com/support">Support</a>
+  <a href="https://franchise.miloinsulation.com/faq">FAQ</a>
+  <a href="https://franchise.miloinsulation.com/contact">Get Started</a>
+</div>
+
+<!-- Spacer to push content below fixed nav -->
+<div id="milo-nav-spacer"></div>
