@@ -38,7 +38,6 @@
   --font-head:  'League Spartan', sans-serif;
   --font-body:  'Inter', sans-serif;
   --max-w:      1140px;
-  --nav-h:      72px;
 }
 
 html { scroll-behavior: smooth; }
@@ -125,51 +124,74 @@ p  { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; }
 .btn-lg { padding: 18px 40px; font-size: 1rem; }
 .btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
 
-/* ---- GLOBAL NAV ---- */
+/* ---- GLOBAL NAV (transparent → white on scroll) ---- */
 #milo-nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 99999;
-  background: var(--white);
-  border-bottom: 3px solid var(--orange);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  background: transparent;
+  border-bottom: 3px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  padding: 8px 0;
 }
+#milo-nav.scrolled {
+  background: rgba(255,255,255,0.98);
+  border-bottom-color: var(--orange);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  padding: 0;
+}
+#milo-site { position: relative; z-index: 1; }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
   height: var(--nav-h); max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
 }
-.nav-logo img { height: 40px; width: auto; }
+/* Logo: white initially, full color on scroll */
+.nav-logo img { height: 44px; width: auto; filter: brightness(0) invert(1); transition: all 0.3s ease; }
+#milo-nav.scrolled .nav-logo img { height: 40px; filter: none; }
+/* Links: white initially, navy on scroll */
 .nav-links { display: flex; align-items: center; gap: 4px; }
 .nav-links a {
   font-family: var(--font-head); font-size: 0.82rem; font-weight: 700;
-  color: var(--navy); padding: 8px 14px; border-radius: 5px;
+  color: rgba(255,255,255,0.92); padding: 8px 14px; border-radius: 5px;
   letter-spacing: 0.04em; text-transform: uppercase;
-  transition: color 0.18s, background 0.18s;
+  transition: color 0.25s, background 0.25s;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--white); background: var(--navy); }
+#milo-nav.scrolled .nav-links a { color: var(--navy); }
+.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.15); }
+#milo-nav.scrolled .nav-links a:hover { color: var(--white); background: var(--navy); }
+.nav-links a.active { color: var(--white); background: rgba(255,255,255,0.15); }
+#milo-nav.scrolled .nav-links a.active { color: var(--white); background: var(--navy); }
+/* CTA button: always orange/white */
 .nav-cta { margin-left: 12px; }
 .nav-cta a {
   background: var(--orange) !important; color: var(--white) !important;
   padding: 10px 22px !important; border-radius: 6px;
   font-family: var(--font-head) !important; font-weight: 700 !important;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 .nav-cta a:hover { background: #e07200 !important; box-shadow: 0 4px 14px rgba(255,130,0,0.35); }
-.nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
+/* Hamburger: white → navy on scroll */
+.nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 100001; }
+.nav-hamburger span { display: block; width: 26px; height: 2.5px; background: var(--white); border-radius: 2px; transition: all 0.3s ease; }
+#milo-nav.scrolled .nav-hamburger span { background: var(--navy); }
+.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 @media (max-width: 860px) {
   .nav-hamburger { display: flex; }
   .nav-links {
-    display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
-    background: var(--white); flex-direction: column; padding: 16px 24px 24px;
-    gap: 4px; border-top: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    z-index: 99998;
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(4,34,68,0.97); flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 2rem; gap: 1.5rem;
+    z-index: 100000; animation: fadeInNav 0.3s ease;
   }
+  @keyframes fadeInNav { from { opacity: 0; } to { opacity: 1; } }
   .nav-links.open { display: flex; }
-  .nav-links a { width: 100%; padding: 12px 16px; }
-  .nav-cta { margin-left: 0; width: 100%; }
-  .nav-cta a { display: block; text-align: center; }
+  .nav-links.open a { color: rgba(255,255,255,0.9) !important; font-size: 1.2rem; background: none !important; }
+  .nav-links.open a:hover, .nav-links.open a.active { color: var(--orange) !important; }
+  .nav-cta { margin-left: 0; }
+  .nav-cta a { display: block; text-align: center; font-size: 1.1rem !important; padding: 14px 32px !important; }
 }
 
 /* ---- HERO ---- */

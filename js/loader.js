@@ -1,10 +1,11 @@
 /**
- * MILO Franchise — GHL Page Loader
- * Fetches page content, nav, and footer from GitHub via jsDelivr CDN
- * and injects them into the GHL page.
+ * MILO Franchise — GHL Page Loader v2
+ * Fetches nav, page content, and footer from GitHub via jsDelivr CDN.
+ * Nav is transparent → white on scroll (no body padding, no spacer, no gap).
  *
- * Usage: paste the per-page embed snippet into GHL page header.
- * Any updates pushed to GitHub are live automatically (CDN cache: ~10 min).
+ * Usage: paste per-page snippet into GHL page Header Tracking Code:
+ *   <script>var MILO_PAGE='home';</script>
+ *   <script src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main/js/loader.js"></script>
  *
  * Repo: https://github.com/betterbranding/MILO-Franchise
  */
@@ -12,8 +13,24 @@
   'use strict';
 
   var BASE = 'https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main';
-  var PAGE = window.MILO_PAGE || 'home'; // set by per-page snippet
+  var PAGE = window.MILO_PAGE || 'home';
 
+  /* ── STEP 1: Immediately inject CSS to kill GHL's default nav ── */
+  var killCSS = document.createElement('style');
+  killCSS.id = 'milo-ghl-kill';
+  killCSS.textContent = [
+    '/* Kill ALL GHL default nav/header elements */',
+    'body { padding-top: 0 !important; margin-top: 0 !important; }',
+    '#navbar, nav.navbar, #nav-menu-popup, .navbar,',
+    'header.header, .hl-page-header, .header-wrapper,',
+    '.c-header, #section-header { display: none !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }',
+    '/* Target GHL nav wrapper inside #__nuxt */',
+    '#__nuxt > div:first-child { display: none !important; height: 0 !important; }',
+    '#__nuxt > .bgCover { display: block !important; height: auto !important; }'
+  ].join('\n');
+  (document.head || document.documentElement).appendChild(killCSS);
+
+  /* ── Helpers ── */
   function fetchHTML(url) {
     return fetch(url).then(function (r) {
       if (!r.ok) throw new Error('Failed to fetch: ' + url);
@@ -30,68 +47,60 @@
     document.head.appendChild(link);
   }
 
-  function injectHTML(id, html, position) {
-    var el = document.getElementById(id);
-    if (el) { el.innerHTML = html; return; }
-    var wrapper = document.createElement('div');
-    wrapper.id = id + '-wrapper';
-    wrapper.innerHTML = html;
-    if (position === 'prepend') {
-      document.body.insertBefore(wrapper, document.body.firstChild);
-    } else {
-      document.body.appendChild(wrapper);
-    }
-  }
-
-  function hideGHLDefaultNav() {
-    // GHL injects its own built-in nav wrapper (contains #nav-menu-popup)
-    // which creates a gap above our content. Find it and hide it.
-    var ghlNavPopup = document.getElementById('nav-menu-popup');
-    if (ghlNavPopup) {
-      var wrapper = ghlNavPopup;
-      // Walk up to the direct child of #__nuxt
-      while (wrapper.parentElement && wrapper.parentElement.id !== '__nuxt') {
-        wrapper = wrapper.parentElement;
+  function runInlineScripts(container) {
+    var scripts = container.querySelectorAll('script');
+    scripts.forEach(function (oldScript) {
+      var newScript = document.createElement('script');
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+      } else {
+        newScript.textContent = oldScript.textContent;
       }
-      if (wrapper && wrapper.parentElement && wrapper.parentElement.id === '__nuxt') {
-        wrapper.style.cssText = 'display:none!important;height:0!important;overflow:hidden!important;';
-      }
-    }
-    // Also target via class in case structure changes
-    var bgCoverSibling = document.querySelector('#__nuxt > div:not([id]):not(.bgCover)');
-    if (bgCoverSibling && bgCoverSibling.querySelector('#nav-menu-popup, .nav-menu')) {
-      bgCoverSibling.style.cssText = 'display:none!important;height:0!important;overflow:hidden!important;';
-    }
-  }
-
-  function addBodyPadding() {
-    // Measure actual nav height after injection and pad body accordingly
-    var nav = document.getElementById('milo-nav');
-    var navHeight = nav ? nav.offsetHeight : 75;
-    document.body.style.paddingTop = navHeight + 'px';
-  }
-
-  function runInlineScripts(wrapper) {
-    // Re-execute any <script> tags inside injected HTML
-    var scripts = wrapper.querySelectorAll('script');
-    scripts.forEach(function (s) {
-      var script = document.createElement('script');
-      script.textContent = s.textContent;
-      document.body.appendChild(script);
+      document.body.appendChild(newScript);
+      oldScript.remove();
     });
   }
 
+  /* ── STEP 2: Aggressively hide GHL nav elements via JS ── */
+  function hideGHLNav() {
+    ['#navbar', 'nav.navbar', '#nav-menu-popup', '.navbar', 'header.header', '.hl-page-header'].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) el.style.cssText = 'display:none!important;height:0!important;margin:0!important;padding:0!important;';
+    });
+    // Walk #__nuxt children and hide the nav wrapper
+    var nuxt = document.getElementById('__nuxt');
+    if (nuxt) {
+      Array.from(nuxt.children).forEach(function (child) {
+        if (child.querySelector && child.querySelector('#nav-menu-popup, nav, .nav-menu')) {
+          child.style.cssText = 'display:none!important;height:0!important;';
+        }
+      });
+    }
+    // Always reset body padding
+    document.body.style.paddingTop = '0';
+    document.body.style.marginTop = '0';
+  }
+
+  /* ── STEP 3: Scroll listener for transparent → white nav ── */
+  function setupScrollNav() {
+    var nav = document.getElementById('milo-nav');
+    if (!nav) return;
+    function check() {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check(); // set initial state
+  }
+
+  /* ── STEP 4: Load & inject everything ── */
   function init() {
     injectStyles();
-
-    var navUrl    = BASE + '/includes/nav.html';
-    var footerUrl = BASE + '/includes/footer.html';
-    var pageUrl   = BASE + '/pages/' + PAGE + '.html';
+    hideGHLNav();
 
     Promise.all([
-      fetchHTML(navUrl),
-      fetchHTML(footerUrl),
-      fetchHTML(pageUrl).catch(function () {
+      fetchHTML(BASE + '/includes/nav.html'),
+      fetchHTML(BASE + '/includes/footer.html'),
+      fetchHTML(BASE + '/pages/' + PAGE + '.html').catch(function () {
         return fetchHTML(BASE + '/landing-pages/' + PAGE + '.html');
       })
     ]).then(function (results) {
@@ -99,27 +108,28 @@
       var footerHTML = results[1];
       var pageHTML   = results[2];
 
-      injectHTML('milo-nav',     navHTML,    'prepend');
-      injectHTML('milo-content', pageHTML,   'append');
-      injectHTML('milo-footer',  footerHTML, 'append');
+      // Build single wrapper with nav + page + footer
+      var wrapper = document.createElement('div');
+      wrapper.id = 'milo-site';
+      wrapper.innerHTML = navHTML + pageHTML + footerHTML;
+      document.body.insertBefore(wrapper, document.body.firstChild);
 
-      // Hide GHL's built-in nav that creates a gap above our content
-      hideGHLDefaultNav();
+      // Run inline scripts from fetched HTML
+      runInlineScripts(wrapper);
 
-      // Add body padding to clear the fixed nav (measured after injection)
-      // Use requestAnimationFrame to ensure nav has rendered and has a height
-      requestAnimationFrame(function () {
-        addBodyPadding();
-      });
+      // Setup nav scroll effect
+      setupScrollNav();
 
-      // Re-run inline scripts from fetched HTML
-      ['milo-nav-wrapper', 'milo-content-wrapper', 'milo-footer-wrapper'].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) runInlineScripts(el);
-      });
+      // Hide GHL nav elements (runs repeatedly to beat Vue hydration)
+      hideGHLNav();
+      var count = 0;
+      var interval = setInterval(function () {
+        hideGHLNav();
+        if (++count > 20) clearInterval(interval);
+      }, 500);
 
     }).catch(function (err) {
-      console.warn('[MILO Loader] Error loading content:', err);
+      console.warn('[MILO Loader] Error:', err);
     });
   }
 
