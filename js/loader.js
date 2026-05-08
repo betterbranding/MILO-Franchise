@@ -98,20 +98,18 @@
     hideGHLNav();
 
     Promise.all([
-      fetchHTML(BASE + '/includes/nav.html'),
       fetchHTML(BASE + '/includes/footer.html'),
       fetchHTML(BASE + '/pages/' + PAGE + '.html').catch(function () {
         return fetchHTML(BASE + '/landing-pages/' + PAGE + '.html');
       })
     ]).then(function (results) {
-      var navHTML    = results[0];
-      var footerHTML = results[1];
-      var pageHTML   = results[2];
+      var footerHTML = results[0];
+      var pageHTML   = results[1];
 
-      // Build single wrapper with nav + page + footer
+      // Build single wrapper with page + footer (nav handled by GHL site header)
       var wrapper = document.createElement('div');
       wrapper.id = 'milo-site';
-      wrapper.innerHTML = navHTML + pageHTML + footerHTML;
+      wrapper.innerHTML = pageHTML + footerHTML;
       document.body.insertBefore(wrapper, document.body.firstChild);
 
       // Run inline scripts from fetched HTML
