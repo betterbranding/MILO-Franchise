@@ -24,6 +24,8 @@
     '#navbar, nav.navbar, #nav-menu-popup, .navbar,',
     'header.header, .hl-page-header, .header-wrapper,',
     '.c-header, #section-header { display: none !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }',
+    '/* Kill old navy nav if it exists (from cached loader or legacy code) */',
+    '#milo-nav-wrapper, #milo-nav-wrapper * { display: none !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }',
     '/* Target GHL nav wrapper inside #__nuxt */',
     '#__nuxt > div:first-child { display: none !important; height: 0 !important; }',
     '#__nuxt > .bgCover { display: block !important; height: auto !important; }'
