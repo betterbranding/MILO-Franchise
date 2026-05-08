@@ -139,6 +139,26 @@
     wrapper.innerHTML = navHTML;
     document.body.insertBefore(wrapper, document.body.firstChild);
 
+    // Reset body padding — loader.js or GHL may add its own; the spacer div handles offset
+    function resetBodyPadding() {
+      document.body.style.setProperty('padding-top', '0px', 'important');
+      document.body.style.setProperty('margin-top', '0px', 'important');
+    }
+    resetBodyPadding();
+    // Keep overriding for 3s in case loader.js fires after us
+    [100, 300, 500, 1000, 2000, 3000].forEach(function(ms) {
+      setTimeout(resetBodyPadding, ms);
+    });
+
+    // Size the spacer to match the actual rendered nav height
+    requestAnimationFrame(function() {
+      var navEl = document.getElementById('milo-nav-bar');
+      var spacerEl = document.getElementById('milo-nav-spacer');
+      if (navEl && spacerEl) {
+        spacerEl.style.height = navEl.offsetHeight + 'px';
+      }
+    });
+
     // Hide GHL's own built-in header — run immediately and watch for re-renders
     function hideGHLHeader() {
       // Target by known GHL nav IDs and common wrapper patterns
