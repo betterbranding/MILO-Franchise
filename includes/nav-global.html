@@ -1,201 +1,252 @@
-<!-- ============================================================
-     MILO Franchise — Global Sticky Nav
-     Paste ONCE into: GHL Site Settings → Header Code
-     Applies to every page automatically. No per-page code needed.
-     ============================================================ -->
+<!-- MILO Franchise — Global Nav (paste into each page's Header Tracking Code) -->
+<style>
+/* ═══ MILO FRANCHISE NAV ═══ */
+.milo-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 2147483647 !important;
+  padding: 1rem 2rem;
+  background: transparent;
+  transition: all 0.3s ease;
+  font-family: 'League Spartan', 'Nunito Sans', sans-serif;
+}
+.milo-nav.scrolled {
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  padding: 0.5rem 2rem;
+}
+.milo-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.milo-nav-logo img {
+  height: 50px;
+  transition: all 0.3s;
+  filter: brightness(0) invert(1);
+}
+.milo-nav.scrolled .milo-nav-logo img {
+  height: 40px;
+  filter: none;
+}
+.milo-nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.milo-nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+.milo-nav.scrolled .milo-nav-links a {
+  color: #1a1a2e;
+}
+.milo-nav-links a:hover {
+  color: #288D11;
+}
+.milo-nav-links a.active {
+  color: #FF8200;
+}
+.milo-nav-links a.milo-nav-cta {
+  background: #FF8200;
+  color: white !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.milo-nav-links a.milo-nav-cta:hover {
+  background: #e67300;
+  transform: translateY(-2px);
+}
+
+/* ═══ HAMBURGER ═══ */
+.milo-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 2147483647;
+}
+.milo-hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.milo-nav.scrolled .milo-hamburger span {
+  background: #1a1a2e;
+}
+.milo-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.milo-hamburger.open span:nth-child(2) { opacity: 0; }
+.milo-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+/* ═══ MOBILE OVERLAY ═══ */
+.milo-nav-links.mobile-open {
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,26,0.97);
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 2147483646;
+  padding: 2rem;
+  animation: miloFadeIn 0.3s ease;
+}
+.milo-nav-links.mobile-open a { color: white !important; font-size: 1.3rem; }
+.milo-nav-links.mobile-open a.active { color: #FF8200 !important; }
+.milo-nav-links.mobile-open a.milo-nav-cta { font-size: 1.1rem; padding: 0.8rem 2rem; }
+@keyframes miloFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .milo-nav-links { display: none; }
+  .milo-hamburger { display: flex; }
+}
+
+/* ═══ HIDE GHL DEFAULT NAV ═══ */
+#navbar, nav.navbar, #nav-menu-popup,
+#__nuxt, .hl_header--sticky {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+}
+</style>
+
 <script>
 (function() {
-  // ── Styles ──────────────────────────────────────────────────
-  var css = `
-    #milo-nav-bar *, #milo-nav-bar *::before, #milo-nav-bar *::after {
-      box-sizing: border-box; margin: 0; padding: 0;
-    }
-    #milo-nav-bar {
-      position: fixed !important;
-      top: 0 !important; left: 0 !important; right: 0 !important;
-      width: 100% !important;
-      height: 75px !important;
-      background: #ffffff !important;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.10) !important;
-      z-index: 2147483647 !important;
-      display: flex !important;
-      align-items: center !important;
-      font-family: 'League Spartan','Gotham','Montserrat',Arial,sans-serif !important;
-    }
-    #milo-nav-bar .milo-nav-inner {
-      max-width: 1200px !important; width: 100% !important;
-      margin: 0 auto !important; padding: 0 32px !important;
-      display: flex !important; align-items: center !important;
-      justify-content: space-between !important;
-    }
-    #milo-nav-bar .milo-nav-logo img {
-      height: 52px !important; width: auto !important; display: block !important;
-    }
-    #milo-nav-bar .milo-nav-links {
-      display: flex !important; align-items: center !important;
-      gap: 36px !important; list-style: none !important;
-    }
-    #milo-nav-bar .milo-nav-links a {
-      text-decoration: none !important; color: #074387 !important;
-      font-size: 15px !important; font-weight: 600 !important;
-      letter-spacing: 0.3px !important; text-transform: uppercase !important;
-      transition: color 0.2s !important;
-    }
-    #milo-nav-bar .milo-nav-links a:hover { color: #FF8200 !important; }
-    #milo-nav-bar .milo-nav-links a.milo-nav-cta {
-      background: #FF8200 !important; color: #ffffff !important;
-      padding: 10px 24px !important; border-radius: 4px !important;
-      font-size: 14px !important; font-weight: 700 !important;
-      text-transform: uppercase !important; letter-spacing: 0.5px !important;
-      text-decoration: none !important; white-space: nowrap !important;
-      transition: background 0.2s !important;
-    }
-    #milo-nav-bar .milo-nav-links a.milo-nav-cta:hover { background: #e67300 !important; color: #ffffff !important; }
-    #milo-nav-bar .milo-nav-toggle {
-      display: none !important; flex-direction: column !important;
-      gap: 5px !important; cursor: pointer !important;
-      background: none !important; border: none !important; padding: 4px !important;
-    }
-    #milo-nav-bar .milo-nav-toggle span {
-      display: block !important; width: 26px !important; height: 2px !important;
-      background: #074387 !important; border-radius: 2px !important;
-      transition: all 0.3s !important;
-    }
-    #milo-nav-drawer {
-      display: none;
-      position: fixed !important; top: 75px !important;
-      left: 0 !important; right: 0 !important;
-      background: #ffffff !important;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
-      z-index: 2147483646 !important;
-      padding: 16px 32px 24px !important;
-      flex-direction: column !important;
-    }
-    #milo-nav-drawer.milo-open { display: flex !important; }
-    #milo-nav-drawer a {
-      display: block !important; padding: 14px 0 !important;
-      border-bottom: 1px solid #f0f0f0 !important;
-      text-decoration: none !important; color: #074387 !important;
-      font-family: 'League Spartan',Arial,sans-serif !important;
-      font-size: 15px !important; font-weight: 600 !important;
-      text-transform: uppercase !important;
-    }
-    #milo-nav-drawer a:last-child { border-bottom: none !important; }
-    #milo-nav-drawer a:hover { color: #FF8200 !important; }
-    #milo-nav-spacer {
-      height: 75px !important; display: block !important;
-    }
-    @media (max-width: 768px) {
-      #milo-nav-bar .milo-nav-links { display: none !important; }
-      #milo-nav-bar .milo-nav-toggle { display: flex !important; }
-      #milo-nav-bar .milo-nav-cta { display: none !important; }
-    }
-  `;
+  'use strict';
 
-  // ── HTML ─────────────────────────────────────────────────────
-  var navHTML = `
-    <nav id="milo-nav-bar">
-      <div class="milo-nav-inner">
-        <a class="milo-nav-logo" href="/home">
-          <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg"
-               alt="MILO Insulation Franchise" />
-        </a>
-        <ul class="milo-nav-links">
-          <li><a href="/home">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/opportunity">Opportunity</a></li>
-          <li><a href="/support">Support</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/contact" class="milo-nav-cta">Get Started</a></li>
-        </ul>
-        <button class="milo-nav-toggle" aria-label="Menu" onclick="document.getElementById('milo-nav-drawer').classList.toggle('milo-open')">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-    <div id="milo-nav-drawer">
-      <a href="/home">Home</a>
-      <a href="/about">About</a>
-      <a href="/opportunity">Opportunity</a>
-      <a href="/support">Support</a>
-      <a href="/faq">FAQ</a>
-      <a href="/contact" style="color:#FF8200!important;font-weight:700!important;">Get Started</a>
-    </div>
-    <div id="milo-nav-spacer"></div>
-  `;
+  /* ── Load Google Fonts ── */
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Nunito+Sans:wght@300;400;600;700&display=swap';
+  document.head.appendChild(link);
 
-  // ── Inject ───────────────────────────────────────────────────
-  function inject() {
-    if (document.getElementById('milo-nav-bar')) return; // already injected
+  /* ── Detect current page ── */
+  function getCurrentPage() {
+    var path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '').toLowerCase();
+    if (path === '' || path === 'home') return 'home';
+    return path;
+  }
 
-    // Inject CSS
-    var style = document.createElement('style');
-    style.id = 'milo-nav-styles';
-    style.textContent = css;
-    document.head.appendChild(style);
+  /* ── Build Nav ── */
+  function buildNav() {
+    if (document.getElementById('milo-nav')) return;
 
-    // Inject nav at top of body
-    var wrapper = document.createElement('div');
-    wrapper.innerHTML = navHTML;
-    document.body.insertBefore(wrapper, document.body.firstChild);
-
-    // Reset body padding — loader.js or GHL may add its own; the spacer div handles offset
-    function resetBodyPadding() {
-      document.body.style.setProperty('padding-top', '0px', 'important');
-      document.body.style.setProperty('margin-top', '0px', 'important');
-    }
-    resetBodyPadding();
-    // Keep overriding for 3s in case loader.js fires after us
-    [100, 300, 500, 1000, 2000, 3000].forEach(function(ms) {
-      setTimeout(resetBodyPadding, ms);
+    /* Hide any GHL native nav */
+    document.querySelectorAll('nav.navbar, nav#navbar, #nav-menu-popup').forEach(function(el) {
+      el.style.display = 'none';
+      el.style.height = '0';
     });
+    /* Collapse __nuxt if it only holds nav */
+    var nuxt = document.getElementById('__nuxt');
+    if (nuxt) { nuxt.style.display = 'none'; nuxt.style.height = '0'; }
 
-    // Size the spacer to match the actual rendered nav height
-    requestAnimationFrame(function() {
-      var navEl = document.getElementById('milo-nav-bar');
-      var spacerEl = document.getElementById('milo-nav-spacer');
-      if (navEl && spacerEl) {
-        spacerEl.style.height = navEl.offsetHeight + 'px';
-      }
+    var currentPage = getCurrentPage();
+    var pages = [
+      { label: 'Home', page: 'home', href: '/' },
+      { label: 'About', page: 'about', href: '/about' },
+      { label: 'Opportunity', page: 'opportunity', href: '/opportunity' },
+      { label: 'Support', page: 'support', href: '/support' },
+      { label: 'FAQ', page: 'faq', href: '/faq' },
+      { label: 'Get Started', page: 'contact', href: '/contact', cta: true }
+    ];
+
+    var nav = document.createElement('nav');
+    nav.className = 'milo-nav';
+    nav.id = 'milo-nav';
+
+    var inner = document.createElement('div');
+    inner.className = 'milo-nav-inner';
+
+    /* Logo */
+    var logoLink = document.createElement('a');
+    logoLink.className = 'milo-nav-logo';
+    logoLink.href = '/';
+    var logoImg = document.createElement('img');
+    logoImg.src = 'https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg';
+    logoImg.alt = 'MILO Insulation';
+    logoLink.appendChild(logoImg);
+    inner.appendChild(logoLink);
+
+    /* Nav links */
+    var ul = document.createElement('ul');
+    ul.className = 'milo-nav-links';
+    pages.forEach(function(p) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = p.href;
+      a.textContent = p.label;
+      a.dataset.page = p.page;
+      if (p.cta) a.className = 'milo-nav-cta';
+      if (p.page === currentPage) a.classList.add('active');
+      li.appendChild(a);
+      ul.appendChild(li);
     });
+    inner.appendChild(ul);
 
-    // Hide GHL's own built-in header — run immediately and watch for re-renders
-    function hideGHLHeader() {
-      // Target by known GHL nav IDs and common wrapper patterns
-      var selectors = [
-        '#nav-menu-popup',
-        '[data-id="nav-menu-popup"]',
-        '.hl-nav-menu',
-        '#__nuxt > div > header',
-        '#__nuxt > header'
-      ];
-      selectors.forEach(function(sel) {
-        var el = document.querySelector(sel);
-        if (el) {
-          var target = el;
-          // Walk up to collapse the whole header block, not just the inner popup
-          while (target.parentElement && target.parentElement !== document.body) {
-            var h = target.parentElement.getBoundingClientRect().height;
-            if (h > 0 && h < 200) { target = target.parentElement; } else { break; }
-          }
-          target.style.cssText = 'display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;visibility:hidden!important;';
-        }
+    /* Hamburger */
+    var burger = document.createElement('button');
+    burger.className = 'milo-hamburger';
+    burger.setAttribute('aria-label', 'Toggle menu');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+    inner.appendChild(burger);
+
+    nav.appendChild(inner);
+    document.body.insertBefore(nav, document.body.firstChild);
+
+    /* Hamburger toggle */
+    burger.addEventListener('click', function() {
+      burger.classList.toggle('open');
+      ul.classList.toggle('mobile-open');
+      document.body.style.overflow = ul.classList.contains('mobile-open') ? 'hidden' : '';
+    });
+    ul.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        burger.classList.remove('open');
+        ul.classList.remove('mobile-open');
+        document.body.style.overflow = '';
       });
+    });
+
+    /* Scroll behavior: transparent → white */
+    function onScroll() {
+      var n = document.getElementById('milo-nav');
+      if (n) n.classList.toggle('scrolled', window.scrollY > 50);
     }
-
-    hideGHLHeader();
-
-    // Watch for GHL re-injecting its header after JS hydration
-    var observer = new MutationObserver(hideGHLHeader);
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    // Stop watching after 10s (page fully settled)
-    setTimeout(function() { observer.disconnect(); }, 10000);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
   }
 
-  if (document.body) {
-    inject();
+  /* ── Run ── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildNav);
   } else {
-    document.addEventListener('DOMContentLoaded', inject);
+    buildNav();
   }
+  /* Retry for GHL's slow rendering */
+  setTimeout(buildNav, 300);
+  setTimeout(buildNav, 800);
+  setTimeout(buildNav, 1500);
 })();
 </script>
