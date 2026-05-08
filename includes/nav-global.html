@@ -42,7 +42,7 @@
       transition: color 0.2s !important;
     }
     #milo-nav-bar .milo-nav-links a:hover { color: #FF8200 !important; }
-    #milo-nav-bar .milo-nav-cta {
+    #milo-nav-bar .milo-nav-links a.milo-nav-cta {
       background: #FF8200 !important; color: #ffffff !important;
       padding: 10px 24px !important; border-radius: 4px !important;
       font-size: 14px !important; font-weight: 700 !important;
@@ -50,7 +50,7 @@
       text-decoration: none !important; white-space: nowrap !important;
       transition: background 0.2s !important;
     }
-    #milo-nav-bar .milo-nav-cta:hover { background: #e67300 !important; color: #fff !important; }
+    #milo-nav-bar .milo-nav-links a.milo-nav-cta:hover { background: #e67300 !important; color: #ffffff !important; }
     #milo-nav-bar .milo-nav-toggle {
       display: none !important; flex-direction: column !important;
       gap: 5px !important; cursor: pointer !important;
@@ -139,14 +139,37 @@
     wrapper.innerHTML = navHTML;
     document.body.insertBefore(wrapper, document.body.firstChild);
 
-    // Hide GHL's own built-in header if present
-    var ghlNav = document.getElementById('nav-menu-popup');
-    if (ghlNav) {
-      var parent = ghlNav.closest('[id]') || ghlNav.parentElement;
-      if (parent && parent !== document.body) {
-        parent.style.cssText = 'display:none!important;height:0!important;overflow:hidden!important;';
-      }
+    // Hide GHL's own built-in header — run immediately and watch for re-renders
+    function hideGHLHeader() {
+      // Target by known GHL nav IDs and common wrapper patterns
+      var selectors = [
+        '#nav-menu-popup',
+        '[data-id="nav-menu-popup"]',
+        '.hl-nav-menu',
+        '#__nuxt > div > header',
+        '#__nuxt > header'
+      ];
+      selectors.forEach(function(sel) {
+        var el = document.querySelector(sel);
+        if (el) {
+          var target = el;
+          // Walk up to collapse the whole header block, not just the inner popup
+          while (target.parentElement && target.parentElement !== document.body) {
+            var h = target.parentElement.getBoundingClientRect().height;
+            if (h > 0 && h < 200) { target = target.parentElement; } else { break; }
+          }
+          target.style.cssText = 'display:none!important;height:0!important;min-height:0!important;overflow:hidden!important;visibility:hidden!important;';
+        }
+      });
     }
+
+    hideGHLHeader();
+
+    // Watch for GHL re-injecting its header after JS hydration
+    var observer = new MutationObserver(hideGHLHeader);
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    // Stop watching after 10s (page fully settled)
+    setTimeout(function() { observer.disconnect(); }, 10000);
   }
 
   if (document.body) {
