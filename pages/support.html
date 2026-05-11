@@ -9,43 +9,122 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* Kill any GHL remnants */
-    body { padding-top: 0 !important; margin-top: 0 !important; }
+    body { padding-top: 0 !important; margin: 0; }
+    
+    /* ===== WHITE NAV BAR ===== */
+    #milo-nav-bar *, #milo-nav-bar *::before, #milo-nav-bar *::after {
+      box-sizing: border-box; margin: 0; padding: 0;
+    }
+    #milo-nav-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      width: 100%;
+      height: 75px;
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      font-family: 'League Spartan','Gotham','Montserrat',Arial,sans-serif;
+    }
+    #milo-nav-bar .milo-nav-inner {
+      max-width: 1200px; width: 100%;
+      margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    #milo-nav-bar .milo-nav-logo img {
+      height: 52px; width: auto; display: block;
+    }
+    #milo-nav-bar .milo-nav-links {
+      display: flex; align-items: center;
+      gap: 32px; list-style: none;
+    }
+    #milo-nav-bar .milo-nav-links a {
+      text-decoration: none; color: #074387;
+      font-size: 15px; font-weight: 600;
+      letter-spacing: 0.3px; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    #milo-nav-bar .milo-nav-links a:hover { color: #FF8200; }
+    #milo-nav-bar .milo-nav-links a.active { color: #FF8200; }
+    #milo-nav-bar .milo-nav-links a.milo-nav-cta {
+      background: #FF8200; color: #ffffff;
+      padding: 10px 24px; border-radius: 4px;
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+    #milo-nav-bar .milo-nav-links a.milo-nav-cta:hover {
+      background: #e07000; color: #ffffff;
+    }
+    #milo-nav-spacer { height: 75px; }
+
+    /* Hamburger (hidden on desktop) */
+    .milo-nav-hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 32px; height: 24px; position: relative; z-index: 100001;
+    }
+    .milo-nav-hamburger span {
+      display: block; width: 100%; height: 3px;
+      background: #074387; border-radius: 2px;
+      position: absolute; left: 0;
+      transition: all 0.3s ease;
+    }
+    .milo-nav-hamburger span:nth-child(1) { top: 0; }
+    .milo-nav-hamburger span:nth-child(2) { top: 10px; }
+    .milo-nav-hamburger span:nth-child(3) { top: 20px; }
+    .milo-nav-hamburger.open span:nth-child(1) { top: 10px; transform: rotate(45deg); }
+    .milo-nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .milo-nav-hamburger.open span:nth-child(3) { top: 10px; transform: rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .milo-nav-hamburger { display: block; }
+      #milo-nav-bar .milo-nav-links {
+        display: none; flex-direction: column;
+        position: fixed; top: 75px; left: 0; right: 0; bottom: 0;
+        background: #ffffff; padding: 40px 32px; gap: 24px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      }
+      #milo-nav-bar .milo-nav-links.open { display: flex; }
+      #milo-nav-bar .milo-nav-links a { font-size: 18px; }
+    }
+
   </style>
 </head>
 <body>
-<!-- NAV -->
-<nav id="milo-nav">
-  <div class="nav-inner">
-    <a class="nav-logo" href="https://franchise.miloinsulation.com/home">
+
+<!-- WHITE NAV BAR -->
+<nav id="milo-nav-bar">
+  <div class="milo-nav-inner">
+    <a class="milo-nav-logo" href="https://franchise.miloinsulation.com/home">
       <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" alt="MILO Insulation Franchise" />
     </a>
-    <div class="nav-hamburger" id="milo-hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+    <button class="milo-nav-hamburger" id="milo-hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
-    </div>
-    <div class="nav-links" id="milo-nav-links">
-      <a href="https://franchise.miloinsulation.com/home">Home</a>
-      <a href="https://franchise.miloinsulation.com/about">About</a>
-      <a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a>
-      <a href="https://franchise.miloinsulation.com/support">Support</a>
-      <a href="https://franchise.miloinsulation.com/faq">FAQ</a>
-      <span class="nav-cta"><a href="https://franchise.miloinsulation.com/contact">Get Started →</a></span>
-    </div>
+    </button>
+    <ul class="milo-nav-links" id="milo-nav-links">
+      <li><a href="https://franchise.miloinsulation.com/home">Home</a></li>
+      <li><a href="https://franchise.miloinsulation.com/about">About</a></li>
+      <li><a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a></li>
+      <li><a href="https://franchise.miloinsulation.com/support">Support</a></li>
+      <li><a href="https://franchise.miloinsulation.com/faq">FAQ</a></li>
+      <li><a href="https://franchise.miloinsulation.com/contact" class="milo-nav-cta">Get Started</a></li>
+    </ul>
   </div>
 </nav>
+<div id="milo-nav-spacer"></div>
+
 <script>
 (function(){
-  var ham   = document.getElementById('milo-hamburger');
+  var ham = document.getElementById('milo-hamburger');
   var links = document.getElementById('milo-nav-links');
-  if (ham && links) {
+  if(ham && links){
     ham.addEventListener('click', function(){
       links.classList.toggle('open');
       ham.classList.toggle('open');
       document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
     });
-    ham.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') ham.click();
-    });
-    // Close mobile menu when a link is clicked
     links.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click', function(){
         links.classList.remove('open');
@@ -59,26 +138,13 @@
   document.querySelectorAll('#milo-nav-links a').forEach(function(a){
     var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
     var current = path.split('/').pop();
-    if (href && href === current) a.classList.add('active');
-    if (!current && href === 'home') a.classList.add('active');
+    if(href && href === current) a.classList.add('active');
+    if(!current && href === 'home') a.classList.add('active');
   });
 })();
 </script>
 
-<script>
-(function(){
-  var nav = document.getElementById('milo-nav');
-  if(nav){
-    function checkScroll(){
-      if(window.scrollY > 50) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
-    }
-    window.addEventListener('scroll', checkScroll);
-    checkScroll();
-  }
-})();
-</script>
-
+<!-- PAGE CONTENT -->
 <!-- PAGE CONTENT -->
 <div id="milo-site">
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -432,6 +498,8 @@
 </section>
 
 
+
+
 <!-- FOOTER -->
 <footer id="milo-footer">
   <div class="container">
@@ -486,7 +554,6 @@
   </div>
 </footer>
 
-</div>
 
 </body>
 </html>
