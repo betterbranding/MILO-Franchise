@@ -1,3 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MILO Insulation Franchise | Nature's Very Best Insulation</title>
+  <link rel="icon" href="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Kill any GHL remnants */
+    body { padding-top: 0 !important; margin-top: 0 !important; }
+  </style>
+</head>
+<body>
+<!-- NAV -->
+<nav id="milo-nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://franchise.miloinsulation.com/home">
+      <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" alt="MILO Insulation Franchise" />
+    </a>
+    <div class="nav-hamburger" id="milo-hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links" id="milo-nav-links">
+      <a href="https://franchise.miloinsulation.com/home">Home</a>
+      <a href="https://franchise.miloinsulation.com/about">About</a>
+      <a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a>
+      <a href="https://franchise.miloinsulation.com/support">Support</a>
+      <a href="https://franchise.miloinsulation.com/faq">FAQ</a>
+      <span class="nav-cta"><a href="https://franchise.miloinsulation.com/contact">Get Started →</a></span>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){
+  var ham   = document.getElementById('milo-hamburger');
+  var links = document.getElementById('milo-nav-links');
+  if (ham && links) {
+    ham.addEventListener('click', function(){
+      links.classList.toggle('open');
+      ham.classList.toggle('open');
+      document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+    });
+    ham.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') ham.click();
+    });
+    // Close mobile menu when a link is clicked
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        links.classList.remove('open');
+        ham.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+  // Active link highlighting
+  var path = window.location.pathname.toLowerCase().replace(/\/$/, '');
+  document.querySelectorAll('#milo-nav-links a').forEach(function(a){
+    var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
+    var current = path.split('/').pop();
+    if (href && href === current) a.classList.add('active');
+    if (!current && href === 'home') a.classList.add('active');
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var nav = document.getElementById('milo-nav');
+  if(nav){
+    function checkScroll(){
+      if(window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();
+  }
+})();
+</script>
+
+<!-- PAGE CONTENT -->
+<div id="milo-site">
+
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -24,11 +108,6 @@
     display: flex;
     align-items: center;
     padding: 80px 40px;
-  }
-  .milo-hero-bg {
-    position: absolute; inset: 0;
-    background-image: url('https://miloinsulationfranchise.com/wp-content/uploads/milo-hero.mp4');
-    background-size: cover; background-position: center;
   }
   .milo-hero-overlay {
     position: absolute; inset: 0;
@@ -105,7 +184,6 @@
   /* Problem/Opportunity Section */
   .milo-problem { background: #fff; padding: 80px 40px; }
   .milo-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-  .milo-stat-col { }
   .milo-stat-headline {
     font-family: var(--title-font); font-size: 34px; font-weight: 800;
     color: var(--navy); line-height: 1.2;
@@ -200,14 +278,6 @@
 
   /* Investment Section */
   .milo-investment { background: var(--light-green); padding: 80px 40px; }
-  .milo-investment-card {
-    background: #fff; border-left: 5px solid var(--orange); border-radius: 12px;
-    padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin: 28px 0;
-  }
-  .milo-investment-card .inv-headline { font-family: var(--body-font); font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #888; text-transform: uppercase; margin-bottom: 8px; }
-  .milo-investment-card .inv-range { font-family: var(--title-font); font-size: 36px; font-weight: 800; color: var(--navy); margin-bottom: 12px; }
-  .milo-investment-card p { font-family: var(--body-font); font-size: 15px; color: #555; line-height: 1.6; margin: 0 0 8px; }
-  .milo-investment-card .fdd-note { font-size: 12px; color: #888; font-style: italic; }
 
   @media (max-width: 900px) {
     .milo-two-col { grid-template-columns: 1fr; gap: 32px; }
@@ -463,3 +533,63 @@
     </div>
   </div>
 </section>
+
+
+<!-- FOOTER -->
+<footer id="milo-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-brand-logo"
+             src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg"
+             alt="MILO Insulation Franchise" />
+        <p class="footer-brand-desc">
+          Franchising the future of eco-friendly, high-performance insulation
+          with patented MILEX™ sorghum-based technology. <em>Nature's Very Best.</em>
+        </p>
+        <p class="footer-tagline" style="margin-top:16px;">Nature's Very Best</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a href="https://franchise.miloinsulation.com/home">Home</a>
+        <a href="https://franchise.miloinsulation.com/about">About MILO</a>
+        <a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a>
+        <a href="https://franchise.miloinsulation.com/support">Franchisee Support</a>
+        <a href="https://franchise.miloinsulation.com/faq">FAQ</a>
+        <a href="https://franchise.miloinsulation.com/contact">Contact / Get Started</a>
+      </div>
+      <div class="footer-col">
+        <h5>Available Markets</h5>
+        <a href="https://franchise.miloinsulation.com/midland-odessa">Midland-Odessa, TX</a>
+        <a href="https://franchise.miloinsulation.com/tulsa">Tulsa, OK</a>
+        <a href="https://franchise.miloinsulation.com/fayetteville">Fayetteville, AR</a>
+        <a href="https://franchise.miloinsulation.com/opportunity">View All Territories →</a>
+      </div>
+      <div class="footer-col footer-contact">
+        <h5>Contact Us</h5>
+        <p>📞 <a href="tel:8005748456" style="color:rgba(255,255,255,0.65)">(800) 574-MILO</a></p>
+        <p>✉️ <a href="mailto:franchise@miloinsulation.com" style="color:rgba(255,255,255,0.65)">franchise@miloinsulation.com</a></p>
+        <p>🕐 Mon–Fri, 9am–5pm CT</p>
+        <a href="https://franchise.miloinsulation.com/contact"
+           style="display:inline-block;margin-top:16px;background:var(--orange);color:#fff;
+                  font-family:var(--font-head);font-weight:700;font-size:0.82rem;
+                  letter-spacing:0.06em;text-transform:uppercase;padding:10px 20px;border-radius:6px;">
+          Get Started →
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 MILO Franchising, LLC. All rights reserved. | This information is not an offer to sell a franchise.</span>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">FDD Disclosure</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>
