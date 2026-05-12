@@ -325,50 +325,90 @@ p  { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; }
 .market-highlight p { margin-top: 6px; }
 
 
-/* ---- WHITE NAV OVERRIDE ---- */
+/* === WHITE NAV OVERRIDE === */
 #milo-nav {
   background: #ffffff !important;
-  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+}
+.nav-logo img {
+  height: 44px;
+  width: auto;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
 .nav-links a {
   color: #074387 !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: color 0.2s;
 }
-.nav-links a:hover, .nav-links a.active {
-  color: #074387 !important;
-  background: rgba(7,67,135,0.06) !important;
+.nav-links a:hover {
+  color: #FF8200 !important;
 }
 .nav-cta a {
   background: #FF8200 !important;
   color: #ffffff !important;
-  padding: 9px 20px !important;
+  padding: 10px 22px !important;
   border-radius: 6px;
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 .nav-cta a:hover {
-  background: #e57400 !important;
+  background: #e67400 !important;
+  color: #ffffff !important;
 }
+.nav-hamburger { display: none; }
 .nav-hamburger span {
-  background: #074387 !important;
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #074387;
+  margin: 5px 0;
+  transition: 0.3s;
 }
-.nav-hamburger.open span {
-  background: #074387 !important;
-}
-@media (max-width: 820px) {
+body { padding-top: 72px; }
+@media (max-width: 768px) {
+  .nav-hamburger { display: block; cursor: pointer; }
   .nav-links {
-    background: #ffffff !important;
-    border-top: 1px solid rgba(0,0,0,0.08) !important;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
+  .nav-links.open { display: flex; }
 }
 
   </style>
 </head>
 <body>
-
 <nav id="milo-nav">
   <div class="nav-inner">
     <a class="nav-logo" href="https://franchise.miloinsulation.com/home">
-      <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" alt="MILO Insulation Franchise" />
+      <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" alt="MILO Franchising, LLC" />
     </a>
     <div class="nav-hamburger" id="milo-hamburger" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span><span></span><span></span>
@@ -379,43 +419,27 @@ p  { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; }
       <a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a>
       <a href="https://franchise.miloinsulation.com/support">Support</a>
       <a href="https://franchise.miloinsulation.com/faq">FAQ</a>
-      <span class="nav-cta"><a href="https://franchise.miloinsulation.com/contact">Get Started →</a></span>
+      <span class="nav-cta"><a href="https://franchise.miloinsulation.com/contact">Get Started</a></span>
     </div>
   </div>
 </nav>
 <script>
 (function(){
-  var ham   = document.getElementById('milo-hamburger');
+  var ham = document.getElementById('milo-hamburger');
   var links = document.getElementById('milo-nav-links');
-  if (ham && links) {
-    ham.addEventListener('click', function(){
-      links.classList.toggle('open');
-      ham.classList.toggle('open');
-      document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
-    });
-    ham.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') ham.click();
-    });
-    // Close mobile menu when a link is clicked
-    links.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        links.classList.remove('open');
-        ham.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
+  if(ham && links){
+    ham.addEventListener('click', function(){ links.classList.toggle('open'); });
+    ham.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') links.classList.toggle('open'); });
   }
   // Active link highlighting
-  var path = window.location.pathname.toLowerCase().replace(/\/$/, '');
+  var path = window.location.pathname;
   document.querySelectorAll('#milo-nav-links a').forEach(function(a){
-    var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
-    var current = path.split('/').pop();
-    if (href && href === current) a.classList.add('active');
-    if (!current && href === 'home') a.classList.add('active');
+    if(a.getAttribute('href') && path.indexOf(a.getAttribute('href').split('/').pop()) > -1){
+      a.classList.add('active');
+    }
   });
 })();
 </script>
-
 
 <!-- MILO Franchise — Opportunity Page Fragment -->
 
@@ -606,7 +630,6 @@ p  { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; }
   </div>
 </section>
 
-
 <footer id="milo-footer">
   <div class="container">
     <div class="footer-grid">
@@ -647,7 +670,6 @@ p  { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; }
     </div>
   </div>
 </footer>
-
 
 </body>
 </html>
