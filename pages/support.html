@@ -1,126 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Franchise Support | MILO Insulation</title>
-  <link rel="icon" href="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@latest/css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body { padding-top: 0 !important; margin: 0; }
-    /* ===== WHITE NAV BAR ===== */
-    #milo-nav-bar *, #milo-nav-bar *::before, #milo-nav-bar *::after {
-      box-sizing: border-box; margin: 0; padding: 0;
-    }
-    #milo-nav-bar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      width: 100%;
-      height: 75px;
-      background: #ffffff;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-      z-index: 99999;
-      display: flex;
-      align-items: center;
-      font-family: 'League Spartan','Gotham','Montserrat',Arial,sans-serif;
-    }
-    #milo-nav-bar .milo-nav-inner {
-      max-width: 1200px; width: 100%;
-      margin: 0 auto; padding: 0 32px;
-      display: flex; align-items: center;
-      justify-content: space-between;
-    }
-    #milo-nav-bar .milo-nav-logo img {
-      height: 52px; width: auto; display: block;
-    }
-    #milo-nav-bar .milo-nav-links {
-      display: flex; align-items: center;
-      gap: 32px; list-style: none;
-    }
-    #milo-nav-bar .milo-nav-links a {
-      text-decoration: none; color: #074387;
-      font-size: 15px; font-weight: 600;
-      letter-spacing: 0.3px; text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    #milo-nav-bar .milo-nav-links a:hover { color: #FF8200; }
-    #milo-nav-bar .milo-nav-links a.active { color: #FF8200; }
-    #milo-nav-bar .milo-nav-links a.milo-nav-cta {
-      background: #FF8200; color: #ffffff;
-      padding: 10px 24px; border-radius: 4px;
-      font-size: 14px; font-weight: 700;
-      letter-spacing: 0.5px;
-      transition: background 0.2s;
-    }
-    #milo-nav-bar .milo-nav-links a.milo-nav-cta:hover {
-      background: #e07000; color: #ffffff;
-    }
-    #milo-nav-spacer { height: 75px; }
+/* ============================================
+   MILO Franchise — Global Stylesheet
+   https://franchise.miloinsulation.com
+   ============================================ */
 
-    /* Hamburger (hidden on desktop) */
-    .milo-nav-hamburger {
-      display: none; background: none; border: none; cursor: pointer;
-      width: 32px; height: 24px; position: relative; z-index: 100001;
-    }
-    .milo-nav-hamburger span {
-      display: block; width: 100%; height: 3px;
-      background: #074387; border-radius: 2px;
-      position: absolute; left: 0;
-      transition: all 0.3s ease;
-    }
-    .milo-nav-hamburger span:nth-child(1) { top: 0; }
-    .milo-nav-hamburger span:nth-child(2) { top: 10px; }
-    .milo-nav-hamburger span:nth-child(3) { top: 20px; }
-    .milo-nav-hamburger.open span:nth-child(1) { top: 10px; transform: rotate(45deg); }
-    .milo-nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .milo-nav-hamburger.open span:nth-child(3) { top: 10px; transform: rotate(-45deg); }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
 
-    @media (max-width: 900px) {
-      .milo-nav-hamburger { display: block; }
-      #milo-nav-bar .milo-nav-links {
-        display: none; flex-direction: column;
-        position: fixed; top: 75px; left: 0; right: 0; bottom: 0;
-        background: #ffffff; padding: 40px 32px; gap: 24px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      }
-      #milo-nav-bar .milo-nav-links.open { display: flex; }
-      #milo-nav-bar .milo-nav-links a { font-size: 18px; }
-    }
+/* ---- Reset & Base ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #0d1f3c;
+  --navy-light: #162d52;
+  --green:      #2a7a4b;
+  --green-light:#34a060;
+  --green-pale: #e8f5ee;
+  --gold:       #c8973a;
+  --white:      #ffffff;
+  --off-white:  #f8f9fb;
+  --text:       #1a2535;
+  --text-muted: #5a6a80;
+  --border:     #e2e8f0;
+  --radius:     10px;
+  --shadow:     0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg:  0 12px 48px rgba(0,0,0,0.14);
+  --font-head:  'Montserrat', sans-serif;
+  --font-body:  'Inter', sans-serif;
+  --max-w:      1140px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.65; }
+
+img { max-width: 100%; height: auto; display: block; }
+a   { color: inherit; text-decoration: none; }
+ul  { list-style: none; }
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5 { font-family: var(--font-head); font-weight: 800; line-height: 1.15; color: var(--navy); }
+h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
+h4 { font-size: 1.1rem; }
+p  { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; }
+.eyebrow {
+  font-family: var(--font-head);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.lead { font-size: 1.18rem; color: var(--text-muted); max-width: 680px; line-height: 1.8; }
+
+/* ---- Layout ---- */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.section { padding: 88px 0; }
+.section--sm { padding: 60px 0; }
+.section--dark { background: var(--navy); }
+.section--dark h1, .section--dark h2, .section--dark h3, .section--dark h4 { color: var(--white); }
+.section--dark p, .section--dark .lead { color: rgba(255,255,255,0.72); }
+.section--dark .eyebrow { color: #6fd49a; }
+.section--green { background: var(--green); }
+.section--green h2, .section--green h3, .section--green p, .section--green .lead { color: var(--white); }
+.section--off { background: var(--off-white); }
+
+.text-center { text-align: center; }
+.text-center .lead { margin: 0 auto; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+@media (max-width: 960px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .grid-4 { grid-template-columns: 1fr; }
+  .section { padding: 60px 0; }
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-size: 0.9rem; font-weight: 700;
+  padding: 14px 30px; border-radius: 6px;
+  transition: all 0.22s ease; cursor: pointer; border: 2px solid transparent;
+  letter-spacing: 0.02em;
+}
+.btn-primary { background: var(--green); color: var(--white); }
+.btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,122,75,0.35); }
+.btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.5); }
+.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+.btn-outline-dark { background: transparent; color: var(--navy); border-color: var(--navy); }
+.btn-outline-dark:hover { background: var(--navy); color: var(--white); }
+.btn-gold { background: var(--gold); color: var(--white); }
+.btn-gold:hover { background: #e0a840; transform: translateY(-2px); }
+.btn-lg { padding: 18px 40px; font-size: 1rem; }
+.btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ---- NAV ---- */
+#milo-nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px; max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+}
+.nav-logo img { height: 38px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-links a {
+  font-family: var(--font-head); font-size: 0.82rem; font-weight: 600;
+  color: rgba(255,255,255,0.78); padding: 8px 14px; border-radius: 5px;
+  letter-spacing: 0.03em; transition: color 0.18s, background 0.18s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.08); }
+.nav-cta { margin-left: 10px; }
+.nav-cta a {
+  background: var(--green); color: var(--white) !important;
+  padding: 9px 20px !important; border-radius: 6px;
+}
+.nav-cta a:hover { background: var(--green-light) !important; }
+.nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+@media (max-width: 820px) {
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none; position: absolute; top: 72px; left: 0; right: 0;
+    background: var(--navy); flex-direction: column; padding: 16px 24px 24px;
+    gap: 4px; border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { width: 100%; }
+}
+
+/* ---- HERO ---- */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #0f3a22 100%);
+  padding: 100px 0 80px;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 680px; }
+.hero h1 { color: var(--white); margin-bottom: 24px; }
+.hero .lead { color: rgba(255,255,255,0.80); margin-bottom: 36px; }
+.hero-badge {
+  display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85); font-family: var(--font-head); font-size: 0.75rem;
+  font-weight: 600; padding: 6px 14px; border-radius: 50px; margin-bottom: 20px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+/* ---- STAT BOXES ---- */
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+@media (max-width: 700px) { .stat-grid { grid-template-columns: 1fr; } }
+.stat-box {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 32px 28px; text-align: center;
+}
+.stat-num { font-family: var(--font-head); font-size: 2.4rem; font-weight: 900; color: #6fd49a; display: block; margin-bottom: 6px; }
+.stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.65); font-family: var(--font-head); font-weight: 600; letter-spacing: 0.04em; }
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 36px 32px; transition: box-shadow 0.22s, transform 0.22s;
+}
+.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.card-icon { width: 52px; height: 52px; background: var(--green-pale); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.5rem; }
+.card h3 { margin-bottom: 12px; }
+.card p { font-size: 0.95rem; }
+
+/* ---- FEATURE LIST ---- */
+.feature-list { list-style: none; margin-top: 24px; }
+.feature-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.98rem;
+}
+.feature-list li:last-child { border-bottom: none; }
+.feature-list li::before {
+  content: '✓'; flex-shrink: 0; width: 22px; height: 22px;
+  background: var(--green); color: var(--white); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; margin-top: 1px;
+}
+
+/* ---- SECTION DIVIDER ---- */
+.divider { height: 4px; background: linear-gradient(90deg, var(--green), var(--navy)); border: none; margin: 0; }
+
+/* ---- TIMELINE ---- */
+.timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 36px; }
+.timeline::before {
+  content: ''; position: absolute; left: 10px; top: 12px; bottom: 12px;
+  width: 2px; background: var(--border);
+}
+.timeline-item { position: relative; padding: 0 0 32px 28px; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -30px; top: 6px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--green); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--green);
+}
+.timeline-label { font-family: var(--font-head); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+.timeline-item h4 { margin-bottom: 6px; font-size: 1rem; }
+.timeline-item p { font-size: 0.93rem; }
+
+/* ---- TESTIMONIAL ---- */
+.testimonial-card {
+  background: var(--off-white); border-radius: var(--radius); padding: 36px 32px;
+  position: relative; border: 1px solid var(--border);
+}
+.testimonial-card::before {
+  content: '"'; font-family: Georgia, serif; font-size: 5rem; color: var(--green);
+  position: absolute; top: 10px; left: 24px; line-height: 1; opacity: 0.3;
+}
+.testimonial-text { font-size: 1rem; font-style: italic; color: var(--text); margin-bottom: 20px; padding-top: 16px; line-height: 1.75; }
+.testimonial-author { font-family: var(--font-head); font-weight: 700; font-size: 0.88rem; color: var(--navy); }
+.stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 10px; letter-spacing: 2px; }
+
+/* ---- INVESTMENT TABLE ---- */
+.invest-box {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  border-radius: 16px; padding: 48px; color: var(--white);
+}
+.invest-box h2 { color: var(--white); }
+.invest-amount { font-family: var(--font-head); font-size: 2.8rem; font-weight: 900; color: #6fd49a; }
+.fee-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.98rem; }
+.fee-row:last-child { border-bottom: none; }
+.fee-label { color: rgba(255,255,255,0.72); }
+.fee-val { font-family: var(--font-head); font-weight: 700; color: var(--white); }
+
+/* ---- FAQ ---- */
+.faq-item { border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+.faq-q {
+  width: 100%; text-align: left; background: var(--white); border: none;
+  padding: 20px 28px; font-family: var(--font-head); font-size: 1rem; font-weight: 700;
+  color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.18s;
+}
+.faq-q:hover { background: var(--off-white); }
+.faq-q .faq-arrow { transition: transform 0.22s; font-size: 1.1rem; color: var(--green); }
+.faq-q.open .faq-arrow { transform: rotate(180deg); }
+.faq-a { padding: 0 28px 20px; font-size: 0.97rem; color: var(--text-muted); line-height: 1.75; display: none; }
+.faq-a.open { display: block; }
+.faq-category-label {
+  font-family: var(--font-head); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--green);
+  margin: 36px 0 14px; display: block;
+}
+
+/* ---- CTA BANNER ---- */
+.cta-banner {
+  background: linear-gradient(135deg, var(--green) 0%, #1d5e38 100%);
+  border-radius: 16px; padding: 56px 48px; text-align: center;
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 16px; }
+.cta-banner p { color: rgba(255,255,255,0.82); margin-bottom: 32px; }
+
+/* ---- CONTACT ---- */
+.contact-form { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 44px; }
+.form-group { margin-bottom: 22px; }
+.form-group label { display: block; font-family: var(--font-head); font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; color: var(--navy); letter-spacing: 0.04em; text-transform: uppercase; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; padding: 13px 16px; border: 1.5px solid var(--border); border-radius: 7px;
+  font-family: var(--font-body); font-size: 0.97rem; color: var(--text);
+  transition: border-color 0.18s; background: var(--white);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(42,122,75,0.12);
+}
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+/* ---- LOGO STRIP ---- */
+.logo-strip { background: var(--off-white); padding: 32px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.logo-strip-inner { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.logo-strip img { height: 36px; width: auto; opacity: 0.6; filter: grayscale(100%); transition: opacity 0.18s; }
+.logo-strip img:hover { opacity: 1; }
+
+/* ---- FOOTER ---- */
+#milo-footer {
+  background: var(--navy);
+  padding: 64px 0 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
+.footer-brand-logo { height: 34px; width: auto; margin-bottom: 16px; }
+.footer-brand-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 240px; }
+.footer-col h5 { font-family: var(--font-head); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
+.footer-col a { display: block; font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; transition: color 0.18s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 0.83rem; color: rgba(255,255,255,0.4); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 0.83rem; color: rgba(255,255,255,0.4); transition: color 0.18s; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+.footer-contact p { font-size: 0.88rem; color: rgba(255,255,255,0.55); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+/* ---- LANDING PAGE SPECIFIC ---- */
+.lp-hero { background: linear-gradient(135deg, #0d1f3c 0%, #162d52 40%, #0a2d1a 100%); }
+.territory-badge { background: var(--gold); color: var(--white); font-family: var(--font-head); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 20px; border-radius: 50px; display: inline-block; margin-bottom: 16px; }
+.market-highlight { background: var(--off-white); border-left: 4px solid var(--green); border-radius: 0 var(--radius) var(--radius) 0; padding: 28px 32px; margin: 24px 0; }
+.market-highlight strong { color: var(--navy); font-family: var(--font-head); }
+.market-highlight p { margin-top: 6px; }
+
+
+/* ---- WHITE NAV OVERRIDE ---- */
+#milo-nav {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
+}
+.nav-links a {
+  color: #074387 !important;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: #074387 !important;
+  background: rgba(7,67,135,0.06) !important;
+}
+.nav-cta a {
+  background: #FF8200 !important;
+  color: #ffffff !important;
+  padding: 9px 20px !important;
+  border-radius: 6px;
+  font-weight: 700;
+}
+.nav-cta a:hover {
+  background: #e57400 !important;
+}
+.nav-hamburger span {
+  background: #074387 !important;
+}
+.nav-hamburger.open span {
+  background: #074387 !important;
+}
+@media (max-width: 820px) {
+  .nav-links {
+    background: #ffffff !important;
+    border-top: 1px solid rgba(0,0,0,0.08) !important;
+  }
+}
+
   </style>
 </head>
 <body>
-<!-- WHITE NAV BAR -->
-<nav id="milo-nav-bar">
-  <div class="milo-nav-inner">
-    <a class="milo-nav-logo" href="https://franchise.miloinsulation.com/home">
+
+<nav id="milo-nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://franchise.miloinsulation.com/home">
       <img src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" alt="MILO Insulation Franchise" />
     </a>
-    <button class="milo-nav-hamburger" id="milo-hamburger" aria-label="Toggle menu">
+    <div class="nav-hamburger" id="milo-hamburger" aria-label="Toggle menu" role="button" tabindex="0">
       <span></span><span></span><span></span>
-    </button>
-    <ul class="milo-nav-links" id="milo-nav-links">
-      <li><a href="https://franchise.miloinsulation.com/home">Home</a></li>
-      <li><a href="https://franchise.miloinsulation.com/about">About</a></li>
-      <li><a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a></li>
-      <li><a href="https://franchise.miloinsulation.com/support">Support</a></li>
-      <li><a href="https://franchise.miloinsulation.com/faq">FAQ</a></li>
-      <li><a href="https://franchise.miloinsulation.com/contact" class="milo-nav-cta">Get Started</a></li>
-    </ul>
+    </div>
+    <div class="nav-links" id="milo-nav-links">
+      <a href="https://franchise.miloinsulation.com/home">Home</a>
+      <a href="https://franchise.miloinsulation.com/about">About</a>
+      <a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a>
+      <a href="https://franchise.miloinsulation.com/support">Support</a>
+      <a href="https://franchise.miloinsulation.com/faq">FAQ</a>
+      <span class="nav-cta"><a href="https://franchise.miloinsulation.com/contact">Get Started →</a></span>
+    </div>
   </div>
 </nav>
-<div id="milo-nav-spacer"></div>
-
 <script>
 (function(){
-  var ham = document.getElementById('milo-hamburger');
+  var ham   = document.getElementById('milo-hamburger');
   var links = document.getElementById('milo-nav-links');
-  if(ham && links){
+  if (ham && links) {
     ham.addEventListener('click', function(){
       links.classList.toggle('open');
       ham.classList.toggle('open');
       document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
     });
+    ham.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') ham.click();
+    });
+    // Close mobile menu when a link is clicked
     links.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click', function(){
         links.classList.remove('open');
@@ -134,410 +410,223 @@
   document.querySelectorAll('#milo-nav-links a').forEach(function(a){
     var href = (a.getAttribute('href') || '').split('/').pop().toLowerCase();
     var current = path.split('/').pop();
-    if(href && href === current) a.classList.add('active');
-    if(!current && href === 'home') a.classList.add('active');
+    if (href && href === current) a.classList.add('active');
+    if (!current && href === 'home') a.classList.add('active');
   });
 })();
 </script>
 
-<!-- PAGE CONTENT -->
-<div id="milo-site">
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-  /* ===== SUPPORT PAGE STYLES ===== */
-  :root {
-    --green: #288D11;
-    --navy: #074387;
-    --orange: #FF8200;
-    --light-blue-bg: #E6ECF3;
-    --light-green: #EAF4E7;
-    --off-white: #F8F9FA;
-    --body-font: 'Gotham', 'Century Gothic', 'Futura', sans-serif;
-    --title-font: 'League Spartan', sans-serif;
-  }
-  .milo-sp { box-sizing: border-box; width: 100%; }
-  .milo-sp-container { max-width: 1140px; margin: 0 auto; padding: 0 30px; }
-  .milo-sp-label {
-    display: inline-block; font-family: var(--body-font); font-size: 12px;
-    font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px;
-  }
-  .milo-sp-label-green { color: var(--green); }
-  .milo-sp-label-orange { color: var(--orange); }
-  .milo-sp-headline {
-    font-family: var(--title-font); font-size: 38px; font-weight: 800;
-    color: var(--navy); line-height: 1.15; margin: 0 0 18px;
-  }
-  .milo-sp-body { font-family: var(--body-font); font-size: 16px; color: #444; line-height: 1.7; margin: 0 0 14px; }
-  .milo-sp-btn-primary {
-    display: inline-block; background: var(--orange); color: #fff;
-    font-family: var(--body-font); font-size: 16px; font-weight: 700;
-    padding: 14px 30px; border-radius: 8px; text-decoration: none;
-  }
-  .milo-sp-btn-white {
-    display: inline-block; background: #fff; color: var(--navy);
-    font-family: var(--body-font); font-size: 16px; font-weight: 700;
-    padding: 14px 30px; border-radius: 8px; text-decoration: none;
-  }
-  .milo-sp-btn-white-outline {
-    display: inline-block; background: transparent; color: #fff;
-    font-family: var(--body-font); font-size: 16px; font-weight: 600;
-    padding: 13px 28px; border-radius: 8px; border: 2px solid #fff; text-decoration: none;
-  }
-  .milo-sp-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+<!-- MILO Franchise — Support Page Fragment -->
 
-  /* Hero */
-  .milo-sp-hero {
-    position: relative; min-height: 520px;
-    background: linear-gradient(135deg, #042244 0%, #074387 100%);
-    display: flex; align-items: center; padding: 80px 40px;
-  }
-  .milo-sp-hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(4,34,68,0.88) 0%, rgba(7,67,135,0.80) 100%);
-  }
-  .milo-sp-hero-content { position: relative; z-index: 2; max-width: 700px; }
-  .milo-sp-hero h1 { font-family: var(--title-font); font-size: 48px; font-weight: 800; color: #fff; line-height: 1.1; margin: 0 0 18px; }
-  .milo-sp-hero h2 { font-family: var(--body-font); font-size: 20px; color: rgba(255,255,255,0.88); line-height: 1.6; margin: 0 0 28px; }
-
-  /* Sections */
-  .milo-sp-philosophy { background: #fff; padding: 80px 40px; text-align: center; }
-  .milo-sp-pillars { background: var(--off-white); padding: 80px 40px; }
-  .milo-sp-timeline { background: #fff; padding: 80px 40px; }
-  .milo-sp-marketing { background: var(--light-blue-bg); padding: 80px 40px; }
-  .milo-sp-manual { background: #fff; padding: 60px 40px; }
-  .milo-sp-reassure { background: var(--off-white); padding: 80px 40px; text-align: center; }
-  .milo-sp-cta { background: var(--orange); padding: 80px 40px; text-align: center; }
-
-  /* 8 pillars grid */
-  .milo-sp-pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
-  .milo-sp-pillar-card {
-    background: #fff; border-radius: 12px; padding: 24px 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-  }
-  .milo-sp-pillar-card .icon { font-size: 28px; margin-bottom: 10px; display: block; }
-  .milo-sp-pillar-card h3 { font-family: var(--body-font); font-size: 15px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
-  .milo-sp-pillar-card p { font-family: var(--body-font); font-size: 13px; color: #555; line-height: 1.55; margin: 0; }
-
-  /* Timeline */
-  .milo-sp-timeline-list { list-style: none; padding: 0; margin: 32px 0 0; position: relative; }
-  .milo-sp-timeline-list::before {
-    content: ''; position: absolute; left: 28px; top: 0; bottom: 0;
-    width: 3px; background: var(--light-green);
-  }
-  .milo-sp-timeline-item {
-    display: flex; gap: 24px; align-items: flex-start;
-    padding: 0 0 32px; position: relative;
-  }
-  .milo-sp-timeline-dot {
-    width: 56px; height: 56px; background: var(--orange); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; flex-shrink: 0; position: relative; z-index: 1;
-    box-shadow: 0 2px 12px rgba(255,130,0,0.3);
-  }
-  .milo-sp-timeline-content h3 { font-family: var(--body-font); font-size: 16px; font-weight: 700; color: var(--navy); margin: 8px 0 4px; }
-  .milo-sp-timeline-content p { font-family: var(--body-font); font-size: 14px; color: #555; line-height: 1.6; margin: 0; }
-  .milo-sp-timeline-content .phase { font-family: var(--body-font); font-size: 12px; font-weight: 700; color: var(--orange); letter-spacing: 1px; text-transform: uppercase; }
-
-  /* Marketing */
-  .milo-sp-check-list { list-style: none; padding: 0; margin: 16px 0 0; }
-  .milo-sp-check-list li {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-family: var(--body-font); font-size: 15px; color: #444; line-height: 1.6; padding: 6px 0;
-  }
-  .milo-sp-check-list li::before { content: "✅"; flex-shrink: 0; }
-
-  /* Ops manual card */
-  .milo-sp-manual-card {
-    background: #fff; border-left: 5px solid var(--navy); border-radius: 12px;
-    padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 780px; margin: 0 auto;
-  }
-  .milo-sp-manual-card .manual-header { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
-  .milo-sp-manual-card .manual-icon { font-size: 40px; }
-  .milo-sp-manual-card h3 { font-family: var(--title-font); font-size: 24px; font-weight: 800; color: var(--navy); margin: 0; }
-  .milo-sp-manual-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 32px; }
-  .milo-sp-manual-list li { font-family: var(--body-font); font-size: 14px; color: #444; padding: 4px 0; }
-  .milo-sp-manual-list li::before { content: "📌 "; }
-
-  @media (max-width: 1100px) {
-    .milo-sp-pillars-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 900px) {
-    .milo-sp-two-col { grid-template-columns: 1fr; gap: 32px; }
-    .milo-sp-hero h1 { font-size: 34px; }
-    .milo-sp-headline { font-size: 28px; }
-    .milo-sp-manual-list { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 600px) {
-    .milo-sp-pillars-grid { grid-template-columns: 1fr; }
-    .milo-sp-hero, .milo-sp-philosophy, .milo-sp-pillars, .milo-sp-timeline,
-    .milo-sp-marketing, .milo-sp-manual, .milo-sp-reassure, .milo-sp-cta { padding: 60px 20px; }
-  }
-</style>
-
-<!-- ===== HERO ===== -->
-<section class="milo-sp milo-sp-hero" data-milo-page="support">
-  <div class="milo-sp-hero-overlay"></div>
-  <div class="milo-sp-hero-content">
-    <span class="milo-sp-label milo-sp-label-green">Franchise Support</span>
-    <h1>You'll Never Have to Figure It Out Alone.</h1>
-    <h2>MILO Insulation franchise owners get comprehensive support at every stage — from your first phone call to your hundredth installation. Here's what's waiting for you on the other side of yes.</h2>
-    <a href="/contact" class="milo-sp-btn-primary">Request Franchise Information</a>
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow" style="color:#6fd49a;">Franchise Support</span>
+      <h1 style="color:#fff;">You'll Never Have to Figure It Out Alone.</h1>
+      <p class="lead" style="color:rgba(255,255,255,0.78);">MILO Insulation franchise owners get comprehensive support at every stage — from your first phone call to your hundredth installation.</p>
+      <a href="https://franchise.miloinsulation.com/contact" class="btn btn-primary btn-lg" style="margin-top:8px;">Request Franchise Information</a>
+    </div>
   </div>
 </section>
 
-<!-- ===== SUPPORT PHILOSOPHY ===== -->
-<section class="milo-sp milo-sp-philosophy">
-  <div class="milo-sp-container" style="max-width:800px;">
-    <h2 class="milo-sp-headline" style="text-align:center;">Our Support Doesn't Start When You Sign. It Starts Now.</h2>
-    <p class="milo-sp-body" style="text-align:center;font-size:17px;">From the moment you connect with our franchise team, you're in it with us. We guide, train, build, and grow alongside every MILO Insulation franchise owner — because your success is our success.</p>
-    <p class="milo-sp-body" style="text-align:center;font-size:17px;">We know what it takes to go from day one to grand opening to a fully-operating business. We've built the map. And now we walk it with you.</p>
+<!-- INTRO -->
+<section class="section section--off">
+  <div class="container text-center">
+    <span class="eyebrow">From Day One</span>
+    <h2>Our Support Doesn't Start When You Sign. It Starts Now.</h2>
+    <p class="lead" style="margin:20px auto;">From the moment you connect with our franchise team, you're in it with us. We guide, train, build, and grow alongside every MILO Insulation franchise owner — because your success is our success.</p>
   </div>
 </section>
 
-<!-- ===== 8 SUPPORT PILLARS ===== -->
-<section class="milo-sp milo-sp-pillars">
-  <div class="milo-sp-container">
-    <span class="milo-sp-label milo-sp-label-orange">What's Included</span>
-    <h2 class="milo-sp-headline">8 Ways MILO Insulation Has Your Back.</h2>
-    <div class="milo-sp-pillars-grid">
-      <div class="milo-sp-pillar-card">
-        <span class="icon">🌱</span>
-        <h3>Onboarding Support From Day One</h3>
-        <p>We're alongside you from the very beginning — guiding your territory selection, plant site evaluation, and all startup essentials so you start on solid ground.</p>
+<!-- 8 WAYS -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <span class="eyebrow">What's Included</span>
+      <h2>8 Ways MILO Insulation Has Your Back.</h2>
+    </div>
+    <div class="grid-4">
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px;">🏁</div>
+        <h4>Onboarding Support</h4>
+        <p style="font-size:0.88rem;">Territory selection, plant site evaluation, startup essentials from day one.</p>
       </div>
-      <div class="milo-sp-pillar-card">
-        <span class="icon">📋</span>
-        <h3>Complete Initial Training &amp; Startup Guidance</h3>
-        <p>Expert advice throughout your launch phase: site selection, equipment sourcing from franchise-approved vendors, technology setup, and all operational basics.</p>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px;">📚</div>
+        <h4>Initial Training</h4>
+        <p style="font-size:0.88rem;">Site selection, equipment sourcing, technology setup — complete and hands-on.</p>
       </div>
-      <div class="milo-sp-pillar-card">
-        <span class="icon">🏭</span>
-        <h3>Plant Design &amp; Construction Assistance</h3>
-        <p>Our experienced design and build team helps you develop your MILEX™ manufacturing space from the ground up — built to our specifications and optimized for efficiency.</p>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px;">🏗️</div>
+        <h4>Plant Design</h4>
+        <p style="font-size:0.88rem;">Build team helps design your MILEX manufacturing space for maximum efficiency.</p>
       </div>
-      <div class="milo-sp-pillar-card">
-        <span class="icon">📚</span>
-        <h3>Pre-Opening Training (In-Depth)</h3>
-        <p>Franchise owners, operating principals, and plant managers: <strong>14 days</strong> of comprehensive training. Extruder operators, installation foremen, and salespeople: <strong>8 days</strong> — both classroom and on-the-job.</p>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px;">🎓</div>
+        <h4>Pre-Opening Training</h4>
+        <p style="font-size:0.88rem;">Owners/managers: 14 days. Staff: 8 days. Both classroom and on-the-job.</p>
       </div>
-      <div class="milo-sp-pillar-card">
-        <span class="icon">🚀</span>
-        <h3>On-Site Grand Opening Support</h3>
-        <p>When your doors open, we're there. Our franchise team travels to your location for <strong>2 full days</strong> of live, on-site support to make sure you're calm, confident, and ready.</p>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px;">🚀</div>
+        <h4>Grand Opening Support</h4>
+        <p style="font-size:0.88rem;">MILO team travels to your location for 2 days of live launch support.</p>
       </div>
-      <div class="milo-sp-pillar-card">
-        <span class="icon">📖</span>
-        <h3>Confidential Operations Manual</h3>
-        <p>Access our complete proprietary procedures: manufacturing, sales, installation, reporting, quality control, marketing, supplier details, and more — everything you need to run a world-class operation.</p>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px;">📋</div>
+        <h4>Operations Manual</h4>
+        <p style="font-size:0.88rem;">Manufacturing, sales, installation, reporting, quality, marketing — all in one playbook.</p>
       </div>
-      <div class="milo-sp-pillar-card">
-        <span class="icon">📞</span>
-        <h3>Remote Support (Ongoing)</h3>
-        <p>An experienced franchise team is always a call or click away. Whether you're troubleshooting a process or scaling up, we're here — day or night.</p>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px;">📞</div>
+        <h4>Remote Support</h4>
+        <p style="font-size:0.88rem;">Expert team always a call or click away — day or night, ongoing.</p>
       </div>
-      <div class="milo-sp-pillar-card">
-        <span class="icon">🔄</span>
-        <h3>Ongoing Training &amp; Development</h3>
-        <p>Growth doesn't stop at opening. We provide regular updates, refresher training, and continued development for you and your staff — keeping you sharp and ahead of the curve.</p>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 16px;">📈</div>
+        <h4>Ongoing Development</h4>
+        <p style="font-size:0.88rem;">Regular refreshers and continued education for you and your entire staff.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== TRAINING TIMELINE ===== -->
-<section class="milo-sp milo-sp-timeline">
-  <div class="milo-sp-container">
-    <h2 class="milo-sp-headline">From Agreement to Grand Opening: Your Journey With Us.</h2>
-    <ul class="milo-sp-timeline-list">
-      <li class="milo-sp-timeline-item">
-        <div class="milo-sp-timeline-dot">📋</div>
-        <div class="milo-sp-timeline-content">
-          <span class="phase">Week 1–2</span>
-          <h3>Onboarding &amp; Territory Confirmation</h3>
-          <p>Onboarding, territory confirmation, and site selection. You're officially in the MILO family.</p>
-        </div>
-      </li>
-      <li class="milo-sp-timeline-item">
-        <div class="milo-sp-timeline-dot">🏭</div>
-        <div class="milo-sp-timeline-content">
-          <span class="phase">Week 3–8</span>
-          <h3>Plant Design &amp; Construction Support</h3>
-          <p>Our team helps design and develop your MILEX™ manufacturing facility to spec.</p>
-        </div>
-      </li>
-      <li class="milo-sp-timeline-item">
-        <div class="milo-sp-timeline-dot">📚</div>
-        <div class="milo-sp-timeline-content">
-          <span class="phase">Week 8–10</span>
-          <h3>Comprehensive Pre-Opening Training</h3>
-          <p>14 days for owners/managers | 8 days for operators, installers, and sales staff. Classroom + on-the-job.</p>
-        </div>
-      </li>
-      <li class="milo-sp-timeline-item">
-        <div class="milo-sp-timeline-dot">⚙️</div>
-        <div class="milo-sp-timeline-content">
-          <span class="phase">Week 10–12</span>
-          <h3>Equipment Setup &amp; Staff Preparation</h3>
-          <p>Equipment installed, technology integrated, and your team fully prepared to open confidently.</p>
-        </div>
-      </li>
-      <li class="milo-sp-timeline-item">
-        <div class="milo-sp-timeline-dot">🚀</div>
-        <div class="milo-sp-timeline-content">
-          <span class="phase">Grand Opening</span>
-          <h3>MILO Team On-Site — 2 Full Days</h3>
-          <p>Our franchise team is at your location, supporting you and your team for a smooth, confident opening day.</p>
-        </div>
-      </li>
-      <li class="milo-sp-timeline-item">
-        <div class="milo-sp-timeline-dot">🔄</div>
-        <div class="milo-sp-timeline-content">
-          <span class="phase">Ongoing</span>
-          <h3>Remote Support, Training &amp; Marketing</h3>
-          <p>We never stop supporting you. Ongoing guidance, training refreshers, and marketing campaigns throughout your franchise relationship.</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
+<hr class="divider" />
 
-<!-- ===== MARKETING SUPPORT ===== -->
-<section class="milo-sp milo-sp-marketing">
-  <div class="milo-sp-container">
-    <div class="milo-sp-two-col">
+<!-- TIMELINE -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="grid-2">
       <div>
-        <span class="milo-sp-label milo-sp-label-green">Marketing Support</span>
-        <h2 class="milo-sp-headline">We Help You Get Noticed in Your Market.</h2>
-        <p class="milo-sp-body">Building a customer base in a new territory requires smart, consistent marketing. MILO Insulation provides a full marketing support system — from branded materials and campaigns to ongoing brand fund contributions — so you can focus on operating while we help drive awareness.</p>
-        <ul class="milo-sp-check-list">
-          <li>Branded marketing materials and campaign templates</li>
-          <li>National brand marketing fund (1% of gross revenues)</li>
-          <li>Grand Opening marketing support (minimum $15,000 local investment)</li>
-          <li>Digital and local marketing guidance</li>
-          <li>Ongoing campaign development from the brand team</li>
+        <span class="eyebrow" style="color:#6fd49a;">Your Journey With Us</span>
+        <h2>From Agreement to Grand Opening.</h2>
+        <p style="color:rgba(255,255,255,0.72);margin:20px 0;">Every phase is mapped out so you always know what comes next. No surprises — just a clear path from signing to serving your first customer.</p>
+        <div class="timeline" style="margin-top:32px;">
+          <div class="timeline-item">
+            <div class="timeline-label">Week 1–2</div>
+            <h4 style="color:#fff;">Onboarding</h4>
+            <p>Territory selection, plant site evaluation, initial paperwork and team introductions.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-label">Week 3–8</div>
+            <h4 style="color:#fff;">Plant Build-Out</h4>
+            <p>Plant design and construction with MILEX support from our technical team.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-label">Week 8–10</div>
+            <h4 style="color:#fff;">Pre-Opening Training</h4>
+            <p>14 days for owners/managers, 8 days for staff — classroom and field training.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-label">Week 10–12</div>
+            <h4 style="color:#fff;">Equipment &amp; Hiring</h4>
+            <p>Equipment delivery, technology setup, hiring and staff preparation.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-label">Grand Opening</div>
+            <h4 style="color:#fff;">Launch Day</h4>
+            <p>MILO team on-site for 2 days of live launch support. Let's go!</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-label">Ongoing</div>
+            <h4 style="color:#fff;">Growth Phase</h4>
+            <p>Remote support, continuing training, marketing guidance, and peer community.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow" style="color:#6fd49a;">Marketing Support</span>
+        <h2>We Help You Get Noticed in Your Market.</h2>
+        <p style="color:rgba(255,255,255,0.72);margin:20px 0 28px;">You focus on delivering exceptional insulation. We help you build the demand.</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:36px;">
+          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:flex-start;gap:10px;"><span style="color:#6fd49a;margin-top:1px;">✓</span> Branded materials and campaign templates</li>
+          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:flex-start;gap:10px;"><span style="color:#6fd49a;margin-top:1px;">✓</span> National brand marketing fund (1% of gross revenues)</li>
+          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:flex-start;gap:10px;"><span style="color:#6fd49a;margin-top:1px;">✓</span> Grand Opening marketing (minimum $15,000 investment)</li>
+          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:flex-start;gap:10px;"><span style="color:#6fd49a;margin-top:1px;">✓</span> Digital and local marketing guidance</li>
+          <li style="color:rgba(255,255,255,0.72);font-size:0.95rem;display:flex;align-items:flex-start;gap:10px;"><span style="color:#6fd49a;margin-top:1px;">✓</span> Ongoing campaign development and optimization</li>
         </ul>
-      </div>
-      <div style="background:#fff;border-radius:12px;padding:36px;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-        <h3 style="font-family:var(--title-font);font-size:24px;color:var(--navy);margin:0 0 16px;">Marketing at a Glance</h3>
-        <div style="display:flex;flex-direction:column;gap:14px;">
-          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--off-white);border-radius:8px;">
-            <span style="font-size:28px;">📢</span>
-            <div>
-              <p style="font-family:var(--body-font);font-weight:700;color:var(--navy);margin:0;font-size:15px;">Grand Opening Campaign</p>
-              <p style="font-family:var(--body-font);font-size:13px;color:#666;margin:2px 0 0;">Minimum $15,000 local marketing investment</p>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--off-white);border-radius:8px;">
-            <span style="font-size:28px;">🌐</span>
-            <div>
-              <p style="font-family:var(--body-font);font-weight:700;color:var(--navy);margin:0;font-size:15px;">National Brand Fund</p>
-              <p style="font-family:var(--body-font);font-size:13px;color:#666;margin:2px 0 0;">1% of gross revenues invested in brand awareness</p>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--off-white);border-radius:8px;">
-            <span style="font-size:28px;">🎯</span>
-            <div>
-              <p style="font-family:var(--body-font);font-weight:700;color:var(--navy);margin:0;font-size:15px;">Local Marketing</p>
-              <p style="font-family:var(--body-font);font-size:13px;color:#666;margin:2px 0 0;">2% of monthly gross revenues (minimum)</p>
-            </div>
-          </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius);padding:28px;">
+          <h4 style="color:#fff;margin-bottom:8px;">The Confidential Operations Manual.</h4>
+          <p style="font-size:0.88rem;">Your franchise bible — manufacturing, sales, installation, reporting, quality control, suppliers, and brand standards. Everything you need, day one.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== OPERATIONS MANUAL ===== -->
-<section class="milo-sp milo-sp-manual">
-  <div class="milo-sp-container">
-    <div class="milo-sp-manual-card">
-      <div class="manual-header">
-        <span class="manual-icon">📖</span>
-        <div>
-          <h3>The MILO Insulation Confidential Operations Manual</h3>
-          <p style="font-family:var(--body-font);font-size:15px;color:#555;margin:8px 0 0;">Think of this as your franchise bible — a complete, proprietary guide to every aspect of your operation. Covered inside:</p>
-        </div>
+<!-- REASSURANCE -->
+<section class="section section--off">
+  <div class="container text-center">
+    <span class="eyebrow">Peace of Mind</span>
+    <h2>We've Thought of Everything So You Don't Have To.</h2>
+    <p class="lead" style="margin:20px auto 48px;">Every question you'll have, we've anticipated. Every challenge you'll face, we've already helped another owner navigate. You're not starting from scratch — you're starting from 30 years of experience.</p>
+    <div class="grid-3">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:3rem;margin-bottom:16px;">🎯</div>
+        <h3>Built for Your Success</h3>
+        <p>Our business model only works if you succeed. Every tool, system, and support structure is designed with your profitability in mind.</p>
       </div>
-      <ul class="milo-sp-manual-list">
-        <li>Manufacturing processes and quality standards</li>
-        <li>Sales procedures and customer communication scripts</li>
-        <li>Installation protocols and safety guidelines</li>
-        <li>Reporting requirements and performance metrics</li>
-        <li>Supplier contacts and approved vendor list</li>
-        <li>Marketing standards and brand guidelines</li>
-      </ul>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:3rem;margin-bottom:16px;">🤝</div>
+        <h3>Real Relationships</h3>
+        <p>This isn't a transactional franchise. We build real relationships with every owner — you're a partner, not a number.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:3rem;margin-bottom:16px;">🔄</div>
+        <h3>Always Improving</h3>
+        <p>We continuously refine the model based on owner feedback and market data. Your franchise keeps getting better.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== REASSURANCE ===== -->
-<section class="milo-sp milo-sp-reassure">
-  <div class="milo-sp-container" style="max-width:780px;">
-    <h2 class="milo-sp-headline" style="text-align:center;">We've Thought of Everything So You Don't Have To.</h2>
-    <p class="milo-sp-body" style="text-align:center;font-size:17px;">The thought of starting a new business can feel overwhelming — and we get that. That's exactly why we built a support system this comprehensive. Every question you'll have, we've anticipated. Every challenge you'll face, we've already helped another owner navigate.</p>
-    <p class="milo-sp-body" style="text-align:center;font-size:17px;font-weight:700;color:var(--navy);">You're not starting from scratch. You're starting from 30 years of experience.</p>
-  </div>
-</section>
-
-<!-- ===== FINAL CTA ===== -->
-<section class="milo-sp milo-sp-cta">
-  <div class="milo-sp-container" style="max-width:700px;">
-    <h2 style="font-family:var(--title-font);font-size:44px;font-weight:800;color:#fff;margin:0 0 16px;">Your Support System Is Ready. Are You?</h2>
-    <p style="font-family:var(--body-font);font-size:18px;color:rgba(255,255,255,0.92);line-height:1.6;margin:0 0 32px;">Request franchise information today and take the first step toward a business backed by a team that never stops working for you.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
-      <a href="/contact" class="milo-sp-btn-white">Request Franchise Information</a>
-      <a href="tel:8005748456" class="milo-sp-btn-white-outline">Call (800) 574-MILO</a>
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>Your Support System Is Ready. Are You?</h2>
+      <p class="lead" style="color:rgba(255,255,255,0.82);">Take the next step toward opening your own MILO Insulation location with a team that's with you at every turn.</p>
+      <div class="btn-group" style="justify-content:center;">
+        <a href="https://franchise.miloinsulation.com/contact" class="btn btn-gold btn-lg">Request Franchise Information</a>
+        <a href="tel:18005746456" class="btn btn-outline btn-lg">Call (800) 574-MILO</a>
+      </div>
     </div>
   </div>
 </section>
 
 
-<!-- FOOTER -->
 <footer id="milo-footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <img class="footer-brand-logo"
-             src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg"
-             alt="MILO Insulation Franchise" />
-        <p class="footer-brand-desc">
-          Franchising the future of eco-friendly, high-performance insulation
-          with patented MILEX™ sorghum-based technology. <em>Nature's Very Best.</em>
-        </p>
-        <p class="footer-tagline" style="margin-top:16px;">Nature's Very Best</p>
+        <img class="footer-brand-logo" src="https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg" alt="MILO Insulation" />
+        <p class="footer-brand-desc">Franchising the future of eco-friendly, high-performance insulation with MILEX sorghum-based technology.</p>
       </div>
       <div class="footer-col">
         <h5>Navigate</h5>
         <a href="https://franchise.miloinsulation.com/home">Home</a>
-        <a href="https://franchise.miloinsulation.com/about">About MILO</a>
+        <a href="https://franchise.miloinsulation.com/about">About</a>
         <a href="https://franchise.miloinsulation.com/opportunity">Opportunity</a>
-        <a href="https://franchise.miloinsulation.com/support">Franchisee Support</a>
+        <a href="https://franchise.miloinsulation.com/support">Support</a>
         <a href="https://franchise.miloinsulation.com/faq">FAQ</a>
-        <a href="https://franchise.miloinsulation.com/contact">Contact / Get Started</a>
+        <a href="https://franchise.miloinsulation.com/contact">Contact</a>
       </div>
       <div class="footer-col">
-        <h5>Available Markets</h5>
-        <a href="https://franchise.miloinsulation.com/midland-odessa">Midland-Odessa, TX</a>
-        <a href="https://franchise.miloinsulation.com/tulsa">Tulsa, OK</a>
-        <a href="https://franchise.miloinsulation.com/fayetteville">Fayetteville, AR</a>
-        <a href="https://franchise.miloinsulation.com/opportunity">View All Territories →</a>
+        <h5>Markets</h5>
+        <a href="https://franchise.miloinsulation.com/midland-odessa">Midland-Odessa</a>
+        <a href="https://franchise.miloinsulation.com/tulsa">Tulsa</a>
+        <a href="https://franchise.miloinsulation.com/fayetteville">Fayetteville</a>
+        <a href="https://franchise.miloinsulation.com/opportunity">All Territories</a>
       </div>
       <div class="footer-col footer-contact">
-        <h5>Contact Us</h5>
-        <p>📞 <a href="tel:8005748456" style="color:rgba(255,255,255,0.65)">(800) 574-MILO</a></p>
-        <p>✉️ <a href="mailto:franchise@miloinsulation.com" style="color:rgba(255,255,255,0.65)">franchise@miloinsulation.com</a></p>
+        <h5>Contact</h5>
+        <p>📞 (800) 574-MILO</p>
+        <p>✉️ franchise@miloinsulation.com</p>
         <p>🕐 Mon–Fri, 9am–5pm CT</p>
-        <a href="https://franchise.miloinsulation.com/contact"
-           style="display:inline-block;margin-top:16px;background:var(--orange);color:#fff;
-                  font-family:var(--font-head);font-weight:700;font-size:0.82rem;
-                  letter-spacing:0.06em;text-transform:uppercase;padding:10px 20px;border-radius:6px;">
-          Get Started →
-        </a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 MILO Franchising, LLC. All rights reserved. | This information is not an offer to sell a franchise.</span>
+      <span class="footer-copy">© 2026 MILO Franchising, LLC. All rights reserved.</span>
       <div class="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
@@ -547,6 +636,6 @@
   </div>
 </footer>
 
-</div>
+
 </body>
 </html>
