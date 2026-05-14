@@ -402,7 +402,13 @@ body { padding-top: 72px; }
   .nav-links.open { display: flex; }
 }
 
-  </style>
+  
+/* MILO Mascot */
+.milo-mascot { pointer-events: none; user-select: none; }
+.milo-mascot img { display: block; max-width: 100%; height: auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.15)); }
+@media (max-width: 768px) { .milo-mascot { display: none !important; } }
+.milo-about { position: absolute; left: -20px; bottom: -10px; width: 160px; opacity: 0.9; }
+</style>
 </head>
 <body>
 <nav id="milo-nav">
@@ -552,6 +558,7 @@ body { padding-top: 72px; }
   <div class="container">
     <div class="text-center" style="margin-bottom:48px;">
       <span class="eyebrow">What People Are Saying</span>
+        <div class="milo-mascot milo-about"><img src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@b2a9fb2/images/mascot/milo-12.png" alt="MILO mascot" loading="lazy" /></div>
       <h2>Trusted by Customers. Recognized by the Industry.</h2>
     </div>
     <div class="grid-3">

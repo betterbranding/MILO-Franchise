@@ -402,7 +402,13 @@ body { padding-top: 72px; }
   .nav-links.open { display: flex; }
 }
 
-  </style>
+  
+/* MILO Mascot */
+.milo-mascot { pointer-events: none; user-select: none; }
+.milo-mascot img { display: block; max-width: 100%; height: auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.15)); }
+@media (max-width: 768px) { .milo-mascot { display: none !important; } }
+.milo-support { width: 140px; margin: 0 auto 20px; opacity: 0.92; }
+</style>
 </head>
 <body>
 <nav id="milo-nav">
@@ -608,6 +614,7 @@ body { padding-top: 72px; }
 <section class="section">
   <div class="container">
     <div class="cta-banner">
+      <div class="milo-mascot milo-support"><img src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@b2a9fb2/images/mascot/milo-3.png" alt="MILO mascot" loading="lazy" /></div>
       <h2>Your Support System Is Ready. Are You?</h2>
       <p class="lead" style="color:rgba(255,255,255,0.82);">Take the next step toward opening your own MILO Insulation location with a team that's with you at every turn.</p>
       <div class="btn-group" style="justify-content:center;">

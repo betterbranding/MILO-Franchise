@@ -402,7 +402,13 @@ body { padding-top: 72px; }
   .nav-links.open { display: flex; }
 }
 
-  </style>
+  
+/* MILO Mascot */
+.milo-mascot { pointer-events: none; user-select: none; }
+.milo-mascot img { display: block; max-width: 100%; height: auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.15)); }
+@media (max-width: 768px) { .milo-mascot { display: none !important; } }
+.milo-home { position: absolute; right: -30px; bottom: -20px; width: 200px; opacity: 0.92; }
+</style>
 </head>
 <body>
 <nav id="milo-nav">
@@ -496,7 +502,7 @@ body { padding-top: 72px; }
 </section>
 
 <!-- MILEX PRODUCT -->
-<section class="section">
+<section class="section" style="position:relative;overflow:visible;">
   <div class="container text-center">
     <span class="eyebrow">Patented Technology</span>
     <h2>We Turned a Sorghum Seed Into the Insulation of the Future.</h2>
@@ -523,7 +529,8 @@ body { padding-top: 72px; }
         <p>From technical training to marketing, sales, and operations — our team walks with you through every phase.</p>
       </div>
     </div>
-  </div>
+  <div class="milo-mascot milo-home"><img src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@b2a9fb2/images/mascot/milo-1.png" alt="MILO mascot" loading="lazy" /></div>
+</div>
 </section>
 
 <hr class="divider" />

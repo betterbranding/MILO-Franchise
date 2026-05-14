@@ -402,7 +402,13 @@ body { padding-top: 72px; }
   .nav-links.open { display: flex; }
 }
 
-  </style>
+  
+/* MILO Mascot */
+.milo-mascot { pointer-events: none; user-select: none; }
+.milo-mascot img { display: block; max-width: 100%; height: auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.15)); }
+@media (max-width: 768px) { .milo-mascot { display: none !important; } }
+.milo-opportunity { position: absolute; right: -10px; bottom: -10px; width: 180px; opacity: 0.9; }
+</style>
 </head>
 <body>
 <nav id="milo-nav">
@@ -500,6 +506,7 @@ body { padding-top: 72px; }
     <div class="text-center" style="margin-bottom:48px;">
       <span class="eyebrow">Why MILO</span>
       <h2>What Makes the MILO Insulation Opportunity Different?</h2>
+      <div class="milo-mascot milo-opportunity"><img src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@b2a9fb2/images/mascot/milo-6.png" alt="MILO mascot" loading="lazy" /></div>
     </div>
     <div class="grid-3">
       <div class="card">

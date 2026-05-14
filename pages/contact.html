@@ -402,7 +402,13 @@ body { padding-top: 72px; }
   .nav-links.open { display: flex; }
 }
 
-  </style>
+  
+/* MILO Mascot */
+.milo-mascot { pointer-events: none; user-select: none; }
+.milo-mascot img { display: block; max-width: 100%; height: auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.15)); }
+@media (max-width: 768px) { .milo-mascot { display: none !important; } }
+.milo-contact { width: 130px; margin: 0 auto 16px; opacity: 0.9; }
+</style>
 </head>
 <body>
 <nav id="milo-nav">
@@ -522,6 +528,7 @@ body { padding-top: 72px; }
       <!-- CONTACT INFO -->
       <div>
         <span class="eyebrow">Prefer to Talk First?</span>
+        <div class="milo-mascot milo-contact"><img src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@b2a9fb2/images/mascot/milo-14.png" alt="MILO mascot" loading="lazy" /></div>
         <h2>We Love Talking to Prospective Owners.</h2>
         <p style="margin:16px 0 32px;">Reach out directly — our team will give you honest, no-pressure answers about everything from investment to territory availability.</p>
 
