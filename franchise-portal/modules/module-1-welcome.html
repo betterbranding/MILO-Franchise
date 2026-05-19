@@ -1,0 +1,167 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+.milo-portal{font-family:'Open Sans',sans-serif;color:#333;max-width:900px;margin:0 auto;padding:20px}
+.milo-portal h1,.milo-portal h2,.milo-portal h3,.milo-portal h4{font-family:'Montserrat',sans-serif}
+.milo-portal-header{background:#1B2A4A;color:#fff;padding:40px;border-radius:12px;margin-bottom:30px;text-align:center}
+.milo-portal-header h1{font-size:2rem;margin:12px 0 8px;font-weight:700}
+.milo-portal-header .subtitle{font-size:1.05rem;opacity:.85;margin-bottom:16px}
+.milo-portal-header .progress-note{display:inline-block;background:rgba(255,255,255,.12);padding:10px 22px;border-radius:30px;font-size:.92rem;margin-top:6px}
+.module-badge{display:inline-block;background:#E87722;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1.5px;padding:6px 18px;border-radius:30px;text-transform:uppercase}
+.content-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:30px;margin-bottom:20px}
+.section-title{font-size:1.35rem;font-weight:700;color:#1B2A4A;padding-bottom:10px;border-bottom:3px solid #E87722;margin-bottom:20px;margin-top:10px}
+.info-box{background:#FFF8F0;border-left:4px solid #E87722;border-radius:0 12px 12px 0;padding:18px 24px;margin-bottom:20px;font-size:.95rem;line-height:1.6}
+.info-box strong{color:#1B2A4A}
+.contacts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.contact-card{background:#F5F6FA;border-radius:10px;padding:20px;text-align:center}
+.contact-card .contact-icon{font-size:2rem;margin-bottom:8px}
+.contact-card h4{color:#1B2A4A;margin-bottom:4px}
+.contact-card p{font-size:.88rem;color:#666;margin:0}
+.step-list{list-style:none;counter-reset:step-counter;padding:0}
+.step-list li{counter-increment:step-counter;display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid #eee;font-size:.97rem;line-height:1.55}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:counter(step-counter);flex-shrink:0;width:36px;height:36px;background:#1B2A4A;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem}
+.cta-button{display:inline-block;background:#E87722;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;padding:14px 32px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;text-align:center}
+.cta-button:hover{background:#D16A1E}
+.timeline-bar{display:flex;gap:0;margin:20px 0}
+.timeline-bar .week{flex:1;text-align:center;padding:14px 8px;background:#F5F6FA;border:1px solid #e0e0e0;font-size:.85rem;font-weight:600;color:#1B2A4A}
+.timeline-bar .week:first-child{border-radius:12px 0 0 12px}
+.timeline-bar .week:last-child{border-radius:0 12px 12px 0}
+.timeline-bar .week span{display:block;font-weight:400;font-size:.8rem;color:#888;margin-top:4px}
+.mascot-guide{display:flex;align-items:center;gap:18px;background:#1B2A4A;border-radius:14px;padding:20px 24px;margin:20px 0;color:#fff}
+.mascot-guide img{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:3px solid #E87722}
+.mascot-guide .mascot-text{flex:1;font-size:.95rem;line-height:1.6}
+.mascot-guide .mascot-text strong{color:#E87722}
+.mascot-header-img{width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid #E87722;margin:0 auto 12px}
+@media(max-width:640px){.milo-portal{padding:10px}.milo-portal-header{padding:28px 20px}.milo-portal-header h1{font-size:1.5rem}.contacts-grid{grid-template-columns:1fr}.content-card{padding:20px}}
+</style>
+
+<div class="milo-portal">
+
+  <div class="milo-portal-header">
+    <div class="module-badge">MODULE 1</div>
+    <img class="mascot-header-img" src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main/franchise-portal/mascot/pose-1.png" alt="MILO Mascot">
+    <h1>Welcome to MILO Insulation</h1>
+    <p class="subtitle">Your journey to building a successful sorghum-based insulation franchise starts here</p>
+    <div class="progress-note">✅ Complete all sections below to unlock the next module</div>
+  </div>
+
+  <!-- Welcome Message -->
+  <div class="content-card">
+    <h2 class="section-title">Welcome, Franchise Partner! 🎉</h2>
+    <p style="font-size:1.05rem;line-height:1.7;margin-bottom:16px;">
+      Congratulations on joining the <strong>MILO Insulation</strong> family! You're now part of a growing network of franchise owners providing <strong>MILEX — a sorghum-based, naturally better insulation</strong> — an eco-friendly, plant-based solution for homeowners and businesses across the country.
+    </p>
+    <p style="font-size:1.05rem;line-height:1.7;margin-bottom:16px;">
+      This onboarding portal will guide you through everything you need to know — from legal setup and equipment ordering to sales training and your grand opening. Our team is here to support you every step of the way.
+    </p>
+    <p style="font-size:1.05rem;line-height:1.7;">
+      Let's build something great together.
+    </p>
+    <p style="margin-top:16px;font-weight:600;color:#1B2A4A;">— The MILO Insulation Leadership Team</p>
+  </div>
+
+  <!-- Brand Story -->
+  <div class="content-card">
+    <h2 class="section-title">Our Mission</h2>
+    <p style="line-height:1.7;margin-bottom:14px;">
+      MILO Insulation was founded with a simple mission: <strong>make every home more comfortable, energy-efficient, and safe — using the power of nature</strong>. We specialize in one revolutionary product:
+    </p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin:16px 0;">
+      <div style="flex:1;min-width:280px;background:#F5F6FA;border-radius:12px;padding:24px;text-align:center;">
+        <div style="font-size:2.2rem;margin-bottom:8px;">🌾</div>
+        <h3 style="color:#1B2A4A;margin-bottom:6px;">MILEX Sorghum-Based Insulation</h3>
+        <p style="font-size:.9rem;color:#666;line-height:1.6;">A <strong>loose-fill, blown-in insulation</strong> made from American-grown <strong>grain sorghum (milo)</strong>. Plant-based, renewable, non-toxic, fire-resistant (self-extinguishing), pest-resistant, and mold-resistant. Naturally better insulation for attics, walls, crawl spaces, metal buildings, new construction, and retrofits.</p>
+      </div>
+    </div>
+    <div style="background:#E8F5E9;border-radius:12px;padding:20px 24px;margin-top:16px;">
+      <h4 style="color:#2E7D32;margin-bottom:8px;">🌍 Our Sustainability Story</h4>
+      <p style="font-size:.93rem;line-height:1.6;color:#555;">MILEX is made from <strong>grain sorghum</strong> — a drought-tolerant crop that uses less water than alternatives, grown right here in <strong>Texas by American farmers</strong>. By choosing MILO, your customers are choosing a truly sustainable, renewable insulation that supports American agriculture and reduces environmental impact. <strong>"Naturally Better Insulation."</strong></p>
+    </div>
+  </div>
+
+  <!-- MILO Says -->
+  <div class="mascot-guide">
+    <img src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main/franchise-portal/mascot/pose-1.png" alt="MILO Mascot">
+    <div class="mascot-text">
+      <strong>MILO says:</strong> "Welcome aboard, partner! You're joining a movement — not just a franchise. MILEX insulation is something truly different: safe for families, safe for the planet, and made right here in America from grain sorghum. I'm excited to guide you through every step!"
+    </div>
+  </div>
+
+  <!-- What to Expect -->
+  <div class="content-card">
+    <h2 class="section-title">What to Expect During Onboarding</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      Your onboarding is organized into <strong>9 sequential modules</strong>. Complete each module to unlock the next. Here's an overview:
+    </p>
+    <ol class="step-list">
+      <li><div><strong>Welcome to MILO</strong> — You are here! Get oriented with the brand and your portal.</div></li>
+      <li><div><strong>Legal & Business Setup</strong> — Form your business entity, secure insurance, and handle licensing.</div></li>
+      <li><div><strong>Contacts & Vendors</strong> — Meet your key suppliers and set up vendor accounts.</div></li>
+      <li><div><strong>Equipment Ordering</strong> — Order your sales/inspection gear and production equipment.</div></li>
+      <li><div><strong>Production Training</strong> — Learn MILEX sorghum-based insulation, processing techniques, and safety protocols.</div></li>
+      <li><div><strong>Sales Process</strong> — Master home inspections, quoting, and closing deals.</div></li>
+      <li><div><strong>CRM & Operations</strong> — Set up JobNimbus and learn your day-to-day operational tools.</div></li>
+      <li><div><strong>Marketing Setup</strong> — Build your local brand presence and marketing engine.</div></li>
+      <li><div><strong>Launch Checklist</strong> — Final checks, 30/60/90-day goals, and your grand opening plan.</div></li>
+    </ol>
+  </div>
+
+  <!-- Timeline -->
+  <div class="content-card">
+    <h2 class="section-title">⏱️ Timeline Expectations</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      Target completion: <strong>2–4 weeks</strong>. Here's a suggested pace:
+    </p>
+    <div class="timeline-bar">
+      <div class="week" style="background:#E8772233;">Week 1 <span>Modules 1–3</span></div>
+      <div class="week" style="background:#E8772244;">Week 2 <span>Modules 4–5</span></div>
+      <div class="week" style="background:#E8772255;">Week 3 <span>Modules 6–7</span></div>
+      <div class="week" style="background:#E87722;color:#fff;">Week 4 <span>Modules 8–9 + Launch!</span></div>
+    </div>
+    <div class="info-box" style="margin-top:20px;">
+      <strong>💡 Tip:</strong> Some modules involve waiting for deliveries or account approvals. Start those tasks early and move to the next module while you wait.
+    </div>
+  </div>
+
+  <!-- Key Contacts -->
+  <div class="content-card">
+    <h2 class="section-title">Key Contacts</h2>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <div class="contact-icon">🏢</div>
+        <h4>Corporate Support</h4>
+        <p>General questions, escalations, and franchise operations</p>
+        <p style="margin-top:8px;font-weight:600;color:#E87722;">support@miloinsulation.com</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🎓</div>
+        <h4>Training Team</h4>
+        <p>Onboarding guidance, production training, and certification</p>
+        <p style="margin-top:8px;font-weight:600;color:#E87722;">training@miloinsulation.com</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📦</div>
+        <h4>Supply Chain</h4>
+        <p>Equipment orders, vendor setup, and supply questions</p>
+        <p style="margin-top:8px;font-weight:600;color:#E87722;">supply@miloinsulation.com</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Your Territory -->
+  <div class="content-card">
+    <h2 class="section-title">🗺️ Your Territory</h2>
+    <div style="background:#F5F6FA;border-radius:12px;padding:40px;text-align:center;color:#888;">
+      <div style="font-size:3rem;margin-bottom:12px;">📍</div>
+      <h3 style="color:#1B2A4A;margin-bottom:8px;">Territory Details</h3>
+      <p>Your exclusive territory information will be displayed here once your franchise agreement is finalized.</p>
+      <p style="margin-top:12px;">Territory map, zip codes, and market data will be provided by corporate.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="text-align:center;margin:30px 0 10px;">
+    <a class="cta-button" href="#">Continue to Module 2: Legal & Business Setup →</a>
+  </div>
+
+</div>

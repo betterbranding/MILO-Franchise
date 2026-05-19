@@ -1,0 +1,257 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+.milo-portal{font-family:'Open Sans',sans-serif;color:#333;max-width:900px;margin:0 auto;padding:20px}
+.milo-portal h1,.milo-portal h2,.milo-portal h3,.milo-portal h4{font-family:'Montserrat',sans-serif}
+.milo-portal-header{background:#1B2A4A;color:#fff;padding:40px;border-radius:12px;margin-bottom:30px;text-align:center}
+.milo-portal-header h1{font-size:2rem;margin:12px 0 8px;font-weight:700}
+.milo-portal-header .subtitle{font-size:1.05rem;opacity:.85;margin-bottom:16px}
+.milo-portal-header .progress-note{display:inline-block;background:rgba(255,255,255,.12);padding:10px 22px;border-radius:30px;font-size:.92rem;margin-top:6px}
+.module-badge{display:inline-block;background:#E87722;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1.5px;padding:6px 18px;border-radius:30px;text-transform:uppercase}
+.content-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:30px;margin-bottom:20px}
+.section-title{font-size:1.35rem;font-weight:700;color:#1B2A4A;padding-bottom:10px;border-bottom:3px solid #E87722;margin-bottom:20px;margin-top:10px}
+.info-box{background:#FFF8F0;border-left:4px solid #E87722;border-radius:0 12px 12px 0;padding:18px 24px;margin-bottom:20px;font-size:.95rem;line-height:1.6}
+.info-box strong{color:#1B2A4A}
+.vendor-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:28px 30px;margin-bottom:18px;display:flex;gap:22px;align-items:flex-start;border-left:4px solid #E87722}
+.vendor-card .vendor-logo{width:72px;height:72px;border-radius:10px;background:#F5F6FA;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0}
+.vendor-card .vendor-info{flex:1}
+.vendor-card .vendor-info h3{font-size:1.1rem;margin-bottom:4px;color:#1B2A4A}
+.vendor-card .vendor-info p{font-size:.93rem;line-height:1.55;margin:0 0 6px}
+.vendor-card .vendor-actions{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.vendor-card .vendor-status{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:.88rem;color:#888}
+.vendor-card .vendor-status input[type="checkbox"]{width:18px;height:18px;accent-color:#E87722}
+.cta-button{display:inline-block;background:#E87722;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;padding:14px 32px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;text-align:center}
+.cta-button.small{padding:8px 18px;font-size:.85rem}
+.action-tag{display:inline-block;background:#F5F6FA;padding:4px 12px;border-radius:6px;font-size:.82rem;color:#1B2A4A;font-weight:600}
+.mascot-guide{display:flex;align-items:center;gap:18px;background:#1B2A4A;border-radius:14px;padding:20px 24px;margin:20px 0;color:#fff}
+.mascot-guide img{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:3px solid #E87722}
+.mascot-guide .mascot-text{flex:1;font-size:.95rem;line-height:1.6}
+.mascot-guide .mascot-text strong{color:#E87722}
+.mascot-header-img{width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid #E87722;margin:0 auto 12px}
+@media(max-width:640px){.milo-portal{padding:10px}.milo-portal-header{padding:28px 20px}.milo-portal-header h1{font-size:1.5rem}.vendor-card{flex-direction:column}.content-card{padding:20px}}
+</style>
+
+<div class="milo-portal">
+
+  <div class="milo-portal-header">
+    <div class="module-badge">MODULE 3</div>
+    <h1>Contacts & Vendors</h1>
+    <p class="subtitle">Meet your key suppliers and set up vendor accounts for your franchise</p>
+    <div class="progress-note">✅ Complete all sections below to unlock the next module</div>
+  </div>
+
+  <div class="info-box">
+    <strong>📋 Action Required:</strong> Set up accounts with each vendor below. Check off each vendor once your account is active. Some accounts may take 1–3 business days for approval.
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">🏗️ Building Supplies</h2>
+
+    <!-- Home Depot PRO -->
+    <div class="vendor-card">
+      <div class="vendor-logo">🏠</div>
+      <div class="vendor-info">
+        <h3>Home Depot PRO</h3>
+        <p><strong>Supplies:</strong> Building supplies, construction materials, tools, and hardware</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Set up PRO account</span>
+          <span class="action-tag">Link business tax ID</span>
+          <span class="action-tag">Request PRO Xtra loyalty</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Account setup complete</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lowe's PRO -->
+    <div class="vendor-card">
+      <div class="vendor-logo">🔧</div>
+      <div class="vendor-info">
+        <h3>Lowe's PRO</h3>
+        <p><strong>Supplies:</strong> Building supplies, construction materials, and project essentials</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Set up PRO account</span>
+          <span class="action-tag">Register for MVPs PRO Rewards</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Account setup complete</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amazon Business -->
+    <div class="vendor-card">
+      <div class="vendor-logo">📦</div>
+      <div class="vendor-info">
+        <h3>Amazon Business</h3>
+        <p><strong>Supplies:</strong> Miscellaneous supplies, office equipment, safety gear, and field tools</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Set up Business account</span>
+          <span class="action-tag">Add business payment method</span>
+          <span class="action-tag">Enable tax-exempt purchasing</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Account setup complete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">⚙️ Equipment Suppliers</h2>
+
+    <!-- AFCAT USA -->
+    <div class="vendor-card">
+      <div class="vendor-logo">🌀</div>
+      <div class="vendor-info">
+        <h3>AFCAT USA</h3>
+        <p><strong>Supplies:</strong> MILEX Blower & Vacuum equipment for blowing MILEX sorghum-based insulation into cavities</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Contact for equipment quote</span>
+          <span class="action-tag">Schedule delivery timeline</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Account setup complete</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maddox Metal Works -->
+    <div class="vendor-card">
+      <div class="vendor-logo">🔩</div>
+      <div class="vendor-info">
+        <h3>Maddox Metal Works</h3>
+        <p><strong>Supplies:</strong> MX-750 Extruder — Primary production machine for processing and extruding sorghum-based MILEX insulation pellets</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Contact for equipment order</span>
+          <span class="action-tag">Confirm specs & delivery</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Account setup complete</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RAM Bags -->
+    <div class="vendor-card">
+      <div class="vendor-logo">🎒</div>
+      <div class="vendor-info">
+        <h3>RAM Bags</h3>
+        <p><strong>Supplies:</strong> Equipment bags and carriers for transporting tools and gear to job sites</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Browse product catalog</span>
+          <span class="action-tag">Place initial order</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Order placed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">🧱 Insulation Materials</h2>
+
+    <!-- Gemini Insulation Supply -->
+    <div class="vendor-card">
+      <div class="vendor-logo">🧱</div>
+      <div class="vendor-info">
+        <h3>Gemini Insulation Supply</h3>
+        <p><strong>Supplies:</strong> MILEX sorghum-based insulation material and application accessories</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Set up wholesale account</span>
+          <span class="action-tag">Request product catalog</span>
+          <span class="action-tag">Confirm pricing & delivery schedule</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Account setup complete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MILO Says -->
+  <div class="mascot-guide">
+    <img src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main/franchise-portal/mascot/pose-5.png" alt="MILO Mascot">
+    <div class="mascot-text">
+      <strong>MILO says:</strong> "These vendors are your partners in success! Getting your accounts set up early means you'll be ready to hit the ground running when it's time to order equipment and materials. Don't hesitate to reach out to our supply chain team if you need introductions."
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">👕 Branding & Marketing</h2>
+
+    <!-- Fierce Threads -->
+    <div class="vendor-card">
+      <div class="vendor-logo">👕</div>
+      <div class="vendor-info">
+        <h3>Fierce Threads</h3>
+        <p><strong>Supplies:</strong> MILO branded apparel — shirts, polos, hats, and jackets</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Browse MILO apparel catalog</span>
+          <span class="action-tag">Place initial uniform order</span>
+          <span class="action-tag">Confirm sizing & quantities</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Initial order placed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Better Branding -->
+    <div class="vendor-card">
+      <div class="vendor-logo">🎨</div>
+      <div class="vendor-info">
+        <h3>Better Branding</h3>
+        <p><strong>Supplies:</strong> Print materials, marketing collateral, business cards, door hangers, flyers, and signage</p>
+        <p><strong>Action Items:</strong></p>
+        <div class="vendor-actions">
+          <span class="action-tag">Review template options</span>
+          <span class="action-tag">Order business cards</span>
+          <span class="action-tag">Order marketing materials</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Initial order placed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h2 class="section-title">📍 Local Suppliers</h2>
+
+    <!-- Local Suppliers -->
+    <div class="vendor-card">
+      <div class="vendor-logo">📍</div>
+      <div class="vendor-info">
+        <h3>Local / Territory-Specific Suppliers</h3>
+        <p><strong>Supplies:</strong> Territory-specific building materials, hardware, and specialty items</p>
+        <p>Your corporate support team will help identify local suppliers in your territory for items that are more cost-effective to source locally.</p>
+        <div class="vendor-actions">
+          <span class="action-tag">Discuss with corporate</span>
+          <span class="action-tag">Research local options</span>
+        </div>
+        <div class="vendor-status">
+          <input type="checkbox"> <span>Local suppliers identified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>💡 Need help?</strong> Contact the Supply Chain team at <strong>supply@miloinsulation.com</strong> for vendor introductions, account setup assistance, or questions about any supplier.
+  </div>
+
+  <div style="text-align:center;margin:30px 0 10px;">
+    <a class="cta-button" href="#">Continue to Module 4: Equipment Ordering →</a>
+  </div>
+
+</div>
