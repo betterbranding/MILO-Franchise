@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MILO Franchisee Portal</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #f9fafb; }
+</style>
+</head>
+<body>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+.milo-portal{font-family:'Open Sans',sans-serif;color:#333;max-width:900px;margin:0 auto;padding:20px}
+.milo-portal h1,.milo-portal h2,.milo-portal h3,.milo-portal h4{font-family:'Montserrat',sans-serif}
+.milo-portal-header{background:#1B2A4A;color:#fff;padding:40px;border-radius:12px;margin-bottom:30px;text-align:center}
+.milo-portal-header h1{font-size:2rem;margin:12px 0 8px;font-weight:700}
+.milo-portal-header .subtitle{font-size:1.05rem;opacity:.85;margin-bottom:16px}
+.milo-portal-header .progress-note{display:inline-block;background:rgba(255,255,255,.12);padding:10px 22px;border-radius:30px;font-size:.92rem;margin-top:6px}
+.module-badge{display:inline-block;background:#E87722;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1.5px;padding:6px 18px;border-radius:30px;text-transform:uppercase}
+.content-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:30px;margin-bottom:20px}
+.section-title{font-size:1.35rem;font-weight:700;color:#1B2A4A;padding-bottom:10px;border-bottom:3px solid #E87722;margin-bottom:20px;margin-top:10px}
+.info-box{background:#FFF8F0;border-left:4px solid #E87722;border-radius:0 12px 12px 0;padding:18px 24px;margin-bottom:20px;font-size:.95rem;line-height:1.6}
+.info-box strong{color:#1B2A4A}
+.step-list{list-style:none;counter-reset:step-counter;padding:0}
+.step-list li{counter-increment:step-counter;display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid #eee;font-size:.97rem;line-height:1.55}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:counter(step-counter);flex-shrink:0;width:36px;height:36px;background:#1B2A4A;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem}
+.pipeline-stage{display:flex;align-items:center;gap:12px;padding:14px 18px;margin-bottom:8px;background:#F5F6FA;border-radius:10px;border-left:4px solid #E87722}
+.pipeline-stage .stage-num{background:#1B2A4A;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;flex-shrink:0}
+.pipeline-stage .stage-info h4{color:#1B2A4A;margin-bottom:2px;font-size:.95rem}
+.pipeline-stage .stage-info p{font-size:.85rem;color:#666;margin:0}
+.cta-button{display:inline-block;background:#E87722;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;padding:14px 32px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;text-align:center}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.kpi-card{background:#F5F6FA;border-radius:10px;padding:20px;text-align:center}
+.kpi-card .kpi-icon{font-size:1.8rem;margin-bottom:6px}
+.kpi-card h4{color:#1B2A4A;font-size:.9rem;margin-bottom:4px}
+.kpi-card p{font-size:.82rem;color:#666;margin:0}
+.mascot-guide{display:flex;align-items:center;gap:18px;background:#1B2A4A;border-radius:14px;padding:20px 24px;margin:20px 0;color:#fff}
+.mascot-guide img{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:3px solid #E87722}
+.mascot-guide .mascot-text{flex:1;font-size:.95rem;line-height:1.6}
+.mascot-guide .mascot-text strong{color:#E87722}
+.mascot-header-img{width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid #E87722;margin:0 auto 12px}
+@media(max-width:640px){.milo-portal{padding:10px}.milo-portal-header{padding:28px 20px}.milo-portal-header h1{font-size:1.5rem}.content-card{padding:20px}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<div class="milo-portal">
+
+  <div class="milo-portal-header">
+    <div class="module-badge">MODULE 7</div>
+    <h1>CRM & Operations</h1>
+    <p class="subtitle">Set up JobNimbus and master your day-to-day operational workflows</p>
+    <div class="progress-note">✅ Complete all sections below to unlock the next module</div>
+  </div>
+
+  <!-- MILO Says -->
+  <div class="mascot-guide">
+    <img src="mascot/pose-8.png" alt="MILO Mascot">
+    <div class="mascot-text">
+      <strong>MILO says:</strong> "Your CRM is the command center of your business! 👇 JobNimbus keeps everything organized — from the first lead to the final invoice. Set it up right now and you'll thank yourself later. Every lead, every job, every dollar — all in one place."
+    </div>
+  </div>
+
+  <!-- JobNimbus Setup -->
+  <div class="content-card">
+    <h2 class="section-title">⚡ JobNimbus Setup & Login</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      JobNimbus is your all-in-one CRM and project management platform. It's where you'll manage leads, schedule jobs, create invoices, and track your entire business.
+    </p>
+    <ol class="step-list">
+      <li><div><strong>Accept your invitation</strong> — Check your email for the JobNimbus team invitation from MILO corporate.</div></li>
+      <li><div><strong>Set up your profile</strong> — Add your name, photo, contact info, and territory details.</div></li>
+      <li><div><strong>Download the mobile app</strong> — Available on iOS and Android. Essential for field work.</div></li>
+      <li><div><strong>Configure notifications</strong> — Set up push notifications for new leads, appointment reminders, and task alerts.</div></li>
+      <li><div><strong>Review pre-built workflows</strong> — MILO has pre-configured your pipeline stages and templates. Familiarize yourself with each.</div></li>
+    </ol>
+    <div class="info-box" style="margin-top:16px;">
+      <strong>🔑 Login Issues?</strong> Contact the training team at training@miloinsulation.com if you need help accessing your JobNimbus account.
+    </div>
+  </div>
+
+  <!-- Pipeline Stages -->
+  <div class="content-card">
+    <h2 class="section-title">📊 Pipeline Stages</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      Every lead and job moves through these stages. Keep your pipeline updated in real-time for accurate reporting.
+    </p>
+
+    <div class="pipeline-stage">
+      <div class="stage-num">1</div>
+      <div class="stage-info">
+        <h4>New Lead</h4>
+        <p>Incoming inquiry — web form, phone call, or referral. Contact within 5 minutes.</p>
+      </div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-num">2</div>
+      <div class="stage-info">
+        <h4>Appointment Scheduled</h4>
+        <p>Home inspection appointment booked. Send confirmation to homeowner.</p>
+      </div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-num">3</div>
+      <div class="stage-info">
+        <h4>Inspection Complete</h4>
+        <p>Inspection done, findings documented, preparing proposal.</p>
+      </div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-num">4</div>
+      <div class="stage-info">
+        <h4>Proposal Sent</h4>
+        <p>Quote/proposal delivered to homeowner. Follow-up schedule begins.</p>
+      </div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-num">5</div>
+      <div class="stage-info">
+        <h4>Contract Signed</h4>
+        <p>Customer accepted. Deposit collected. Ready to schedule installation.</p>
+      </div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-num">6</div>
+      <div class="stage-info">
+        <h4>Job Scheduled</h4>
+        <p>Installation date set. MILEX materials ordered. Crew assigned.</p>
+      </div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-num">7</div>
+      <div class="stage-info">
+        <h4>In Progress</h4>
+        <p>Installation underway. Update status as work progresses.</p>
+      </div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-num">8</div>
+      <div class="stage-info">
+        <h4>Job Complete</h4>
+        <p>Work finished. Final inspection passed. Photos documented.</p>
+      </div>
+    </div>
+    <div class="pipeline-stage">
+      <div class="stage-num">9</div>
+      <div class="stage-info">
+        <h4>Invoiced / Paid</h4>
+        <p>Final invoice sent and payment collected. Request review.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lead Management -->
+  <div class="content-card">
+    <h2 class="section-title">📥 Lead Management Workflow</h2>
+    <ol class="step-list">
+      <li><div><strong>Instant response</strong> — Respond to every new lead within 5 minutes. Speed-to-lead is the #1 factor in conversion.</div></li>
+      <li><div><strong>Qualify the lead</strong> — Confirm they're a homeowner in your territory. Ask about their insulation concerns.</div></li>
+      <li><div><strong>Book the appointment</strong> — Schedule the inspection. Aim for within 48 hours of first contact.</div></li>
+      <li><div><strong>Log everything</strong> — Record all communication, notes, and status changes in JobNimbus.</div></li>
+      <li><div><strong>Follow the pipeline</strong> — Move the contact through stages as you progress. Never leave a lead stuck.</div></li>
+    </ol>
+  </div>
+
+  <!-- Scheduling -->
+  <div class="content-card">
+    <h2 class="section-title">📅 Job Scheduling & Calendar</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">Use the JobNimbus calendar to manage your schedule:</p>
+    <ul style="padding-left:20px;line-height:2.2;">
+      <li><strong>Block inspection times</strong> — Set regular windows for home inspections (e.g., mornings)</li>
+      <li><strong>Schedule installations</strong> — Allow adequate time per job based on scope</li>
+      <li><strong>Set travel buffers</strong> — Account for travel time between appointments</li>
+      <li><strong>Sync with your phone</strong> — JobNimbus calendar syncs with Google/Apple calendars</li>
+      <li><strong>Automated reminders</strong> — Customers receive appointment reminders automatically</li>
+    </ul>
+  </div>
+
+  <!-- Invoicing -->
+  <div class="content-card">
+    <h2 class="section-title">💳 Invoicing & Payments</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      JobNimbus handles your invoicing and payment collection:
+    </p>
+    <ul style="padding-left:20px;line-height:2.2;">
+      <li><strong>Create invoices</strong> from approved proposals with one click</li>
+      <li><strong>Accept payments</strong> via credit card, ACH, and check</li>
+      <li><strong>Collect deposits</strong> at contract signing (typically 50%)</li>
+      <li><strong>Send final invoices</strong> upon job completion for remaining balance</li>
+      <li><strong>Track payment status</strong> and send automated payment reminders</li>
+      <li><strong>Export to accounting</strong> for QuickBooks/Xero integration</li>
+    </ul>
+  </div>
+
+  <!-- Customer Tracking -->
+  <div class="content-card">
+    <h2 class="section-title">💬 Customer Communication Tracking</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      Log every customer interaction in JobNimbus to maintain a complete history:
+    </p>
+    <ul style="padding-left:20px;line-height:2.2;">
+      <li>Phone calls — log duration and key discussion points</li>
+      <li>Text messages — sent directly through JobNimbus</li>
+      <li>Emails — sync your email for automatic logging</li>
+      <li>In-person meetings — add notes after every appointment</li>
+      <li>Photos and documents — attach to the job record</li>
+    </ul>
+  </div>
+
+  <!-- KPIs -->
+  <div class="content-card">
+    <h2 class="section-title">📈 Reporting & KPIs</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">Track these key metrics weekly in your JobNimbus dashboard:</p>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon">📞</div>
+        <h4>Leads Generated</h4>
+        <p>Total new leads per week</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📅</div>
+        <h4>Appointments Set</h4>
+        <p>Inspections booked per week</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📝</div>
+        <h4>Proposals Sent</h4>
+        <p>Quotes delivered to customers</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🤝</div>
+        <h4>Close Rate</h4>
+        <p>% of proposals that convert</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">💰</div>
+        <h4>Revenue</h4>
+        <p>Total revenue closed per week</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">⭐</div>
+        <h4>Customer Reviews</h4>
+        <p>New reviews collected</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">⏱️</div>
+        <h4>Speed to Lead</h4>
+        <p>Avg response time to new leads</p>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🔄</div>
+        <h4>Referral Rate</h4>
+        <p>% of jobs from referrals</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrations -->
+  <div class="content-card">
+    <h2 class="section-title">🔗 Integration with Other Tools</h2>
+    <ul style="padding-left:20px;line-height:2.2;">
+      <li><strong>Google Calendar</strong> — Two-way sync for scheduling</li>
+      <li><strong>QuickBooks / Xero</strong> — Automatic financial data sync</li>
+      <li><strong>Google Business Profile</strong> — Review management</li>
+      <li><strong>Email</strong> — Gmail/Outlook sync for communication logging</li>
+      <li><strong>Zapier</strong> — Connect to hundreds of other apps for automation</li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;margin:30px 0 10px;">
+    <a class="cta-button" href="#">Continue to Module 8: Marketing Setup →</a>
+  </div>
+
+</div>
+</body>
+</html>

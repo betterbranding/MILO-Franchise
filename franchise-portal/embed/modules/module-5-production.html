@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MILO Franchisee Portal</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #f9fafb; }
+</style>
+</head>
+<body>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+.milo-portal{font-family:'Open Sans',sans-serif;color:#333;max-width:900px;margin:0 auto;padding:20px}
+.milo-portal h1,.milo-portal h2,.milo-portal h3,.milo-portal h4{font-family:'Montserrat',sans-serif}
+.milo-portal-header{background:#1B2A4A;color:#fff;padding:40px;border-radius:12px;margin-bottom:30px;text-align:center}
+.milo-portal-header h1{font-size:2rem;margin:12px 0 8px;font-weight:700}
+.milo-portal-header .subtitle{font-size:1.05rem;opacity:.85;margin-bottom:16px}
+.milo-portal-header .progress-note{display:inline-block;background:rgba(255,255,255,.12);padding:10px 22px;border-radius:30px;font-size:.92rem;margin-top:6px}
+.module-badge{display:inline-block;background:#E87722;color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1.5px;padding:6px 18px;border-radius:30px;text-transform:uppercase}
+.content-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:30px;margin-bottom:20px}
+.section-title{font-size:1.35rem;font-weight:700;color:#1B2A4A;padding-bottom:10px;border-bottom:3px solid #E87722;margin-bottom:20px;margin-top:10px}
+.info-box{background:#FFF8F0;border-left:4px solid #E87722;border-radius:0 12px 12px 0;padding:18px 24px;margin-bottom:20px;font-size:.95rem;line-height:1.6}
+.info-box strong{color:#1B2A4A}
+.checklist-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #eee;font-size:.97rem;line-height:1.5}
+.checklist-item:last-child{border-bottom:none}
+.checklist-item input[type="checkbox"]{width:20px;height:20px;margin-top:2px;accent-color:#E87722;flex-shrink:0}
+.checklist-item .item-details{flex:1}
+.checklist-item .item-details strong{display:block;color:#1B2A4A}
+.checklist-item .item-details small{color:#888}
+.video-placeholder{background:#1B2A4A;border-radius:12px;padding:60px 30px;text-align:center;color:#fff;margin-bottom:20px}
+.video-placeholder .play-icon{font-size:3rem;margin-bottom:12px}
+.video-placeholder h3{margin-bottom:6px}
+.video-placeholder p{opacity:.7;font-size:.9rem}
+.step-list{list-style:none;counter-reset:step-counter;padding:0}
+.step-list li{counter-increment:step-counter;display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid #eee;font-size:.97rem;line-height:1.55}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:counter(step-counter);flex-shrink:0;width:36px;height:36px;background:#1B2A4A;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem}
+.cta-button{display:inline-block;background:#E87722;color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;padding:14px 32px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;text-align:center}
+.mascot-guide{display:flex;align-items:center;gap:18px;background:#1B2A4A;border-radius:14px;padding:20px 24px;margin:20px 0;color:#fff}
+.mascot-guide img{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:3px solid #E87722}
+.mascot-guide .mascot-text{flex:1;font-size:.95rem;line-height:1.6}
+.mascot-guide .mascot-text strong{color:#E87722}
+.mascot-header-img{width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid #E87722;margin:0 auto 12px}
+@media(max-width:640px){.milo-portal{padding:10px}.milo-portal-header{padding:28px 20px}.milo-portal-header h1{font-size:1.5rem}.content-card{padding:20px}}
+</style>
+
+<div class="milo-portal">
+
+  <div class="milo-portal-header">
+    <div class="module-badge">MODULE 5</div>
+    <h1>Production Training</h1>
+    <p class="subtitle">Master MILEX sorghum-based insulation — processing, installation, and safety protocols</p>
+    <div class="progress-note">✅ Complete all sections below to unlock the next module</div>
+  </div>
+
+  <!-- Product Overview -->
+  <div class="content-card">
+    <h2 class="section-title">📦 MILEX Insulation Product Overview</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      MILEX is MILO's proprietary <strong>sorghum-based, loose-fill, blown-in insulation</strong> — made from American-grown <strong>grain sorghum (milo)</strong>. It's a plant-based, renewable product engineered for superior thermal performance, fire resistance, and ease of application.
+    </p>
+    <div style="background:#F5F6FA;border-radius:12px;padding:24px;margin-bottom:16px;">
+      <h3 style="color:#1B2A4A;margin-bottom:12px;">🌾 MILEX Sorghum-Based Blown-In Insulation</h3>
+      <ul style="padding-left:18px;line-height:1.8;font-size:.93rem;">
+        <li><strong>Plant-based & renewable</strong> — made from grain sorghum grown by American farmers</li>
+        <li><strong>Non-toxic</strong> — safe for families, pets, and installers</li>
+        <li><strong>Fire-resistant</strong> — self-extinguishing properties</li>
+        <li><strong>Pest-resistant</strong> — naturally deters insects and rodents</li>
+        <li><strong>Mold-resistant</strong> — won't support mold growth</li>
+        <li><strong>Loose-fill blown-in application</strong> — ideal for attics, walls, crawl spaces, metal buildings</li>
+        <li>Processed with the <strong>MX-750 Extruder</strong>, installed with the <strong>MILEX Blower & Vacuum</strong></li>
+        <li>Made in <strong>Texas</strong> from drought-tolerant, American-grown grain sorghum</li>
+      </ul>
+    </div>
+    <div style="background:#E8F5E9;border-radius:12px;padding:20px 24px;">
+      <h4 style="color:#2E7D32;margin-bottom:8px;">🌍 Why Sorghum?</h4>
+      <p style="font-size:.93rem;line-height:1.6;color:#555;">Grain sorghum is a <strong>drought-tolerant crop</strong> that uses significantly less water than alternatives. By choosing MILEX, customers support American agriculture and get a truly sustainable insulation. Competitors use fiberglass (itchy, settles, not fire-resistant), cellulose (treated with chemicals, can mold), or spray foam (toxic chemicals, expensive, requires heavy PPE). MILEX is <strong>"Naturally Better Insulation."</strong></p>
+    </div>
+  </div>
+
+  <!-- MILO Says -->
+  <div class="mascot-guide">
+    <img src="mascot/pose-6.png" alt="MILO Mascot">
+    <div class="mascot-text">
+      <strong>MILO says:</strong> "This is where it gets exciting! You'll learn how to process grain sorghum into MILEX insulation with the MX-750 Extruder, and then blow it into homes with the MILEX Blower. Two machines, one amazing product — and it's all plant-based and non-toxic. Let me show you the way! 👉"
+    </div>
+  </div>
+
+  <!-- MILEX Processing Training (MX-750) -->
+  <div class="content-card">
+    <h2 class="section-title">⚙️ MILEX Processing — MX-750 Extruder</h2>
+    <div class="video-placeholder">
+      <div class="play-icon">▶️</div>
+      <h3>MILEX Processing Training Video</h3>
+      <p>Video content will be available here — covering MX-750 setup, sorghum pellet extrusion, and best practices</p>
+    </div>
+    <h3 style="color:#1B2A4A;margin-bottom:12px;">Key Topics Covered:</h3>
+    <ul style="padding-left:20px;line-height:2;margin-bottom:10px;">
+      <li>MX-750 Extruder setup, calibration, and startup procedure</li>
+      <li>Loading grain sorghum pellets into the extruder</li>
+      <li>Extrusion process — temperature settings and throughput rates</li>
+      <li>Output quality checks — ensuring consistent MILEX insulation material</li>
+      <li>Batch processing and material storage guidelines</li>
+      <li>Equipment cleanup and maintenance schedule</li>
+      <li>Troubleshooting common extrusion issues</li>
+    </ul>
+  </div>
+
+  <!-- Blown-In Installation Training -->
+  <div class="content-card">
+    <h2 class="section-title">🌀 MILEX Blown-In Installation</h2>
+    <div class="video-placeholder">
+      <div class="play-icon">▶️</div>
+      <h3>MILEX Blown-In Installation Training Video</h3>
+      <p>Video content will be available here — covering MILEX Blower setup, technique, and coverage guidelines</p>
+    </div>
+    <h3 style="color:#1B2A4A;margin-bottom:12px;">Key Topics Covered:</h3>
+    <ul style="padding-left:20px;line-height:2;margin-bottom:10px;">
+      <li>MILEX Blower & Vacuum setup and operation</li>
+      <li>Loading processed MILEX insulation material into the blower</li>
+      <li>Attic insulation — depth and coverage standards for target R-values</li>
+      <li>Wall cavity dense-pack technique</li>
+      <li>Crawl space and metal building applications</li>
+      <li>Calculating material quantities per job</li>
+      <li>Working around obstacles (wiring, plumbing, HVAC)</li>
+      <li>Achieving consistent density and coverage</li>
+      <li>Equipment maintenance and troubleshooting</li>
+    </ul>
+  </div>
+
+  <!-- Fire Test Station -->
+  <div class="content-card">
+    <h2 class="section-title">🔥 Fire Test Station — Build & Testing</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      The fire test demonstration is one of your most powerful sales tools. Master this process to confidently show customers why MILEX sorghum-based insulation is the safest choice.
+    </p>
+
+    <h3 style="color:#1B2A4A;margin:16px 0 12px;">Build Procedure:</h3>
+    <ol class="step-list">
+      <li><div><strong>Prepare the base</strong> — Secure a metal or concrete platform at a comfortable demonstration height. Ensure it's stable and on a non-flammable surface.</div></li>
+      <li><div><strong>Install the sample frame</strong> — Mount the sample holding frame to the base. It should securely hold insulation samples vertically.</div></li>
+      <li><div><strong>Set up flame source</strong> — Position butane torch holder at a consistent distance from the sample frame for repeatable results.</div></li>
+      <li><div><strong>Prepare sample materials</strong> — Cut MILEX sorghum-based insulation samples and competitor samples (fiberglass, cellulose) to uniform size (approximately 6" x 6").</div></li>
+      <li><div><strong>Safety station</strong> — Position fire extinguisher within arm's reach. Have a water bucket as backup.</div></li>
+    </ol>
+
+    <h3 style="color:#1B2A4A;margin:20px 0 12px;">Testing Procedure:</h3>
+    <ol class="step-list">
+      <li><div><strong>Mount MILEX sample</strong> in the testing frame and ensure it's secure.</div></li>
+      <li><div><strong>Apply flame to sample</strong> using the butane torch for 10–15 seconds of direct contact.</div></li>
+      <li><div><strong>Remove flame and observe</strong> — MILEX will self-extinguish within seconds. The material chars but does not sustain combustion.</div></li>
+      <li><div><strong>Document results</strong> — Record photos and video for use in customer presentations and proposals.</div></li>
+      <li><div><strong>Repeat with competitor sample</strong> — Demonstrate how fiberglass melts and cellulose continues to burn, highlighting MILEX's superiority.</div></li>
+      <li><div><strong>Present findings</strong> — Use the results in your sales presentations to build trust and urgency.</div></li>
+    </ol>
+  </div>
+
+  <!-- Safety & PPE -->
+  <div class="content-card">
+    <h2 class="section-title">🦺 Safety Protocols & PPE Requirements</h2>
+    <div class="info-box">
+      <strong>✅ Good news — MILEX is non-toxic!</strong> Because MILEX is a plant-based, sorghum insulation product, it does not contain the harmful chemicals found in spray foam or chemically-treated cellulose. PPE requirements are simpler and focused on general job site safety.
+    </div>
+
+    <h3 style="color:#1B2A4A;margin-bottom:12px;">Required PPE:</h3>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details">
+        <strong>Dust mask / N95 respirator</strong>
+        <small>Protects against dust particles during blowing operations</small>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details">
+        <strong>Safety glasses / goggles</strong>
+        <small>Eye protection required on all job sites</small>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details">
+        <strong>Hearing protection</strong>
+        <small>Required when operating the MX-750 Extruder and MILEX Blower equipment</small>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details">
+        <strong>Work gloves</strong>
+        <small>General-purpose work gloves for handling equipment and materials</small>
+      </div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details">
+        <strong>Steel-toe boots</strong>
+        <small>Foot protection on all job sites</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quality Control -->
+  <div class="content-card">
+    <h2 class="section-title">✅ Quality Control Checklist</h2>
+    <p style="line-height:1.7;margin-bottom:16px;">
+      Complete these checks on every job to ensure MILO's quality standards are met:
+    </p>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details"><strong>Pre-job site inspection</strong> <small>Verify work area is clear, accessible, and properly prepared</small></div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details"><strong>MILEX material quality check</strong> <small>Ensure processed MILEX insulation is consistent in texture and free of debris</small></div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details"><strong>Equipment pre-check</strong> <small>Confirm blower is functioning properly, hoses are clear, and airflow is optimal</small></div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details"><strong>Insulation depth measured</strong> <small>Use depth gauge to verify target R-value depth is achieved throughout</small></div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details"><strong>Coverage completeness check</strong> <small>Visual inspection for gaps, voids, or missed areas</small></div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details"><strong>Post-job cleanup</strong> <small>Clean work area, remove debris, and leave site better than you found it</small></div>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox">
+      <div class="item-details"><strong>Photo documentation</strong> <small>Before, during, and after photos for every job</small></div>
+    </div>
+  </div>
+
+  <!-- Troubleshooting -->
+  <div class="content-card">
+    <h2 class="section-title">🔧 Common Issues & Troubleshooting</h2>
+    <div style="margin-bottom:14px;padding:16px;background:#F5F6FA;border-radius:10px;">
+      <h4 style="color:#1B2A4A;margin-bottom:6px;">Blower clogging or inconsistent feed</h4>
+      <p style="font-size:.93rem;">Check for moisture in MILEX material. Clear hose blockages. Verify material is properly processed and broken up before loading into the blower.</p>
+    </div>
+    <div style="margin-bottom:14px;padding:16px;background:#F5F6FA;border-radius:10px;">
+      <h4 style="color:#1B2A4A;margin-bottom:6px;">Inconsistent blown-in density</h4>
+      <p style="font-size:.93rem;">Adjust blower speed and air-to-material ratio. Maintain consistent hose distance from target area. Check for cavity obstructions that may redirect airflow.</p>
+    </div>
+    <div style="margin-bottom:14px;padding:16px;background:#F5F6FA;border-radius:10px;">
+      <h4 style="color:#1B2A4A;margin-bottom:6px;">MX-750 extrusion quality issues</h4>
+      <p style="font-size:.93rem;">Verify sorghum pellet quality and moisture content. Check extruder temperature settings. Inspect extrusion dies for wear or blockage. Clean and recalibrate as needed.</p>
+    </div>
+    <div style="margin-bottom:14px;padding:16px;background:#F5F6FA;border-radius:10px;">
+      <h4 style="color:#1B2A4A;margin-bottom:6px;">Insufficient coverage in tight spaces</h4>
+      <p style="font-size:.93rem;">Use extension hoses and smaller nozzle attachments. Adjust blower pressure for tight cavities. Consider fill-and-check approach for wall cavities.</p>
+    </div>
+    <div style="margin-bottom:14px;padding:16px;background:#F5F6FA;border-radius:10px;">
+      <h4 style="color:#1B2A4A;margin-bottom:6px;">Material settling after installation</h4>
+      <p style="font-size:.93rem;">Ensure proper density during installation. Overfill by 10-15% to account for minimal settling. Verify blower settings match recommended specifications.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="text-align:center;margin:30px 0 10px;">
+    <a class="cta-button" href="#">Schedule Your Hands-On Training Session →</a>
+    <p style="margin-top:12px;font-size:.88rem;color:#888;">Contact the training team to book your in-person MILEX production training</p>
+  </div>
+
+  <div style="text-align:center;margin:10px 0;">
+    <a class="cta-button" href="#" style="background:#1B2A4A;">Continue to Module 6: Sales Process →</a>
+  </div>
+
+</div>
+</body>
+</html>
