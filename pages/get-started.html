@@ -517,11 +517,7 @@ function StepBookingWidget({ data, onBooked, onBack }) {
       const digits = data.phone.replace(/\D/g, '');
       params.set('phone', '+1' + digits);
     }
-    if (data.address) params.set('address1', data.address);
-    if (data.city) params.set('city', data.city);
-    if (data.state) params.set('state', data.state);
-    if (data.zip) params.set('postal_code', data.zip);
-    params.set('country', 'US');
+    // Address fields removed from GHL Default form — no longer needed as URL params
     return `${base}?${params.toString()}`;
   })();
 
