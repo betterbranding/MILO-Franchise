@@ -121,35 +121,6 @@ body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg
 }
 .form-select option { background: #041E42; color: white; }
 
-/* Calendar styles */
-.cal-day {
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-size: 14px;
-  font-weight: 500;
-}
-.cal-day.available:hover { background: rgba(255,130,0,0.3); }
-.cal-day.selected { background: #FF8200; color: white; font-weight: 700; }
-.cal-day.unavailable { opacity: 0.25; cursor: default; }
-.cal-day.today { border: 1px solid rgba(255,255,255,0.3); }
-
-.time-slot {
-  padding: 10px 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.05);
-  cursor: pointer;
-  transition: all 0.15s;
-  font-size: 14px;
-  color: rgba(255,255,255,0.8);
-  text-align: center;
-}
-.time-slot:hover { border-color: rgba(255,130,0,0.5); background: rgba(255,130,0,0.1); }
-.time-slot.selected { border-color: #FF8200; background: rgba(255,130,0,0.2); color: white; font-weight: 600; }
-
 /* Progress bar */
 .progress-fill {
   transition: width 0.5s ease;
@@ -180,6 +151,15 @@ body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg
   border-radius: 2px;
   animation: confetti-fall 3s ease-in forwards;
 }
+
+/* GHL widget iframe */
+.widget-frame {
+  border: none;
+  border-radius: 12px;
+  background: white;
+  width: 100%;
+  min-height: 600px;
+}
 </style>
 </head>
 <body>
@@ -193,6 +173,7 @@ const CONFIG = {
   LOCATION_ID: '862EsIISRtzQUOq3B1vZ',
   CALENDAR_ID: 'uBAzux7l6Ywgb86Qumne',
   CALENDAR_USER_ID: '1R6t2NdraXiJhhOGgcqj',
+  CALENDAR_SLUG: 'milo-franchise-interview',
   API_BASE: 'https://services.leadconnectorhq.com',
   API_VERSION: '2021-07-28',
   LOGO_URL: 'https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg',
@@ -205,17 +186,6 @@ const apiHeaders = () => ({
   'Version': CONFIG.API_VERSION,
   'Content-Type': 'application/json',
 });
-
-async function fetchSlots(startDate, endDate) {
-  const start = new Date(startDate).getTime();
-  const end = new Date(endDate).getTime();
-  const res = await fetch(
-    `${CONFIG.API_BASE}/calendars/${CONFIG.CALENDAR_ID}/free-slots?startDate=${start}&endDate=${end}&timezone=${CONFIG.TIMEZONE}`,
-    { headers: apiHeaders() }
-  );
-  if (!res.ok) throw new Error('Failed to fetch slots');
-  return res.json();
-}
 
 async function createContact(data) {
   const res = await fetch(`${CONFIG.API_BASE}/contacts/`, {
@@ -243,9 +213,12 @@ async function createContact(data) {
     const err = await res.json().catch(() => ({}));
     // If contact already exists (duplicate), use the existing contact
     if (err.meta && err.meta.contactId) {
+      // Update existing contact with latest data
+      await updateContact(err.meta.contactId, data);
       return { id: err.meta.contactId };
     }
-    if (err.message && (err.message.includes('already exists') || err.message.includes('duplicat'))) {
+    if (err.message && (typeof err.message === 'string') && 
+        (err.message.includes('already exists') || err.message.includes('duplicat') || err.message.includes('does not allow'))) {
       // Search by email
       const search = await fetch(
         `${CONFIG.API_BASE}/contacts/?locationId=${CONFIG.LOCATION_ID}&query=${encodeURIComponent(data.email)}&limit=1`,
@@ -253,7 +226,10 @@ async function createContact(data) {
       );
       if (search.ok) {
         const found = await search.json();
-        if (found.contacts && found.contacts.length > 0) return found.contacts[0];
+        if (found.contacts && found.contacts.length > 0) {
+          await updateContact(found.contacts[0].id, data);
+          return found.contacts[0];
+        }
       }
       // Search by phone
       const search2 = await fetch(
@@ -262,7 +238,10 @@ async function createContact(data) {
       );
       if (search2.ok) {
         const found2 = await search2.json();
-        if (found2.contacts && found2.contacts.length > 0) return found2.contacts[0];
+        if (found2.contacts && found2.contacts.length > 0) {
+          await updateContact(found2.contacts[0].id, data);
+          return found2.contacts[0];
+        }
       }
     }
     throw new Error('Failed to create contact');
@@ -271,28 +250,28 @@ async function createContact(data) {
   return result.contact;
 }
 
-async function bookAppointment(contactId, slot, data) {
-  const startTime = new Date(slot).toISOString();
-  const endTime = new Date(new Date(slot).getTime() + 30 * 60000).toISOString();
-  
-  const res = await fetch(`${CONFIG.API_BASE}/calendars/events/appointments`, {
-    method: 'POST',
-    headers: apiHeaders(),
-    body: JSON.stringify({
-      calendarId: CONFIG.CALENDAR_ID,
-      locationId: CONFIG.LOCATION_ID,
-      contactId: contactId,
-      startTime: startTime,
-      endTime: endTime,
-      title: `${data.firstName} ${data.lastName} | Franchise Call`,
-      appointmentStatus: 'confirmed',
-      assignedUserId: CONFIG.CALENDAR_USER_ID,
-      address: `${data.address}, ${data.city}, ${data.state} ${data.zip}`,
-      toNotify: true,
-    }),
-  });
-  if (!res.ok) throw new Error('Failed to book appointment');
-  return res.json();
+async function updateContact(contactId, data) {
+  try {
+    await fetch(`${CONFIG.API_BASE}/contacts/${contactId}`, {
+      method: 'PUT',
+      headers: apiHeaders(),
+      body: JSON.stringify({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        address1: data.address,
+        city: data.city,
+        state: data.state,
+        postalCode: data.zip,
+        tags: ['franchise-lead', 'lead-form'],
+        customFields: [
+          { key: 'investment_ready', field_value: data.investmentReady },
+          { key: 'timeline', field_value: data.timeline },
+        ],
+      }),
+    });
+  } catch (e) {
+    console.warn('Failed to update contact:', e);
+  }
 }
 
 // ── US States ──
@@ -522,164 +501,104 @@ function StepContact({ data, setData, onNext, onBack }) {
   );
 }
 
-// ── Step 4: Calendar ──
-function StepCalendar({ data, setData, onNext, onBack }) {
-  const [slots, setSlots] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedSlot, setSelectedSlot] = useState(null);
+// ── Step 4: GHL Booking Widget ──
+function StepBookingWidget({ data, onBooked, onBack }) {
+  const iframeRef = useRef(null);
+  const [widgetLoaded, setWidgetLoaded] = useState(false);
 
-  const loadSlots = useCallback(async (month) => {
-    setLoading(true);
-    try {
-      const start = new Date(month.getFullYear(), month.getMonth(), 1);
-      const end = new Date(month.getFullYear(), month.getMonth() + 1, 0);
-      // Ensure start is not in the past
-      const today = new Date();
-      today.setHours(0,0,0,0);
-      const startDate = start < today ? today : start;
-      
-      const startStr = `${startDate.getFullYear()}-${String(startDate.getMonth()+1).padStart(2,'0')}-${String(startDate.getDate()).padStart(2,'0')}`;
-      const endStr = `${end.getFullYear()}-${String(end.getMonth()+1).padStart(2,'0')}-${String(end.getDate()).padStart(2,'0')}`;
-      
-      const result = await fetchSlots(startStr, endStr);
-      setSlots(result);
-    } catch (err) {
-      console.error('Failed to load slots:', err);
+  // Build the GHL widget URL with pre-filled contact info
+  const widgetUrl = (() => {
+    const base = `https://api.leadconnectorhq.com/widget/bookings/${CONFIG.CALENDAR_SLUG}`;
+    const params = new URLSearchParams();
+    if (data.firstName) params.set('first_name', data.firstName);
+    if (data.lastName) params.set('last_name', data.lastName);
+    if (data.email) params.set('email', data.email);
+    if (data.phone) {
+      const digits = data.phone.replace(/\D/g, '');
+      params.set('phone', '+1' + digits);
     }
-    setLoading(false);
-  }, []);
+    return `${base}?${params.toString()}`;
+  })();
 
-  useEffect(() => { loadSlots(currentMonth); }, [currentMonth, loadSlots]);
+  // Listen for postMessage from the GHL widget when booking completes
+  useEffect(() => {
+    const handleMessage = (event) => {
+      // GHL widget sends messages on booking completion
+      if (event.data && typeof event.data === 'object') {
+        // Check various GHL message types
+        if (event.data.type === 'booking-confirmed' || 
+            event.data.action === 'booking-confirmed' ||
+            event.data.status === 'booked' ||
+            (event.data.appointmentData && event.data.appointmentData.id) ||
+            (typeof event.data === 'string' && event.data.includes('booked'))) {
+          onBooked(event.data);
+        }
+      }
+      if (typeof event.data === 'string') {
+        try {
+          const parsed = JSON.parse(event.data);
+          if (parsed.type === 'booking-confirmed' || parsed.status === 'booked' || parsed.appointmentData) {
+            onBooked(parsed);
+          }
+        } catch(e) {
+          // Check for string-based messages
+          if (event.data.includes('booked') || event.data.includes('confirmed') || event.data.includes('appointment')) {
+            onBooked({});
+          }
+        }
+      }
+    };
 
-  const daysInMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
-  const firstDayOfWeek = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1).getDay();
-  const today = new Date();
-  today.setHours(0,0,0,0);
-
-  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-
-  const prevMonth = () => {
-    const prev = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
-    if (prev >= new Date(today.getFullYear(), today.getMonth(), 1)) {
-      setCurrentMonth(prev);
-      setSelectedDate(null);
-      setSelectedSlot(null);
-    }
-  };
-  const nextMonth = () => {
-    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
-    setSelectedDate(null);
-    setSelectedSlot(null);
-  };
-
-  const getDateStr = (day) => {
-    return `${currentMonth.getFullYear()}-${String(currentMonth.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-  };
-
-  const formatTime = (isoStr) => {
-    const d = new Date(isoStr);
-    return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-  };
-
-  const handleDateClick = (day) => {
-    const dateStr = getDateStr(day);
-    const daySlots = slots[dateStr]?.slots || [];
-    if (daySlots.length === 0) return;
-    setSelectedDate(dateStr);
-    setSelectedSlot(null);
-  };
-
-  const handleConfirm = () => {
-    setData({...data, selectedSlot});
-    onNext();
-  };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [onBooked]);
 
   return (
     <div>
       <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">Schedule a Call</p>
       <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Pick a time with Tom Martin</h2>
       <p className="text-white/50 text-sm mb-1">Founder of MILO Insulation &bull; 30 minute call</p>
-      <p className="text-white/30 text-xs mb-6">Timezone: {CONFIG.TIMEZONE.replace(/_/g, ' ')}</p>
+      <p className="text-white/30 text-xs mb-6">Your info has been pre-filled — just select a date & time below</p>
 
-      {loading ? (
-        <div className="flex items-center justify-center py-16">
+      {/* Loading state */}
+      {!widgetLoaded && (
+        <div className="flex items-center justify-center py-8">
           <svg className="spinner w-8 h-8 text-milo-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
           </svg>
-          <span className="text-white/50 ml-3">Loading availability...</span>
+          <span className="text-white/50 ml-3">Loading calendar...</span>
         </div>
-      ) : (
-        <>
-          {/* Month nav */}
-          <div className="flex items-center justify-between mb-4">
-            <button onClick={prevMonth} className="text-white/50 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <h3 className="text-white font-bold text-lg">{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</h3>
-            <button onClick={nextMonth} className="text-white/50 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-          </div>
-
-          {/* Day headers */}
-          <div className="grid grid-cols-7 gap-1 mb-2">
-            {dayNames.map(d => (
-              <div key={d} className="text-center text-xs font-semibold text-white/30 py-1">{d}</div>
-            ))}
-          </div>
-
-          {/* Calendar grid */}
-          <div className="grid grid-cols-7 gap-1 mb-6">
-            {Array.from({length: firstDayOfWeek}).map((_,i) => <div key={`empty-${i}`} />)}
-            {Array.from({length: daysInMonth}).map((_,i) => {
-              const day = i + 1;
-              const dateStr = getDateStr(day);
-              const dateObj = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day);
-              const hasSlots = (slots[dateStr]?.slots || []).length > 0;
-              const isPast = dateObj < today;
-              const isToday = dateObj.getTime() === today.getTime();
-              const isSelected = dateStr === selectedDate;
-
-              return (
-                <div key={day}
-                  className={`cal-day text-white/70 ${hasSlots && !isPast ? 'available' : 'unavailable'} ${isSelected ? 'selected' : ''} ${isToday ? 'today' : ''}`}
-                  onClick={() => hasSlots && !isPast && handleDateClick(day)}
-                >
-                  {day}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Time slots */}
-          {selectedDate && (
-            <div className="step-enter step-active">
-              <p className="text-white/70 text-sm font-semibold mb-3">
-                Available times for {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
-              </p>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-48 overflow-y-auto pr-1">
-                {(slots[selectedDate]?.slots || []).map(slot => (
-                  <div key={slot}
-                    className={`time-slot ${selectedSlot === slot ? 'selected' : ''}`}
-                    onClick={() => setSelectedSlot(slot)}
-                  >
-                    {formatTime(slot)}
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </>
       )}
 
-      <NextButton
-        onClick={handleConfirm}
-        disabled={!selectedSlot}
-        text="Confirm & Book Call"
-      />
+      {/* GHL Booking Widget */}
+      <div className="rounded-xl overflow-hidden" style={{ background: 'white', minHeight: widgetLoaded ? 'auto' : '0px' }}>
+        <iframe
+          ref={iframeRef}
+          src={widgetUrl}
+          className="widget-frame"
+          style={{ 
+            display: widgetLoaded ? 'block' : 'none',
+            minHeight: '650px',
+          }}
+          onLoad={() => setWidgetLoaded(true)}
+          allow="payment"
+          title="Book a call with Tom Martin"
+        />
+      </div>
+
+      {/* Fallback: manual confirmation button */}
+      {widgetLoaded && (
+        <div className="mt-6 text-center">
+          <p className="text-white/30 text-xs mb-3">Already booked your call in the calendar above?</p>
+          <button
+            onClick={() => onBooked({})}
+            className="text-milo-orange hover:text-orange-400 text-sm font-semibold underline underline-offset-2 transition-colors"
+          >
+            I've booked my call — continue →
+          </button>
+        </div>
+      )}
+
       <BackButton onClick={onBack} />
     </div>
   );
@@ -706,13 +625,6 @@ function StepConfirmation({ data }) {
     setConfetti(pieces);
   }, []);
 
-  const formatDateTime = (slot) => {
-    if (!slot) return '';
-    const d = new Date(slot);
-    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) +
-      ' at ' + d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-  };
-
   return (
     <div className="text-center">
       {confetti.map(c => (
@@ -736,13 +648,6 @@ function StepConfirmation({ data }) {
 
       <div className="glass-card p-6 text-left space-y-4 mb-8">
         <div className="flex items-start gap-3">
-          <span className="text-xl">📅</span>
-          <div>
-            <p className="text-white/40 text-xs uppercase font-semibold">When</p>
-            <p className="text-white font-medium">{formatDateTime(data.selectedSlot)}</p>
-          </div>
-        </div>
-        <div className="flex items-start gap-3">
           <span className="text-xl">👤</span>
           <div>
             <p className="text-white/40 text-xs uppercase font-semibold">With</p>
@@ -754,6 +659,13 @@ function StepConfirmation({ data }) {
           <div>
             <p className="text-white/40 text-xs uppercase font-semibold">Duration</p>
             <p className="text-white font-medium">30 minutes</p>
+          </div>
+        </div>
+        <div className="flex items-start gap-3">
+          <span className="text-xl">📧</span>
+          <div>
+            <p className="text-white/40 text-xs uppercase font-semibold">Confirmation</p>
+            <p className="text-white font-medium">Check your email for calendar details</p>
           </div>
         </div>
       </div>
@@ -804,22 +716,28 @@ function App() {
   const goNext = () => { setStep(s => s + 1); scrollTop(); setError(null); };
   const goBack = () => { setStep(s => s - 1); scrollTop(); setError(null); };
 
-  const handleCalendarNext = async () => {
+  // After contact info, create/find the contact then advance to widget
+  const handleContactNext = async () => {
     setSubmitting(true);
     setError(null);
     try {
-      // Create contact in GHL
       const contact = await createContact(data);
-      // Book appointment
-      await bookAppointment(contact.id, data.selectedSlot, data);
-      setStep(4);
+      setData(d => ({...d, contactId: contact.id}));
+      setStep(3);
       scrollTop();
     } catch (err) {
-      console.error('Submission error:', err);
-      setError('Something went wrong. Please try again or contact us directly.');
+      console.error('Contact creation error:', err);
+      setError('Something went wrong saving your info. Please try again.');
     }
     setSubmitting(false);
   };
+
+  // When GHL widget confirms the booking
+  const handleBooked = useCallback((eventData) => {
+    setData(d => ({...d, bookingEvent: eventData}));
+    setStep(4);
+    scrollTop();
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -842,7 +760,7 @@ function App() {
 
       {/* Content */}
       <div className="flex-1 flex items-start justify-center px-4 pb-8" ref={containerRef}>
-        <div className="glass-card w-full max-w-xl p-6 md:p-8">
+        <div className={`glass-card w-full ${step === 3 ? 'max-w-2xl' : 'max-w-xl'} p-6 md:p-8`}>
           {error && (
             <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm">
               {error}
@@ -852,8 +770,8 @@ function App() {
           <div className="step-enter step-active" key={step}>
             {step === 0 && <StepQualifier data={data} setData={setData} onNext={goNext} />}
             {step === 1 && <StepLocation data={data} setData={setData} onNext={goNext} onBack={goBack} />}
-            {step === 2 && <StepContact data={data} setData={setData} onNext={goNext} onBack={goBack} />}
-            {step === 3 && <StepCalendar data={data} setData={setData} onNext={handleCalendarNext} onBack={goBack} />}
+            {step === 2 && <StepContact data={data} setData={setData} onNext={handleContactNext} onBack={goBack} />}
+            {step === 3 && <StepBookingWidget data={data} onBooked={handleBooked} onBack={goBack} />}
             {step === 4 && <StepConfirmation data={data} />}
           </div>
 
@@ -863,8 +781,8 @@ function App() {
                 <svg className="spinner w-12 h-12 text-milo-orange mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
                 </svg>
-                <p className="text-white font-semibold">Booking your call...</p>
-                <p className="text-white/50 text-sm mt-1">Creating your appointment with Tom Martin</p>
+                <p className="text-white font-semibold">Saving your information...</p>
+                <p className="text-white/50 text-sm mt-1">Setting up your profile</p>
               </div>
             </div>
           )}
@@ -886,4 +804,3 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 </script>
 </body>
-</html>
