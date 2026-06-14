@@ -281,7 +281,7 @@ async function bookAppointment(contactId, slot, data) {
       startTime: startTime,
       endTime: endTime,
       title: `${data.firstName} ${data.lastName} | Franchise Call`,
-      appointmentStatus: 'new',
+      appointmentStatus: 'confirmed',
       assignedUserId: CONFIG.CALENDAR_USER_ID,
       address: `${data.address}, ${data.city}, ${data.state} ${data.zip}`,
       toNotify: true,
