@@ -506,7 +506,7 @@ function StepBookingWidget({ data, onBooked, onBack }) {
   const iframeRef = useRef(null);
   const [widgetLoaded, setWidgetLoaded] = useState(false);
 
-  // Build the GHL widget URL with pre-filled contact info
+  // Build the GHL widget URL with pre-filled contact + address info
   const widgetUrl = (() => {
     const base = `https://api.leadconnectorhq.com/widget/bookings/${CONFIG.CALENDAR_SLUG}`;
     const params = new URLSearchParams();
@@ -517,6 +517,11 @@ function StepBookingWidget({ data, onBooked, onBack }) {
       const digits = data.phone.replace(/\D/g, '');
       params.set('phone', '+1' + digits);
     }
+    if (data.address) params.set('address1', data.address);
+    if (data.city) params.set('city', data.city);
+    if (data.state) params.set('state', data.state);
+    if (data.zip) params.set('postal_code', data.zip);
+    params.set('country', 'US');
     return `${base}?${params.toString()}`;
   })();
 
