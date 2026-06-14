@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MILO Insulation Franchise | Get Started</title>
+<meta name="description" content="Schedule a call with Tom Martin, Founder of MILO Insulation, to learn about franchise opportunities.">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1115582933883479');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1115582933883479&ev=PageView&noscript=1"/></noscript>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        milo: {
+          navy: '#074387',
+          darknavy: '#041E42',
+          orange: '#FF8200',
+          green: '#288D11',
+          blue: '#50ACE1',
+        }
+      },
+      fontFamily: {
+        heading: ['Montserrat', 'sans-serif'],
+        body: ['Montserrat', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #041E42 0%, #074387 50%, #0B3C7F 100%); min-height: 100vh; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+
+/* Step transitions */
+.step-enter { opacity: 0; transform: translateX(30px); }
+.step-active { opacity: 1; transform: translateX(0); transition: all 0.4s ease-out; }
+.step-exit { opacity: 0; transform: translateX(-30px); transition: all 0.3s ease-in; }
+
+/* Option card hover */
+.option-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+}
+.option-card:hover {
+  border-color: rgba(255,130,0,0.5);
+  background: rgba(255,130,0,0.08);
+  transform: translateY(-2px);
+}
+.option-card.selected {
+  border-color: #FF8200;
+  background: rgba(255,130,0,0.15);
+  box-shadow: 0 0 20px rgba(255,130,0,0.15);
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+}
+
+/* Input styles */
+.form-input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: white;
+  padding: 14px 16px;
+  font-size: 15px;
+  width: 100%;
+  outline: none;
+  transition: all 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+.form-input:focus {
+  border-color: #FF8200;
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 0 0 3px rgba(255,130,0,0.15);
+}
+.form-input::placeholder { color: rgba(255,255,255,0.4); }
+
+/* Select styles */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  padding-right: 40px;
+}
+.form-select option { background: #041E42; color: white; }
+
+/* Calendar styles */
+.cal-day {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 14px;
+  font-weight: 500;
+}
+.cal-day.available:hover { background: rgba(255,130,0,0.3); }
+.cal-day.selected { background: #FF8200; color: white; font-weight: 700; }
+.cal-day.unavailable { opacity: 0.25; cursor: default; }
+.cal-day.today { border: 1px solid rgba(255,255,255,0.3); }
+
+.time-slot {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+}
+.time-slot:hover { border-color: rgba(255,130,0,0.5); background: rgba(255,130,0,0.1); }
+.time-slot.selected { border-color: #FF8200; background: rgba(255,130,0,0.2); color: white; font-weight: 600; }
+
+/* Progress bar */
+.progress-fill {
+  transition: width 0.5s ease;
+  background: linear-gradient(90deg, #288D11, #FF8200);
+}
+
+/* Pulse animation for CTA */
+@keyframes subtle-pulse {
+  0%, 100% { box-shadow: 0 4px 15px rgba(255,130,0,0.3); }
+  50% { box-shadow: 0 4px 25px rgba(255,130,0,0.5); }
+}
+.btn-pulse { animation: subtle-pulse 2s ease-in-out infinite; }
+
+/* Loading spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner { animation: spin 1s linear infinite; }
+
+/* Confetti animation */
+@keyframes confetti-fall {
+  0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+.confetti {
+  position: fixed;
+  top: -20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confetti-fall 3s ease-in forwards;
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+// ── Config ──
+const CONFIG = {
+  API_KEY: 'pit-d160d69a-99b5-4521-aa51-fdd0c8700b20',
+  LOCATION_ID: '862EsIISRtzQUOq3B1vZ',
+  CALENDAR_ID: 'uBAzux7l6Ywgb86Qumne',
+  CALENDAR_USER_ID: '1R6t2NdraXiJhhOGgcqj',
+  API_BASE: 'https://services.leadconnectorhq.com',
+  API_VERSION: '2021-07-28',
+  LOGO_URL: 'https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg',
+  TIMEZONE: Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Chicago',
+};
+
+// ── API Helpers ──
+const apiHeaders = () => ({
+  'Authorization': `Bearer ${CONFIG.API_KEY}`,
+  'Version': CONFIG.API_VERSION,
+  'Content-Type': 'application/json',
+});
+
+async function fetchSlots(startDate, endDate) {
+  const start = new Date(startDate).getTime();
+  const end = new Date(endDate).getTime();
+  const res = await fetch(
+    `${CONFIG.API_BASE}/calendars/${CONFIG.CALENDAR_ID}/free-slots?startDate=${start}&endDate=${end}&timezone=${CONFIG.TIMEZONE}`,
+    { headers: apiHeaders() }
+  );
+  if (!res.ok) throw new Error('Failed to fetch slots');
+  return res.json();
+}
+
+async function createContact(data) {
+  const res = await fetch(`${CONFIG.API_BASE}/contacts/`, {
+    method: 'POST',
+    headers: apiHeaders(),
+    body: JSON.stringify({
+      locationId: CONFIG.LOCATION_ID,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      address1: data.address,
+      city: data.city,
+      state: data.state,
+      postalCode: data.zip,
+      source: 'Franchise Lead Form',
+      tags: ['franchise-lead', 'lead-form'],
+      customFields: [
+        { key: 'investment_ready', field_value: data.investmentReady },
+        { key: 'timeline', field_value: data.timeline },
+      ],
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    // If contact already exists, try to find them
+    if (err.message && err.message.includes('already exists')) {
+      const search = await fetch(
+        `${CONFIG.API_BASE}/contacts/lookup?locationId=${CONFIG.LOCATION_ID}&email=${encodeURIComponent(data.email)}`,
+        { headers: apiHeaders() }
+      );
+      if (search.ok) {
+        const found = await search.json();
+        if (found.contacts && found.contacts.length > 0) return found.contacts[0];
+      }
+    }
+    // Try alternative: search by email
+    const search2 = await fetch(
+      `${CONFIG.API_BASE}/contacts/?locationId=${CONFIG.LOCATION_ID}&query=${encodeURIComponent(data.email)}&limit=1`,
+      { headers: apiHeaders() }
+    );
+    if (search2.ok) {
+      const found2 = await search2.json();
+      if (found2.contacts && found2.contacts.length > 0) return found2.contacts[0];
+    }
+    throw new Error('Failed to create contact');
+  }
+  const result = await res.json();
+  return result.contact;
+}
+
+async function bookAppointment(contactId, slot, data) {
+  const startTime = new Date(slot).toISOString();
+  const endTime = new Date(new Date(slot).getTime() + 30 * 60000).toISOString();
+  
+  const res = await fetch(`${CONFIG.API_BASE}/calendars/events/appointments`, {
+    method: 'POST',
+    headers: apiHeaders(),
+    body: JSON.stringify({
+      calendarId: CONFIG.CALENDAR_ID,
+      locationId: CONFIG.LOCATION_ID,
+      contactId: contactId,
+      startTime: startTime,
+      endTime: endTime,
+      title: `${data.firstName} ${data.lastName} | Franchise Call`,
+      appointmentStatus: 'new',
+      assignedUserId: CONFIG.CALENDAR_USER_ID,
+      address: `${data.address}, ${data.city}, ${data.state} ${data.zip}`,
+      toNotify: true,
+    }),
+  });
+  if (!res.ok) throw new Error('Failed to book appointment');
+  return res.json();
+}
+
+// ── US States ──
+const US_STATES = [
+  'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia',
+  'Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland',
+  'Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey',
+  'New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina',
+  'South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'
+];
+
+// ── Components ──
+function ProgressBar({ step, total }) {
+  const pct = Math.round(((step) / total) * 100);
+  return (
+    <div className="w-full max-w-xl mx-auto mb-8">
+      <div className="flex justify-between items-center mb-2">
+        <span className="text-xs font-semibold text-white/60 uppercase tracking-wider">Step {step + 1}</span>
+        <span className="text-xs font-semibold text-white/60">{pct}%</span>
+      </div>
+      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+        <div className="progress-fill h-full rounded-full" style={{ width: `${pct}%` }} />
+      </div>
+    </div>
+  );
+}
+
+function OptionCard({ emoji, title, subtitle, selected, onClick, disabled }) {
+  return (
+    <div
+      className={`option-card rounded-xl p-5 flex items-start gap-4 ${selected ? 'selected' : ''} ${disabled ? 'opacity-40 cursor-not-allowed' : ''}`}
+      onClick={disabled ? undefined : onClick}
+    >
+      <span className="text-3xl flex-shrink-0 mt-0.5">{emoji}</span>
+      <div>
+        <h4 className="text-white font-semibold text-base">{title}</h4>
+        {subtitle && <p className="text-white/50 text-sm mt-1">{subtitle}</p>}
+      </div>
+    </div>
+  );
+}
+
+function BackButton({ onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors text-sm font-medium mt-6"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back
+    </button>
+  );
+}
+
+function NextButton({ onClick, disabled, text = 'Continue', loading }) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled || loading}
+      className={`w-full mt-6 py-4 px-8 rounded-xl font-bold text-base text-white transition-all ${
+        disabled ? 'bg-white/10 cursor-not-allowed text-white/30' : 'bg-milo-orange hover:bg-orange-500 btn-pulse'
+      }`}
+    >
+      {loading ? (
+        <span className="flex items-center justify-center gap-2">
+          <svg className="spinner w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
+          </svg>
+          Processing...
+        </span>
+      ) : (
+        <span className="flex items-center justify-center gap-2">
+          {text}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </span>
+      )}
+    </button>
+  );
+}
+
+// ── Step 1: Quick Qualifier ──
+function StepQualifier({ data, setData, onNext }) {
+  return (
+    <div>
+      <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">Quick Questions</p>
+      <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Let's see if MILO is right for you</h2>
+      <p className="text-white/50 text-sm mb-8">Answer two quick questions to get started</p>
+
+      <div className="mb-8">
+        <p className="text-white/70 text-sm font-semibold mb-3">Are you prepared to invest $350,000 – $450,000?</p>
+        <div className="space-y-3">
+          <OptionCard emoji="✅" title="Yes, I'm Ready" subtitle="I have the capital or financing lined up"
+            selected={data.investmentReady === 'yes'} onClick={() => setData({...data, investmentReady: 'yes'})} />
+          <OptionCard emoji="🔄" title="I'm Exploring Options" subtitle="Still evaluating my investment capacity"
+            selected={data.investmentReady === 'exploring'} onClick={() => setData({...data, investmentReady: 'exploring'})} />
+          <OptionCard emoji="📊" title="I Need More Info" subtitle="I'd like to understand the full investment"
+            selected={data.investmentReady === 'info'} onClick={() => setData({...data, investmentReady: 'info'})} />
+        </div>
+      </div>
+
+      {data.investmentReady && (
+        <div className="step-enter step-active">
+          <p className="text-white/70 text-sm font-semibold mb-3">How soon are you looking to get started?</p>
+          <div className="space-y-3">
+            <OptionCard emoji="⚡" title="As Soon as Possible" subtitle="Ready to move forward now"
+              selected={data.timeline === 'asap'} onClick={() => setData({...data, timeline: 'asap'})} />
+            <OptionCard emoji="📅" title="Within 3–6 Months" subtitle="Planning and preparing"
+              selected={data.timeline === '3-6months'} onClick={() => setData({...data, timeline: '3-6months'})} />
+            <OptionCard emoji="🔍" title="Just Researching" subtitle="Exploring franchise opportunities"
+              selected={data.timeline === 'researching'} onClick={() => setData({...data, timeline: 'researching'})} />
+          </div>
+        </div>
+      )}
+
+      <NextButton
+        onClick={onNext}
+        disabled={!data.investmentReady || !data.timeline}
+        text="Continue"
+      />
+    </div>
+  );
+}
+
+// ── Step 2: Location ──
+function StepLocation({ data, setData, onNext, onBack }) {
+  const valid = data.address && data.city && data.state && data.zip;
+  return (
+    <div>
+      <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">Your Location</p>
+      <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Where are you looking to open a franchise?</h2>
+      <p className="text-white/50 text-sm mb-8">Help us connect you with the right territory information</p>
+
+      <div className="space-y-4">
+        <div>
+          <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Street Address</label>
+          <input className="form-input" placeholder="123 Main St" value={data.address || ''}
+            onChange={e => setData({...data, address: e.target.value})} />
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">City</label>
+            <input className="form-input" placeholder="City" value={data.city || ''}
+              onChange={e => setData({...data, city: e.target.value})} />
+          </div>
+          <div>
+            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">State</label>
+            <select className="form-input form-select" value={data.state || ''}
+              onChange={e => setData({...data, state: e.target.value})}>
+              <option value="">Select</option>
+              {US_STATES.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
+          </div>
+        </div>
+        <div className="w-1/2">
+          <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">ZIP Code</label>
+          <input className="form-input" placeholder="12345" value={data.zip || ''} maxLength={10}
+            onChange={e => setData({...data, zip: e.target.value})} />
+        </div>
+      </div>
+
+      <NextButton onClick={onNext} disabled={!valid} text="Continue" />
+      <BackButton onClick={onBack} />
+    </div>
+  );
+}
+
+// ── Step 3: Contact Info ──
+function StepContact({ data, setData, onNext, onBack }) {
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '');
+  const phoneValid = (data.phone || '').replace(/\D/g, '').length >= 10;
+  const valid = data.firstName && data.lastName && emailValid && phoneValid;
+
+  const formatPhone = (val) => {
+    const digits = val.replace(/\D/g, '').slice(0, 10);
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 6) return `(${digits.slice(0,3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+  };
+
+  return (
+    <div>
+      <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">About You</p>
+      <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Tell us a little about yourself</h2>
+      <p className="text-white/50 text-sm mb-8">We'll use this to personalize your franchise consultation</p>
+
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">First Name</label>
+            <input className="form-input" placeholder="First name" value={data.firstName || ''}
+              onChange={e => setData({...data, firstName: e.target.value})} />
+          </div>
+          <div>
+            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Last Name</label>
+            <input className="form-input" placeholder="Last name" value={data.lastName || ''}
+              onChange={e => setData({...data, lastName: e.target.value})} />
+          </div>
+        </div>
+        <div>
+          <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Email</label>
+          <input className="form-input" type="email" placeholder="you@email.com" value={data.email || ''}
+            onChange={e => setData({...data, email: e.target.value})} />
+        </div>
+        <div>
+          <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Phone</label>
+          <input className="form-input" type="tel" placeholder="(555) 123-4567" value={data.phone || ''}
+            onChange={e => setData({...data, phone: formatPhone(e.target.value)})} />
+        </div>
+      </div>
+
+      <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/10">
+        <p className="text-white/40 text-xs flex items-start gap-2">
+          <svg className="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+          Your information is secure and never shared. By continuing, you agree to be contacted about MILO franchise opportunities.
+        </p>
+      </div>
+
+      <NextButton onClick={onNext} disabled={!valid} text="Continue" />
+      <BackButton onClick={onBack} />
+    </div>
+  );
+}
+
+// ── Step 4: Calendar ──
+function StepCalendar({ data, setData, onNext, onBack }) {
+  const [slots, setSlots] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+
+  const loadSlots = useCallback(async (month) => {
+    setLoading(true);
+    try {
+      const start = new Date(month.getFullYear(), month.getMonth(), 1);
+      const end = new Date(month.getFullYear(), month.getMonth() + 1, 0);
+      // Ensure start is not in the past
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      const startDate = start < today ? today : start;
+      
+      const startStr = `${startDate.getFullYear()}-${String(startDate.getMonth()+1).padStart(2,'0')}-${String(startDate.getDate()).padStart(2,'0')}`;
+      const endStr = `${end.getFullYear()}-${String(end.getMonth()+1).padStart(2,'0')}-${String(end.getDate()).padStart(2,'0')}`;
+      
+      const result = await fetchSlots(startStr, endStr);
+      setSlots(result);
+    } catch (err) {
+      console.error('Failed to load slots:', err);
+    }
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { loadSlots(currentMonth); }, [currentMonth, loadSlots]);
+
+  const daysInMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
+  const firstDayOfWeek = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1).getDay();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  const prevMonth = () => {
+    const prev = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
+    if (prev >= new Date(today.getFullYear(), today.getMonth(), 1)) {
+      setCurrentMonth(prev);
+      setSelectedDate(null);
+      setSelectedSlot(null);
+    }
+  };
+  const nextMonth = () => {
+    setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
+    setSelectedDate(null);
+    setSelectedSlot(null);
+  };
+
+  const getDateStr = (day) => {
+    return `${currentMonth.getFullYear()}-${String(currentMonth.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  };
+
+  const formatTime = (isoStr) => {
+    const d = new Date(isoStr);
+    return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+  };
+
+  const handleDateClick = (day) => {
+    const dateStr = getDateStr(day);
+    const daySlots = slots[dateStr]?.slots || [];
+    if (daySlots.length === 0) return;
+    setSelectedDate(dateStr);
+    setSelectedSlot(null);
+  };
+
+  const handleConfirm = () => {
+    setData({...data, selectedSlot});
+    onNext();
+  };
+
+  return (
+    <div>
+      <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">Schedule a Call</p>
+      <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Pick a time with Tom Martin</h2>
+      <p className="text-white/50 text-sm mb-1">Founder of MILO Insulation &bull; 30 minute call</p>
+      <p className="text-white/30 text-xs mb-6">Timezone: {CONFIG.TIMEZONE.replace(/_/g, ' ')}</p>
+
+      {loading ? (
+        <div className="flex items-center justify-center py-16">
+          <svg className="spinner w-8 h-8 text-milo-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
+          </svg>
+          <span className="text-white/50 ml-3">Loading availability...</span>
+        </div>
+      ) : (
+        <>
+          {/* Month nav */}
+          <div className="flex items-center justify-between mb-4">
+            <button onClick={prevMonth} className="text-white/50 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <h3 className="text-white font-bold text-lg">{monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}</h3>
+            <button onClick={nextMonth} className="text-white/50 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+
+          {/* Day headers */}
+          <div className="grid grid-cols-7 gap-1 mb-2">
+            {dayNames.map(d => (
+              <div key={d} className="text-center text-xs font-semibold text-white/30 py-1">{d}</div>
+            ))}
+          </div>
+
+          {/* Calendar grid */}
+          <div className="grid grid-cols-7 gap-1 mb-6">
+            {Array.from({length: firstDayOfWeek}).map((_,i) => <div key={`empty-${i}`} />)}
+            {Array.from({length: daysInMonth}).map((_,i) => {
+              const day = i + 1;
+              const dateStr = getDateStr(day);
+              const dateObj = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), day);
+              const hasSlots = (slots[dateStr]?.slots || []).length > 0;
+              const isPast = dateObj < today;
+              const isToday = dateObj.getTime() === today.getTime();
+              const isSelected = dateStr === selectedDate;
+
+              return (
+                <div key={day}
+                  className={`cal-day text-white/70 ${hasSlots && !isPast ? 'available' : 'unavailable'} ${isSelected ? 'selected' : ''} ${isToday ? 'today' : ''}`}
+                  onClick={() => hasSlots && !isPast && handleDateClick(day)}
+                >
+                  {day}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Time slots */}
+          {selectedDate && (
+            <div className="step-enter step-active">
+              <p className="text-white/70 text-sm font-semibold mb-3">
+                Available times for {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+              </p>
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-48 overflow-y-auto pr-1">
+                {(slots[selectedDate]?.slots || []).map(slot => (
+                  <div key={slot}
+                    className={`time-slot ${selectedSlot === slot ? 'selected' : ''}`}
+                    onClick={() => setSelectedSlot(slot)}
+                  >
+                    {formatTime(slot)}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+
+      <NextButton
+        onClick={handleConfirm}
+        disabled={!selectedSlot}
+        text="Confirm & Book Call"
+      />
+      <BackButton onClick={onBack} />
+    </div>
+  );
+}
+
+// ── Step 5: Confirmation ──
+function StepConfirmation({ data }) {
+  const [confetti, setConfetti] = useState([]);
+
+  useEffect(() => {
+    // Fire Meta Pixel Lead event
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead');
+    }
+    // Confetti
+    const colors = ['#FF8200', '#288D11', '#50ACE1', '#FFD700', '#FF4444'];
+    const pieces = Array.from({length: 30}).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      delay: Math.random() * 2,
+      size: 6 + Math.random() * 8,
+    }));
+    setConfetti(pieces);
+  }, []);
+
+  const formatDateTime = (slot) => {
+    if (!slot) return '';
+    const d = new Date(slot);
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) +
+      ' at ' + d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+  };
+
+  return (
+    <div className="text-center">
+      {confetti.map(c => (
+        <div key={c.id} className="confetti" style={{
+          left: `${c.left}%`,
+          backgroundColor: c.color,
+          width: `${c.size}px`,
+          height: `${c.size}px`,
+          animationDelay: `${c.delay}s`,
+        }} />
+      ))}
+
+      <div className="w-20 h-20 mx-auto mb-6 bg-milo-green/20 rounded-full flex items-center justify-center">
+        <svg className="w-10 h-10 text-milo-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+
+      <h2 className="text-white text-3xl font-bold mb-3">You're All Set! 🎉</h2>
+      <p className="text-white/60 text-base mb-8">Your call with Tom Martin is booked.</p>
+
+      <div className="glass-card p-6 text-left space-y-4 mb-8">
+        <div className="flex items-start gap-3">
+          <span className="text-xl">📅</span>
+          <div>
+            <p className="text-white/40 text-xs uppercase font-semibold">When</p>
+            <p className="text-white font-medium">{formatDateTime(data.selectedSlot)}</p>
+          </div>
+        </div>
+        <div className="flex items-start gap-3">
+          <span className="text-xl">👤</span>
+          <div>
+            <p className="text-white/40 text-xs uppercase font-semibold">With</p>
+            <p className="text-white font-medium">Tom Martin, Founder of MILO Insulation</p>
+          </div>
+        </div>
+        <div className="flex items-start gap-3">
+          <span className="text-xl">⏱️</span>
+          <div>
+            <p className="text-white/40 text-xs uppercase font-semibold">Duration</p>
+            <p className="text-white font-medium">30 minutes</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="glass-card p-5 text-left mb-6">
+        <p className="text-white/70 text-sm font-semibold mb-3">What to expect:</p>
+        <ul className="space-y-2">
+          <li className="flex items-start gap-2 text-white/50 text-sm">
+            <span className="text-milo-green mt-0.5">✓</span>
+            You'll receive a confirmation email shortly
+          </li>
+          <li className="flex items-start gap-2 text-white/50 text-sm">
+            <span className="text-milo-green mt-0.5">✓</span>
+            Tom will call you at the scheduled time
+          </li>
+          <li className="flex items-start gap-2 text-white/50 text-sm">
+            <span className="text-milo-green mt-0.5">✓</span>
+            Learn about available territories in your area
+          </li>
+          <li className="flex items-start gap-2 text-white/50 text-sm">
+            <span className="text-milo-green mt-0.5">✓</span>
+            No obligation — just an honest conversation
+          </li>
+        </ul>
+      </div>
+
+      <p className="text-white/30 text-xs">
+        🔒 Your information is secure and will never be shared.
+      </p>
+    </div>
+  );
+}
+
+// ── Main App ──
+function App() {
+  const [step, setStep] = useState(0);
+  const [data, setData] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+  const containerRef = useRef(null);
+  const totalSteps = 4;
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (containerRef.current) containerRef.current.scrollTop = 0;
+  };
+
+  const goNext = () => { setStep(s => s + 1); scrollTop(); setError(null); };
+  const goBack = () => { setStep(s => s - 1); scrollTop(); setError(null); };
+
+  const handleCalendarNext = async () => {
+    setSubmitting(true);
+    setError(null);
+    try {
+      // Create contact in GHL
+      const contact = await createContact(data);
+      // Book appointment
+      await bookAppointment(contact.id, data.selectedSlot, data);
+      setStep(4);
+      scrollTop();
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError('Something went wrong. Please try again or contact us directly.');
+    }
+    setSubmitting(false);
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      {/* Header */}
+      <div className="text-center pt-8 pb-4 px-4">
+        <img src={CONFIG.LOGO_URL} alt="MILO Insulation" className="h-12 md:h-14 mx-auto mb-4" style={{ filter: 'brightness(0) invert(1)' }} />
+        {step < 4 && (
+          <h1 className="text-white text-lg md:text-xl font-semibold">
+            Start Your <span className="text-milo-orange">Franchise Journey</span>
+          </h1>
+        )}
+      </div>
+
+      {/* Progress */}
+      {step < 4 && (
+        <div className="px-4">
+          <ProgressBar step={step} total={totalSteps} />
+        </div>
+      )}
+
+      {/* Content */}
+      <div className="flex-1 flex items-start justify-center px-4 pb-8" ref={containerRef}>
+        <div className="glass-card w-full max-w-xl p-6 md:p-8">
+          {error && (
+            <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm">
+              {error}
+            </div>
+          )}
+
+          <div className="step-enter step-active" key={step}>
+            {step === 0 && <StepQualifier data={data} setData={setData} onNext={goNext} />}
+            {step === 1 && <StepLocation data={data} setData={setData} onNext={goNext} onBack={goBack} />}
+            {step === 2 && <StepContact data={data} setData={setData} onNext={goNext} onBack={goBack} />}
+            {step === 3 && <StepCalendar data={data} setData={setData} onNext={handleCalendarNext} onBack={goBack} />}
+            {step === 4 && <StepConfirmation data={data} />}
+          </div>
+
+          {submitting && (
+            <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+              <div className="glass-card p-8 text-center">
+                <svg className="spinner w-12 h-12 text-milo-orange mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
+                </svg>
+                <p className="text-white font-semibold">Booking your call...</p>
+                <p className="text-white/50 text-sm mt-1">Creating your appointment with Tom Martin</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="text-center pb-6 px-4">
+        <p className="text-white/20 text-xs">
+          MILO Insulation™ — Nature's Very Best. © {new Date().getFullYear()}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ── Render ──
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>
