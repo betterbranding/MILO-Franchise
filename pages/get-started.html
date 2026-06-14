@@ -241,25 +241,29 @@ async function createContact(data) {
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    // If contact already exists, try to find them
-    if (err.message && err.message.includes('already exists')) {
+    // If contact already exists (duplicate), use the existing contact
+    if (err.meta && err.meta.contactId) {
+      return { id: err.meta.contactId };
+    }
+    if (err.message && (err.message.includes('already exists') || err.message.includes('duplicat'))) {
+      // Search by email
       const search = await fetch(
-        `${CONFIG.API_BASE}/contacts/lookup?locationId=${CONFIG.LOCATION_ID}&email=${encodeURIComponent(data.email)}`,
+        `${CONFIG.API_BASE}/contacts/?locationId=${CONFIG.LOCATION_ID}&query=${encodeURIComponent(data.email)}&limit=1`,
         { headers: apiHeaders() }
       );
       if (search.ok) {
         const found = await search.json();
         if (found.contacts && found.contacts.length > 0) return found.contacts[0];
       }
-    }
-    // Try alternative: search by email
-    const search2 = await fetch(
-      `${CONFIG.API_BASE}/contacts/?locationId=${CONFIG.LOCATION_ID}&query=${encodeURIComponent(data.email)}&limit=1`,
-      { headers: apiHeaders() }
-    );
-    if (search2.ok) {
-      const found2 = await search2.json();
-      if (found2.contacts && found2.contacts.length > 0) return found2.contacts[0];
+      // Search by phone
+      const search2 = await fetch(
+        `${CONFIG.API_BASE}/contacts/?locationId=${CONFIG.LOCATION_ID}&query=${encodeURIComponent(data.phone)}&limit=1`,
+        { headers: apiHeaders() }
+      );
+      if (search2.ok) {
+        const found2 = await search2.json();
+        if (found2.contacts && found2.contacts.length > 0) return found2.contacts[0];
+      }
     }
     throw new Error('Failed to create contact');
   }
