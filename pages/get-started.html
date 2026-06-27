@@ -152,14 +152,32 @@ body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg
   animation: confetti-fall 3s ease-in forwards;
 }
 
-/* GHL widget iframe */
-.widget-frame {
-  border: none;
-  border-radius: 12px;
-  background: white;
-  width: 100%;
-  min-height: 600px;
+/* Calendar date grid */
+.cal-day {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.15s;
+  color: rgba(255,255,255,0.8);
+  border: 1px solid transparent;
 }
+.cal-day:hover:not(.cal-disabled) { background: rgba(255,130,0,0.15); border-color: rgba(255,130,0,0.3); }
+.cal-day.cal-selected { background: #FF8200; color: white; border-color: #FF8200; }
+.cal-day.cal-disabled { opacity: 0.2; cursor: default; }
+.cal-day.cal-today { border-color: rgba(255,255,255,0.25); }
+
+/* Time slot buttons */
+.time-slot {
+  padding: 10px 16px; border-radius: 10px;
+  font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.15s;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+}
+.time-slot:hover { background: rgba(255,130,0,0.12); border-color: rgba(255,130,0,0.4); }
+.time-slot.ts-selected { background: #FF8200; color: white; border-color: #FF8200; }
 </style>
 </head>
 <body>
@@ -501,105 +519,246 @@ function StepContact({ data, setData, onNext, onBack }) {
   );
 }
 
-// ── Step 4: GHL Booking Widget ──
-function StepBookingWidget({ data, onBooked, onBack }) {
-  const iframeRef = useRef(null);
-  const [widgetLoaded, setWidgetLoaded] = useState(false);
+// ── Helpers: dates ──
+function toLocalDateStr(d) {
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function formatTime12(isoStr) {
+  const d = new Date(isoStr);
+  let h = d.getHours(), m = d.getMinutes();
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  return h + ':' + String(m).padStart(2, '0') + ' ' + ampm;
+}
 
-  // Build the GHL widget URL with pre-filled contact + address info
-  const widgetUrl = (() => {
-    const base = `https://api.leadconnectorhq.com/widget/bookings/${CONFIG.CALENDAR_SLUG}`;
-    const params = new URLSearchParams();
-    if (data.firstName) params.set('first_name', data.firstName);
-    if (data.lastName) params.set('last_name', data.lastName);
-    if (data.email) params.set('email', data.email);
-    if (data.phone) {
-      const digits = data.phone.replace(/\D/g, '');
-      params.set('phone', '+1' + digits);
+// Fetch free slots for a given date range
+async function fetchFreeSlots(startDate, endDate) {
+  const url = `${CONFIG.API_BASE}/calendars/${CONFIG.CALENDAR_ID}/free-slots?startDate=${startDate}&endDate=${endDate}&timezone=${encodeURIComponent(CONFIG.TIMEZONE)}&userId=${CONFIG.CALENDAR_USER_ID}`;
+  const res = await fetch(url, { headers: apiHeaders() });
+  if (!res.ok) throw new Error('Failed to load availability');
+  return res.json();
+}
+
+// Create appointment via API
+async function createAppointment(contactId, slotISO, data) {
+  const startTime = new Date(slotISO);
+  const endTime = new Date(startTime.getTime() + 30 * 60000); // 30 min
+  const res = await fetch(`${CONFIG.API_BASE}/calendars/events/appointments`, {
+    method: 'POST',
+    headers: apiHeaders(),
+    body: JSON.stringify({
+      calendarId: CONFIG.CALENDAR_ID,
+      locationId: CONFIG.LOCATION_ID,
+      contactId,
+      startTime: startTime.toISOString(),
+      endTime: endTime.toISOString(),
+      title: `Franchise Interview – ${data.firstName} ${data.lastName}`,
+      assignedUserId: CONFIG.CALENDAR_USER_ID,
+      address: [data.address, data.city, data.state, data.zip].filter(Boolean).join(', '),
+      status: 'confirmed',
+      appointmentStatus: 'confirmed',
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || 'Failed to book appointment');
+  }
+  return res.json();
+}
+
+// Apply 30-min buffer: keep only every-other slot (skip slots within 30 min of prior kept slot)
+function applyBuffer(slots) {
+  if (!slots || !slots.length) return [];
+  const sorted = [...slots].sort((a, b) => new Date(a) - new Date(b));
+  const buffered = [sorted[0]];
+  for (let i = 1; i < sorted.length; i++) {
+    const prev = new Date(buffered[buffered.length - 1]);
+    const curr = new Date(sorted[i]);
+    if (curr - prev >= 60 * 60000) { // 60 min gap (30 min appt + 30 min buffer)
+      buffered.push(sorted[i]);
     }
-    // Address fields removed from GHL Default form — no longer needed as URL params
-    return `${base}?${params.toString()}`;
-  })();
+  }
+  return buffered;
+}
 
-  // Listen for postMessage from the GHL widget when booking completes
+// ── Step 4: Custom Booking Widget ──
+function StepBooking({ data, onBooked, onBack }) {
+  const DAYS_AHEAD = 21;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [slotsMap, setSlotsMap] = useState({});  // { 'YYYY-MM-DD': [...iso strings] }
+  const [loadingSlots, setLoadingSlots] = useState(true);
+  const [booking, setBooking] = useState(false);
+  const [error, setError] = useState(null);
+  const [calMonth, setCalMonth] = useState(today.getMonth());
+  const [calYear, setCalYear] = useState(today.getFullYear());
+
+  // Fetch slots for full range on mount
   useEffect(() => {
-    const handleMessage = (event) => {
-      // GHL widget sends messages on booking completion
-      if (event.data && typeof event.data === 'object') {
-        // Check various GHL message types
-        if (event.data.type === 'booking-confirmed' || 
-            event.data.action === 'booking-confirmed' ||
-            event.data.status === 'booked' ||
-            (event.data.appointmentData && event.data.appointmentData.id) ||
-            (typeof event.data === 'string' && event.data.includes('booked'))) {
-          onBooked(event.data);
+    (async () => {
+      setLoadingSlots(true);
+      try {
+        const start = new Date(today);
+        start.setDate(start.getDate() + 1); // start tomorrow
+        const end = new Date(today);
+        end.setDate(end.getDate() + DAYS_AHEAD);
+        const result = await fetchFreeSlots(start.getTime(), end.getTime());
+        // GHL returns { [YYYY-MM-DD]: { slots: [...] } } or similar
+        const map = {};
+        if (result && typeof result === 'object') {
+          // Handle both flat and nested formats
+          const slotData = result.slots || result;
+          Object.entries(slotData).forEach(([dateKey, val]) => {
+            const rawSlots = Array.isArray(val) ? val : (val && val.slots ? val.slots : []);
+            const buffered = applyBuffer(rawSlots);
+            if (buffered.length > 0) map[dateKey] = buffered;
+          });
         }
+        setSlotsMap(map);
+      } catch (e) {
+        console.error('Failed to fetch slots:', e);
+        setError('Could not load availability. Please try again.');
       }
-      if (typeof event.data === 'string') {
-        try {
-          const parsed = JSON.parse(event.data);
-          if (parsed.type === 'booking-confirmed' || parsed.status === 'booked' || parsed.appointmentData) {
-            onBooked(parsed);
-          }
-        } catch(e) {
-          // Check for string-based messages
-          if (event.data.includes('booked') || event.data.includes('confirmed') || event.data.includes('appointment')) {
-            onBooked({});
-          }
-        }
-      }
-    };
+      setLoadingSlots(false);
+    })();
+  }, []);
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-  }, [onBooked]);
+  // Build calendar grid
+  const firstOfMonth = new Date(calYear, calMonth, 1);
+  const startDow = firstOfMonth.getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const calDays = [];
+  for (let i = 0; i < startDow; i++) calDays.push(null);
+  for (let d = 1; d <= daysInMonth; d++) calDays.push(d);
+
+  const canPrevMonth = calYear > today.getFullYear() || calMonth > today.getMonth();
+  const maxDate = new Date(today);
+  maxDate.setDate(maxDate.getDate() + DAYS_AHEAD);
+  const canNextMonth = new Date(calYear, calMonth + 1, 1) <= maxDate;
+
+  const handleDateClick = (day) => {
+    const dateStr = calYear + '-' + String(calMonth + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+    setSelectedDate(dateStr);
+    setSelectedSlot(null);
+  };
+
+  const handleBook = async () => {
+    if (!selectedSlot || !data.contactId) return;
+    setBooking(true);
+    setError(null);
+    try {
+      const appt = await createAppointment(data.contactId, selectedSlot, data);
+      onBooked(appt);
+    } catch (e) {
+      console.error('Booking error:', e);
+      setError(e.message || 'Failed to book. Please try a different time.');
+    }
+    setBooking(false);
+  };
+
+  const dayNames = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  const todayStr = toLocalDateStr(today);
+  const slotsForDate = selectedDate ? (slotsMap[selectedDate] || []) : [];
 
   return (
     <div>
       <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">Schedule a Call</p>
       <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Pick a time with Tom Martin</h2>
       <p className="text-white/50 text-sm mb-1">Founder of MILO Insulation &bull; 30 minute call</p>
-      <p className="text-white/30 text-xs mb-6">Your info has been pre-filled — just select a date & time below</p>
+      <p className="text-white/30 text-xs mb-6">Select a date and time that works for you</p>
 
-      {/* Loading state */}
-      {!widgetLoaded && (
-        <div className="flex items-center justify-center py-8">
+      {loadingSlots ? (
+        <div className="flex items-center justify-center py-12">
           <svg className="spinner w-8 h-8 text-milo-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
           </svg>
-          <span className="text-white/50 ml-3">Loading calendar...</span>
+          <span className="text-white/50 ml-3">Loading availability...</span>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Calendar */}
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <button onClick={() => { if (calMonth === 0) { setCalMonth(11); setCalYear(y=>y-1); } else setCalMonth(m=>m-1); }}
+                disabled={!canPrevMonth}
+                className={`w-8 h-8 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition ${!canPrevMonth ? 'opacity-20 cursor-default' : ''}`}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <span className="text-white font-semibold text-sm">{monthNames[calMonth]} {calYear}</span>
+              <button onClick={() => { if (calMonth === 11) { setCalMonth(0); setCalYear(y=>y+1); } else setCalMonth(m=>m+1); }}
+                disabled={!canNextMonth}
+                className={`w-8 h-8 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition ${!canNextMonth ? 'opacity-20 cursor-default' : ''}`}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+
+            <div className="grid grid-cols-7 gap-1 mb-1">
+              {dayNames.map(d => <div key={d} className="text-center text-white/30 text-xs font-semibold py-1">{d}</div>)}
+            </div>
+            <div className="grid grid-cols-7 gap-1">
+              {calDays.map((day, i) => {
+                if (!day) return <div key={'e'+i} />;
+                const dateStr = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+                const dateObj = new Date(calYear, calMonth, day);
+                const isPast = dateObj <= today;
+                const isBeyond = dateObj > maxDate;
+                const hasSlots = !!slotsMap[dateStr];
+                const disabled = isPast || isBeyond || !hasSlots;
+                const isSelected = dateStr === selectedDate;
+                const isToday = dateStr === todayStr;
+                return (
+                  <div key={dateStr}
+                    className={`cal-day ${isSelected ? 'cal-selected' : ''} ${disabled ? 'cal-disabled' : ''} ${isToday ? 'cal-today' : ''}`}
+                    onClick={() => !disabled && handleDateClick(day)}>
+                    {day}
+                  </div>
+                );
+              })}
+            </div>
+
+            {!selectedDate && (
+              <p className="text-white/30 text-xs mt-4 text-center">Select a date to see available times</p>
+            )}
+          </div>
+
+          {/* Time slots */}
+          <div>
+            {selectedDate && (
+              <div>
+                <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-3">
+                  {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                </p>
+                {slotsForDate.length === 0 ? (
+                  <p className="text-white/40 text-sm py-8 text-center">No available times on this date</p>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2 max-h-[320px] overflow-y-auto pr-1">
+                    {slotsForDate.map(slot => (
+                      <div key={slot}
+                        className={`time-slot ${selectedSlot === slot ? 'ts-selected' : ''}`}
+                        onClick={() => setSelectedSlot(slot)}>
+                        {formatTime12(slot)}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
-      {/* GHL Booking Widget */}
-      <div className="rounded-xl overflow-hidden" style={{ background: 'white', minHeight: widgetLoaded ? 'auto' : '0px' }}>
-        <iframe
-          ref={iframeRef}
-          src={widgetUrl}
-          className="widget-frame"
-          style={{ 
-            display: widgetLoaded ? 'block' : 'none',
-            minHeight: '650px',
-          }}
-          onLoad={() => setWidgetLoaded(true)}
-          allow="payment"
-          title="Book a call with Tom Martin"
-        />
-      </div>
-
-      {/* Fallback: manual confirmation button */}
-      {widgetLoaded && (
-        <div className="mt-6 text-center">
-          <p className="text-white/30 text-xs mb-3">Already booked your call in the calendar above?</p>
-          <button
-            onClick={() => onBooked({})}
-            className="text-milo-orange hover:text-orange-400 text-sm font-semibold underline underline-offset-2 transition-colors"
-          >
-            I've booked my call — continue →
-          </button>
+      {error && (
+        <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm">
+          {error}
         </div>
       )}
 
+      <NextButton onClick={handleBook} disabled={!selectedSlot} text="Book My Call" loading={booking} />
       <BackButton onClick={onBack} />
     </div>
   );
@@ -772,7 +931,7 @@ function App() {
             {step === 0 && <StepQualifier data={data} setData={setData} onNext={goNext} />}
             {step === 1 && <StepLocation data={data} setData={setData} onNext={goNext} onBack={goBack} />}
             {step === 2 && <StepContact data={data} setData={setData} onNext={handleContactNext} onBack={goBack} />}
-            {step === 3 && <StepBookingWidget data={data} onBooked={handleBooked} onBack={goBack} />}
+            {step === 3 && <StepBooking data={data} onBooked={handleBooked} onBack={goBack} />}
             {step === 4 && <StepConfirmation data={data} />}
           </div>
 
