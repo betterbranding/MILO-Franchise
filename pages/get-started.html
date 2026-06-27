@@ -555,8 +555,7 @@ async function createAppointment(contactId, slotISO, data) {
       title: `Franchise Interview – ${data.firstName} ${data.lastName}`,
       assignedUserId: CONFIG.CALENDAR_USER_ID,
       address: [data.address, data.city, data.state, data.zip].filter(Boolean).join(', '),
-      status: 'confirmed',
-      appointmentStatus: 'confirmed',
+      appointmentStatus: 'new',
     }),
   });
   if (!res.ok) {
