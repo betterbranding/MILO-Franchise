@@ -18,38 +18,22 @@ fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1115582933883479&ev=PageView&noscript=1"/></noscript>
 
-<!-- React + Babel -->
-<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+<!-- Preconnect to API -->
+<link rel="preconnect" href="https://services.leadconnectorhq.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        milo: {
-          navy: '#074387',
-          darknavy: '#041E42',
-          orange: '#FF8200',
-          green: '#288D11',
-          blue: '#50ACE1',
-        }
-      },
-      fontFamily: {
-        heading: ['Montserrat', 'sans-serif'],
-        body: ['Montserrat', 'sans-serif'],
-      }
-    }
-  }
-}
-</script>
+<!-- React (production, from jsDelivr) -->
+<script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+<!-- Tailwind (extracted static CSS) -->
+<style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.inset-0{inset:0}.z-50{z-index:50}.m-1{margin:.25rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:.25rem}.mb-1\.5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-3{margin-left:.75rem}.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.block{display:block}.flex{display:flex}.grid{display:grid}.h-10{height:2.5rem}.h-12{height:3rem}.h-2{height:.5rem}.h-20{height:5rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-8{height:2rem}.h-full{height:100%}.max-h-\[320px\]{max-height:320px}.min-h-screen{min-height:100vh}.w-1\/2{width:50%}.w-10{width:2.5rem}.w-12{width:3rem}.w-20{width:5rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-8{width:2rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-default{cursor:default}.cursor-not-allowed{cursor:not-allowed}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-red-500\/30{border-color:rgba(239,68,68,.3)}.border-white\/10{border-color:hsla(0,0%,100%,.1)}.bg-black\/60{background-color:rgba(0,0,0,.6)}.bg-milo-green\/20{background-color:rgba(40,141,17,.2)}.bg-milo-orange{--tw-bg-opacity:1;background-color:rgb(255 130 0/var(--tw-bg-opacity,1))}.bg-red-500\/10{background-color:rgba(239,68,68,.1)}.bg-white\/10{background-color:hsla(0,0%,100%,.1)}.bg-white\/5{background-color:hsla(0,0%,100%,.05)}.p-3{padding:.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-4{padding-bottom:1rem}.pb-6{padding-bottom:1.5rem}.pb-8{padding-bottom:2rem}.pr-1{padding-right:.25rem}.pt-8{padding-top:2rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tracking-\[0\.2em\]{letter-spacing:.2em}.tracking-wider{letter-spacing:.05em}.text-milo-green{--tw-text-opacity:1;color:rgb(40 141 17/var(--tw-text-opacity,1))}.text-milo-orange{--tw-text-opacity:1;color:rgb(255 130 0/var(--tw-text-opacity,1))}.text-red-300{--tw-text-opacity:1;color:rgb(252 165 165/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.text-white\/20{color:hsla(0,0%,100%,.2)}.text-white\/30{color:hsla(0,0%,100%,.3)}.text-white\/40{color:hsla(0,0%,100%,.4)}.text-white\/50{color:hsla(0,0%,100%,.5)}.text-white\/60{color:hsla(0,0%,100%,.6)}.text-white\/70{color:hsla(0,0%,100%,.7)}.opacity-20{opacity:.2}.opacity-40{opacity:.4}.outline{outline-style:solid}.blur{--tw-blur:blur(8px)}.blur,.invert{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.invert{--tw-invert:invert(100%)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.ease-in{transition-timing-function:cubic-bezier(.4,0,1,1)}.ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.hover\:bg-orange-500:hover{--tw-bg-opacity:1;background-color:rgb(249 115 22/var(--tw-bg-opacity,1))}.hover\:bg-white\/10:hover{background-color:hsla(0,0%,100%,.1)}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.hover\:text-white\/80:hover{color:hsla(0,0%,100%,.8)}@media (min-width:768px){.md\:h-14{height:3.5rem}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:p-8{padding:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style>
+
+<!-- Custom styles -->
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg, #041E42 0%, #074387 50%, #0B3C7F 100%); min-height: 100vh; }
@@ -179,35 +163,31 @@ body { font-family: 'Montserrat', sans-serif; background: linear-gradient(135deg
 .time-slot:hover { background: rgba(255,130,0,0.12); border-color: rgba(255,130,0,0.4); }
 .time-slot.ts-selected { background: #FF8200; color: white; border-color: #FF8200; }
 </style>
+</style>
 </head>
 <body>
 <div id="root"></div>
-<script type="text/babel">
+<script>
 const { useState, useEffect, useRef, useCallback } = React;
-
-// ── Config ──
 const CONFIG = {
-  API_KEY: 'pit-d160d69a-99b5-4521-aa51-fdd0c8700b20',
-  LOCATION_ID: '862EsIISRtzQUOq3B1vZ',
-  CALENDAR_ID: 'uBAzux7l6Ywgb86Qumne',
-  CALENDAR_USER_ID: '1R6t2NdraXiJhhOGgcqj',
-  CALENDAR_SLUG: 'milo-franchise-interview',
-  API_BASE: 'https://services.leadconnectorhq.com',
-  API_VERSION: '2021-07-28',
-  LOGO_URL: 'https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg',
-  TIMEZONE: Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/Chicago',
+  API_KEY: "pit-d160d69a-99b5-4521-aa51-fdd0c8700b20",
+  LOCATION_ID: "862EsIISRtzQUOq3B1vZ",
+  CALENDAR_ID: "uBAzux7l6Ywgb86Qumne",
+  CALENDAR_USER_ID: "1R6t2NdraXiJhhOGgcqj",
+  CALENDAR_SLUG: "milo-franchise-interview",
+  API_BASE: "https://services.leadconnectorhq.com",
+  API_VERSION: "2021-07-28",
+  LOGO_URL: "https://assets.cdn.filesafe.space/862EsIISRtzQUOq3B1vZ/media/69b9e24908e9f26f3136fb70.svg",
+  TIMEZONE: Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Chicago"
 };
-
-// ── API Helpers ──
 const apiHeaders = () => ({
-  'Authorization': `Bearer ${CONFIG.API_KEY}`,
-  'Version': CONFIG.API_VERSION,
-  'Content-Type': 'application/json',
+  "Authorization": `Bearer ${CONFIG.API_KEY}`,
+  "Version": CONFIG.API_VERSION,
+  "Content-Type": "application/json"
 });
-
 async function createContact(data) {
   const res = await fetch(`${CONFIG.API_BASE}/contacts/`, {
-    method: 'POST',
+    method: "POST",
     headers: apiHeaders(),
     body: JSON.stringify({
       locationId: CONFIG.LOCATION_ID,
@@ -219,25 +199,21 @@ async function createContact(data) {
       city: data.city,
       state: data.state,
       postalCode: data.zip,
-      source: 'Franchise Lead Form',
-      tags: ['franchise-lead', 'lead-form'],
+      source: "Franchise Lead Form",
+      tags: ["franchise-lead", "lead-form"],
       customFields: [
-        { key: 'investment_ready', field_value: data.investmentReady },
-        { key: 'timeline', field_value: data.timeline },
-      ],
-    }),
+        { key: "investment_ready", field_value: data.investmentReady },
+        { key: "timeline", field_value: data.timeline }
+      ]
+    })
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    // If contact already exists (duplicate), use the existing contact
     if (err.meta && err.meta.contactId) {
-      // Update existing contact with latest data
       await updateContact(err.meta.contactId, data);
       return { id: err.meta.contactId };
     }
-    if (err.message && (typeof err.message === 'string') && 
-        (err.message.includes('already exists') || err.message.includes('duplicat') || err.message.includes('does not allow'))) {
-      // Search by email
+    if (err.message && typeof err.message === "string" && (err.message.includes("already exists") || err.message.includes("duplicat") || err.message.includes("does not allow"))) {
       const search = await fetch(
         `${CONFIG.API_BASE}/contacts/?locationId=${CONFIG.LOCATION_ID}&query=${encodeURIComponent(data.email)}&limit=1`,
         { headers: apiHeaders() }
@@ -249,7 +225,6 @@ async function createContact(data) {
           return found.contacts[0];
         }
       }
-      // Search by phone
       const search2 = await fetch(
         `${CONFIG.API_BASE}/contacts/?locationId=${CONFIG.LOCATION_ID}&query=${encodeURIComponent(data.phone)}&limit=1`,
         { headers: apiHeaders() }
@@ -262,16 +237,15 @@ async function createContact(data) {
         }
       }
     }
-    throw new Error('Failed to create contact');
+    throw new Error("Failed to create contact");
   }
   const result = await res.json();
   return result.contact;
 }
-
 async function updateContact(contactId, data) {
   try {
     await fetch(`${CONFIG.API_BASE}/contacts/${contactId}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: apiHeaders(),
       body: JSON.stringify({
         firstName: data.firstName,
@@ -280,271 +254,275 @@ async function updateContact(contactId, data) {
         city: data.city,
         state: data.state,
         postalCode: data.zip,
-        tags: ['franchise-lead', 'lead-form'],
+        tags: ["franchise-lead", "lead-form"],
         customFields: [
-          { key: 'investment_ready', field_value: data.investmentReady },
-          { key: 'timeline', field_value: data.timeline },
-        ],
-      }),
+          { key: "investment_ready", field_value: data.investmentReady },
+          { key: "timeline", field_value: data.timeline }
+        ]
+      })
     });
   } catch (e) {
-    console.warn('Failed to update contact:', e);
+    console.warn("Failed to update contact:", e);
   }
 }
-
-// ── US States ──
 const US_STATES = [
-  'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia',
-  'Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland',
-  'Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey',
-  'New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina',
-  'South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming"
 ];
-
-// ── Components ──
 function ProgressBar({ step, total }) {
-  const pct = Math.round(((step) / total) * 100);
-  return (
-    <div className="w-full max-w-xl mx-auto mb-8">
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-xs font-semibold text-white/60 uppercase tracking-wider">Step {step + 1}</span>
-        <span className="text-xs font-semibold text-white/60">{pct}%</span>
-      </div>
-      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-        <div className="progress-fill h-full rounded-full" style={{ width: `${pct}%` }} />
-      </div>
-    </div>
-  );
+  const pct = Math.round(step / total * 100);
+  return /* @__PURE__ */ React.createElement("div", { className: "w-full max-w-xl mx-auto mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "flex justify-between items-center mb-2" }, /* @__PURE__ */ React.createElement("span", { className: "text-xs font-semibold text-white/60 uppercase tracking-wider" }, "Step ", step + 1), /* @__PURE__ */ React.createElement("span", { className: "text-xs font-semibold text-white/60" }, pct, "%")), /* @__PURE__ */ React.createElement("div", { className: "h-2 bg-white/10 rounded-full overflow-hidden" }, /* @__PURE__ */ React.createElement("div", { className: "progress-fill h-full rounded-full", style: { width: `${pct}%` } })));
 }
-
 function OptionCard({ emoji, title, subtitle, selected, onClick, disabled }) {
-  return (
-    <div
-      className={`option-card rounded-xl p-5 flex items-start gap-4 ${selected ? 'selected' : ''} ${disabled ? 'opacity-40 cursor-not-allowed' : ''}`}
-      onClick={disabled ? undefined : onClick}
-    >
-      <span className="text-3xl flex-shrink-0 mt-0.5">{emoji}</span>
-      <div>
-        <h4 className="text-white font-semibold text-base">{title}</h4>
-        {subtitle && <p className="text-white/50 text-sm mt-1">{subtitle}</p>}
-      </div>
-    </div>
+  return /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      className: `option-card rounded-xl p-5 flex items-start gap-4 ${selected ? "selected" : ""} ${disabled ? "opacity-40 cursor-not-allowed" : ""}`,
+      onClick: disabled ? void 0 : onClick
+    },
+    /* @__PURE__ */ React.createElement("span", { className: "text-3xl flex-shrink-0 mt-0.5" }, emoji),
+    /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h4", { className: "text-white font-semibold text-base" }, title), subtitle && /* @__PURE__ */ React.createElement("p", { className: "text-white/50 text-sm mt-1" }, subtitle))
   );
 }
-
 function BackButton({ onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className="flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors text-sm font-medium mt-6"
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      Back
-    </button>
+  return /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick,
+      className: "flex items-center gap-2 text-white/50 hover:text-white/80 transition-colors text-sm font-medium mt-6"
+    },
+    /* @__PURE__ */ React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }, /* @__PURE__ */ React.createElement("path", { d: "M19 12H5M12 19l-7-7 7-7" })),
+    "Back"
   );
 }
-
-function NextButton({ onClick, disabled, text = 'Continue', loading }) {
-  return (
-    <button
-      onClick={onClick}
-      disabled={disabled || loading}
-      className={`w-full mt-6 py-4 px-8 rounded-xl font-bold text-base text-white transition-all ${
-        disabled ? 'bg-white/10 cursor-not-allowed text-white/30' : 'bg-milo-orange hover:bg-orange-500 btn-pulse'
-      }`}
-    >
-      {loading ? (
-        <span className="flex items-center justify-center gap-2">
-          <svg className="spinner w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
-          </svg>
-          Processing...
-        </span>
-      ) : (
-        <span className="flex items-center justify-center gap-2">
-          {text}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </span>
-      )}
-    </button>
+function NextButton({ onClick, disabled, text = "Continue", loading }) {
+  return /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick,
+      disabled: disabled || loading,
+      className: `w-full mt-6 py-4 px-8 rounded-xl font-bold text-base text-white transition-all ${disabled ? "bg-white/10 cursor-not-allowed text-white/30" : "bg-milo-orange hover:bg-orange-500 btn-pulse"}`
+    },
+    loading ? /* @__PURE__ */ React.createElement("span", { className: "flex items-center justify-center gap-2" }, /* @__PURE__ */ React.createElement("svg", { className: "spinner w-5 h-5", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ React.createElement("circle", { cx: "12", cy: "12", r: "10", strokeDasharray: "60", strokeDashoffset: "20" })), "Processing...") : /* @__PURE__ */ React.createElement("span", { className: "flex items-center justify-center gap-2" }, text, /* @__PURE__ */ React.createElement("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round" }, /* @__PURE__ */ React.createElement("path", { d: "M5 12h14M12 5l7 7-7 7" })))
   );
 }
-
-// ── Step 1: Quick Qualifier ──
 function StepQualifier({ data, setData, onNext }) {
-  return (
-    <div>
-      <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">Quick Questions</p>
-      <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Let's see if MILO is right for you</h2>
-      <p className="text-white/50 text-sm mb-8">Answer two quick questions to get started</p>
-
-      <div className="mb-8">
-        <p className="text-white/70 text-sm font-semibold mb-3">Are you prepared to invest $350,000 – $450,000?</p>
-        <div className="space-y-3">
-          <OptionCard emoji="✅" title="Yes, I'm Ready" subtitle="I have the capital or financing lined up"
-            selected={data.investmentReady === 'yes'} onClick={() => setData({...data, investmentReady: 'yes'})} />
-          <OptionCard emoji="🔄" title="I'm Exploring Options" subtitle="Still evaluating my investment capacity"
-            selected={data.investmentReady === 'exploring'} onClick={() => setData({...data, investmentReady: 'exploring'})} />
-          <OptionCard emoji="📊" title="I Need More Info" subtitle="I'd like to understand the full investment"
-            selected={data.investmentReady === 'info'} onClick={() => setData({...data, investmentReady: 'info'})} />
-        </div>
-      </div>
-
-      {data.investmentReady && (
-        <div className="step-enter step-active">
-          <p className="text-white/70 text-sm font-semibold mb-3">How soon are you looking to get started?</p>
-          <div className="space-y-3">
-            <OptionCard emoji="⚡" title="As Soon as Possible" subtitle="Ready to move forward now"
-              selected={data.timeline === 'asap'} onClick={() => setData({...data, timeline: 'asap'})} />
-            <OptionCard emoji="📅" title="Within 3–6 Months" subtitle="Planning and preparing"
-              selected={data.timeline === '3-6months'} onClick={() => setData({...data, timeline: '3-6months'})} />
-            <OptionCard emoji="🔍" title="Just Researching" subtitle="Exploring franchise opportunities"
-              selected={data.timeline === 'researching'} onClick={() => setData({...data, timeline: 'researching'})} />
-          </div>
-        </div>
-      )}
-
-      <NextButton
-        onClick={onNext}
-        disabled={!data.investmentReady || !data.timeline}
-        text="Continue"
-      />
-    </div>
-  );
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2" }, "Quick Questions"), /* @__PURE__ */ React.createElement("h2", { className: "text-white text-2xl md:text-3xl font-bold mb-2" }, "Let's see if MILO is right for you"), /* @__PURE__ */ React.createElement("p", { className: "text-white/50 text-sm mb-8" }, "Answer two quick questions to get started"), /* @__PURE__ */ React.createElement("div", { className: "mb-8" }, /* @__PURE__ */ React.createElement("p", { className: "text-white/70 text-sm font-semibold mb-3" }, "Are you prepared to invest $350,000 \u2013 $450,000?"), /* @__PURE__ */ React.createElement("div", { className: "space-y-3" }, /* @__PURE__ */ React.createElement(
+    OptionCard,
+    {
+      emoji: "\u2705",
+      title: "Yes, I'm Ready",
+      subtitle: "I have the capital or financing lined up",
+      selected: data.investmentReady === "yes",
+      onClick: () => setData({ ...data, investmentReady: "yes" })
+    }
+  ), /* @__PURE__ */ React.createElement(
+    OptionCard,
+    {
+      emoji: "\u{1F504}",
+      title: "I'm Exploring Options",
+      subtitle: "Still evaluating my investment capacity",
+      selected: data.investmentReady === "exploring",
+      onClick: () => setData({ ...data, investmentReady: "exploring" })
+    }
+  ), /* @__PURE__ */ React.createElement(
+    OptionCard,
+    {
+      emoji: "\u{1F4CA}",
+      title: "I Need More Info",
+      subtitle: "I'd like to understand the full investment",
+      selected: data.investmentReady === "info",
+      onClick: () => setData({ ...data, investmentReady: "info" })
+    }
+  ))), data.investmentReady && /* @__PURE__ */ React.createElement("div", { className: "step-enter step-active" }, /* @__PURE__ */ React.createElement("p", { className: "text-white/70 text-sm font-semibold mb-3" }, "How soon are you looking to get started?"), /* @__PURE__ */ React.createElement("div", { className: "space-y-3" }, /* @__PURE__ */ React.createElement(
+    OptionCard,
+    {
+      emoji: "\u26A1",
+      title: "As Soon as Possible",
+      subtitle: "Ready to move forward now",
+      selected: data.timeline === "asap",
+      onClick: () => setData({ ...data, timeline: "asap" })
+    }
+  ), /* @__PURE__ */ React.createElement(
+    OptionCard,
+    {
+      emoji: "\u{1F4C5}",
+      title: "Within 3\u20136 Months",
+      subtitle: "Planning and preparing",
+      selected: data.timeline === "3-6months",
+      onClick: () => setData({ ...data, timeline: "3-6months" })
+    }
+  ), /* @__PURE__ */ React.createElement(
+    OptionCard,
+    {
+      emoji: "\u{1F50D}",
+      title: "Just Researching",
+      subtitle: "Exploring franchise opportunities",
+      selected: data.timeline === "researching",
+      onClick: () => setData({ ...data, timeline: "researching" })
+    }
+  ))), /* @__PURE__ */ React.createElement(
+    NextButton,
+    {
+      onClick: onNext,
+      disabled: !data.investmentReady || !data.timeline,
+      text: "Continue"
+    }
+  ));
 }
-
-// ── Step 2: Location ──
 function StepLocation({ data, setData, onNext, onBack }) {
   const valid = data.address && data.city && data.state && data.zip;
-  return (
-    <div>
-      <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">Your Location</p>
-      <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Where are you looking to open a franchise?</h2>
-      <p className="text-white/50 text-sm mb-8">Help us connect you with the right territory information</p>
-
-      <div className="space-y-4">
-        <div>
-          <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Street Address</label>
-          <input className="form-input" placeholder="123 Main St" value={data.address || ''}
-            onChange={e => setData({...data, address: e.target.value})} />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">City</label>
-            <input className="form-input" placeholder="City" value={data.city || ''}
-              onChange={e => setData({...data, city: e.target.value})} />
-          </div>
-          <div>
-            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">State</label>
-            <select className="form-input form-select" value={data.state || ''}
-              onChange={e => setData({...data, state: e.target.value})}>
-              <option value="">Select</option>
-              {US_STATES.map(s => <option key={s} value={s}>{s}</option>)}
-            </select>
-          </div>
-        </div>
-        <div className="w-1/2">
-          <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">ZIP Code</label>
-          <input className="form-input" placeholder="12345" value={data.zip || ''} maxLength={10}
-            onChange={e => setData({...data, zip: e.target.value})} />
-        </div>
-      </div>
-
-      <NextButton onClick={onNext} disabled={!valid} text="Continue" />
-      <BackButton onClick={onBack} />
-    </div>
-  );
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2" }, "Your Location"), /* @__PURE__ */ React.createElement("h2", { className: "text-white text-2xl md:text-3xl font-bold mb-2" }, "Where are you looking to open a franchise?"), /* @__PURE__ */ React.createElement("p", { className: "text-white/50 text-sm mb-8" }, "Help us connect you with the right territory information"), /* @__PURE__ */ React.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block" }, "Street Address"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      className: "form-input",
+      placeholder: "123 Main St",
+      value: data.address || "",
+      onChange: (e) => setData({ ...data, address: e.target.value })
+    }
+  )), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-4" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block" }, "City"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      className: "form-input",
+      placeholder: "City",
+      value: data.city || "",
+      onChange: (e) => setData({ ...data, city: e.target.value })
+    }
+  )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block" }, "State"), /* @__PURE__ */ React.createElement(
+    "select",
+    {
+      className: "form-input form-select",
+      value: data.state || "",
+      onChange: (e) => setData({ ...data, state: e.target.value })
+    },
+    /* @__PURE__ */ React.createElement("option", { value: "" }, "Select"),
+    US_STATES.map((s) => /* @__PURE__ */ React.createElement("option", { key: s, value: s }, s))
+  ))), /* @__PURE__ */ React.createElement("div", { className: "w-1/2" }, /* @__PURE__ */ React.createElement("label", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block" }, "ZIP Code"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      className: "form-input",
+      placeholder: "12345",
+      value: data.zip || "",
+      maxLength: 10,
+      onChange: (e) => setData({ ...data, zip: e.target.value })
+    }
+  ))), /* @__PURE__ */ React.createElement(NextButton, { onClick: onNext, disabled: !valid, text: "Continue" }), /* @__PURE__ */ React.createElement(BackButton, { onClick: onBack }));
 }
-
-// ── Step 3: Contact Info ──
 function StepContact({ data, setData, onNext, onBack }) {
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '');
-  const phoneValid = (data.phone || '').replace(/\D/g, '').length >= 10;
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || "");
+  const phoneValid = (data.phone || "").replace(/\D/g, "").length >= 10;
   const valid = data.firstName && data.lastName && emailValid && phoneValid;
-
   const formatPhone = (val) => {
-    const digits = val.replace(/\D/g, '').slice(0, 10);
+    const digits = val.replace(/\D/g, "").slice(0, 10);
     if (digits.length <= 3) return digits;
-    if (digits.length <= 6) return `(${digits.slice(0,3)}) ${digits.slice(3)}`;
-    return `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
   };
-
-  return (
-    <div>
-      <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">About You</p>
-      <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Tell us a little about yourself</h2>
-      <p className="text-white/50 text-sm mb-8">We'll use this to personalize your franchise consultation</p>
-
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">First Name</label>
-            <input className="form-input" placeholder="First name" value={data.firstName || ''}
-              onChange={e => setData({...data, firstName: e.target.value})} />
-          </div>
-          <div>
-            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Last Name</label>
-            <input className="form-input" placeholder="Last name" value={data.lastName || ''}
-              onChange={e => setData({...data, lastName: e.target.value})} />
-          </div>
-        </div>
-        <div>
-          <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Email</label>
-          <input className="form-input" type="email" placeholder="you@email.com" value={data.email || ''}
-            onChange={e => setData({...data, email: e.target.value})} />
-        </div>
-        <div>
-          <label className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block">Phone</label>
-          <input className="form-input" type="tel" placeholder="(555) 123-4567" value={data.phone || ''}
-            onChange={e => setData({...data, phone: formatPhone(e.target.value)})} />
-        </div>
-      </div>
-
-      <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/10">
-        <p className="text-white/40 text-xs flex items-start gap-2">
-          <svg className="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
-          </svg>
-          Your information is secure and never shared. By continuing, you agree to be contacted about MILO franchise opportunities.
-        </p>
-      </div>
-
-      <NextButton onClick={onNext} disabled={!valid} text="Continue" />
-      <BackButton onClick={onBack} />
-    </div>
-  );
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2" }, "About You"), /* @__PURE__ */ React.createElement("h2", { className: "text-white text-2xl md:text-3xl font-bold mb-2" }, "Tell us a little about yourself"), /* @__PURE__ */ React.createElement("p", { className: "text-white/50 text-sm mb-8" }, "We'll use this to personalize your franchise consultation"), /* @__PURE__ */ React.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-4" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block" }, "First Name"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      className: "form-input",
+      placeholder: "First name",
+      value: data.firstName || "",
+      onChange: (e) => setData({ ...data, firstName: e.target.value })
+    }
+  )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block" }, "Last Name"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      className: "form-input",
+      placeholder: "Last name",
+      value: data.lastName || "",
+      onChange: (e) => setData({ ...data, lastName: e.target.value })
+    }
+  ))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block" }, "Email"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      className: "form-input",
+      type: "email",
+      placeholder: "you@email.com",
+      value: data.email || "",
+      onChange: (e) => setData({ ...data, email: e.target.value })
+    }
+  )), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-1.5 block" }, "Phone"), /* @__PURE__ */ React.createElement(
+    "input",
+    {
+      className: "form-input",
+      type: "tel",
+      placeholder: "(555) 123-4567",
+      value: data.phone || "",
+      onChange: (e) => setData({ ...data, phone: formatPhone(e.target.value) })
+    }
+  ))), /* @__PURE__ */ React.createElement("div", { className: "mt-6 p-4 rounded-xl bg-white/5 border border-white/10" }, /* @__PURE__ */ React.createElement("p", { className: "text-white/40 text-xs flex items-start gap-2" }, /* @__PURE__ */ React.createElement("svg", { className: "w-4 h-4 flex-shrink-0 mt-0.5", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ React.createElement("rect", { x: "3", y: "11", width: "18", height: "11", rx: "2", ry: "2" }), /* @__PURE__ */ React.createElement("path", { d: "M7 11V7a5 5 0 0110 0v4" })), "Your information is secure and never shared. By continuing, you agree to be contacted about MILO franchise opportunities.")), /* @__PURE__ */ React.createElement(NextButton, { onClick: onNext, disabled: !valid, text: "Continue" }), /* @__PURE__ */ React.createElement(BackButton, { onClick: onBack }));
 }
-
-// ── Helpers: dates ──
 function toLocalDateStr(d) {
-  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
 }
 function formatTime12(isoStr) {
   const d = new Date(isoStr);
   let h = d.getHours(), m = d.getMinutes();
-  const ampm = h >= 12 ? 'PM' : 'AM';
+  const ampm = h >= 12 ? "PM" : "AM";
   h = h % 12 || 12;
-  return h + ':' + String(m).padStart(2, '0') + ' ' + ampm;
+  return h + ":" + String(m).padStart(2, "0") + " " + ampm;
 }
-
-// Fetch free slots for a given date range
 async function fetchFreeSlots(startDate, endDate) {
   const url = `${CONFIG.API_BASE}/calendars/${CONFIG.CALENDAR_ID}/free-slots?startDate=${startDate}&endDate=${endDate}&timezone=${encodeURIComponent(CONFIG.TIMEZONE)}&userId=${CONFIG.CALENDAR_USER_ID}`;
   const res = await fetch(url, { headers: apiHeaders() });
-  if (!res.ok) throw new Error('Failed to load availability');
+  if (!res.ok) throw new Error("Failed to load availability");
   return res.json();
 }
-
-// Create appointment via API
 async function createAppointment(contactId, slotISO, data) {
   const startTime = new Date(slotISO);
-  const endTime = new Date(startTime.getTime() + 30 * 60000); // 30 min
+  const endTime = new Date(startTime.getTime() + 30 * 6e4);
   const res = await fetch(`${CONFIG.API_BASE}/calendars/events/appointments`, {
-    method: 'POST',
+    method: "POST",
     headers: apiHeaders(),
     body: JSON.stringify({
       calendarId: CONFIG.CALENDAR_ID,
@@ -552,20 +530,18 @@ async function createAppointment(contactId, slotISO, data) {
       contactId,
       startTime: startTime.toISOString(),
       endTime: endTime.toISOString(),
-      title: `Franchise Interview – ${data.firstName} ${data.lastName}`,
+      title: `Franchise Interview \u2013 ${data.firstName} ${data.lastName}`,
       assignedUserId: CONFIG.CALENDAR_USER_ID,
-      address: [data.address, data.city, data.state, data.zip].filter(Boolean).join(', '),
-      appointmentStatus: 'new',
-    }),
+      address: [data.address, data.city, data.state, data.zip].filter(Boolean).join(", "),
+      appointmentStatus: "new"
+    })
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    throw new Error(err.message || 'Failed to book appointment');
+    throw new Error(err.message || "Failed to book appointment");
   }
   return res.json();
 }
-
-// Apply 30-min buffer: keep only every-other slot (skip slots within 30 min of prior kept slot)
 function applyBuffer(slots) {
   if (!slots || !slots.length) return [];
   const sorted = [...slots].sort((a, b) => new Date(a) - new Date(b));
@@ -573,77 +549,65 @@ function applyBuffer(slots) {
   for (let i = 1; i < sorted.length; i++) {
     const prev = new Date(buffered[buffered.length - 1]);
     const curr = new Date(sorted[i]);
-    if (curr - prev >= 60 * 60000) { // 60 min gap (30 min appt + 30 min buffer)
+    if (curr - prev >= 60 * 6e4) {
       buffered.push(sorted[i]);
     }
   }
   return buffered;
 }
-
-// ── Step 4: Custom Booking Widget ──
 function StepBooking({ data, onBooked, onBack }) {
   const DAYS_AHEAD = 21;
-  const today = new Date();
-  today.setHours(0,0,0,0);
-
+  const today = /* @__PURE__ */ new Date();
+  today.setHours(0, 0, 0, 0);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedSlot, setSelectedSlot] = useState(null);
-  const [slotsMap, setSlotsMap] = useState({});  // { 'YYYY-MM-DD': [...iso strings] }
+  const [slotsMap, setSlotsMap] = useState({});
   const [loadingSlots, setLoadingSlots] = useState(true);
   const [booking, setBooking] = useState(false);
   const [error, setError] = useState(null);
   const [calMonth, setCalMonth] = useState(today.getMonth());
   const [calYear, setCalYear] = useState(today.getFullYear());
-
-  // Fetch slots for full range on mount
   useEffect(() => {
     (async () => {
       setLoadingSlots(true);
       try {
         const start = new Date(today);
-        start.setDate(start.getDate() + 1); // start tomorrow
+        start.setDate(start.getDate() + 1);
         const end = new Date(today);
         end.setDate(end.getDate() + DAYS_AHEAD);
         const result = await fetchFreeSlots(start.getTime(), end.getTime());
-        // GHL returns { [YYYY-MM-DD]: { slots: [...] } } or similar
         const map = {};
-        if (result && typeof result === 'object') {
-          // Handle both flat and nested formats
+        if (result && typeof result === "object") {
           const slotData = result.slots || result;
           Object.entries(slotData).forEach(([dateKey, val]) => {
-            const rawSlots = Array.isArray(val) ? val : (val && val.slots ? val.slots : []);
+            const rawSlots = Array.isArray(val) ? val : val && val.slots ? val.slots : [];
             const buffered = applyBuffer(rawSlots);
             if (buffered.length > 0) map[dateKey] = buffered;
           });
         }
         setSlotsMap(map);
       } catch (e) {
-        console.error('Failed to fetch slots:', e);
-        setError('Could not load availability. Please try again.');
+        console.error("Failed to fetch slots:", e);
+        setError("Could not load availability. Please try again.");
       }
       setLoadingSlots(false);
     })();
   }, []);
-
-  // Build calendar grid
   const firstOfMonth = new Date(calYear, calMonth, 1);
   const startDow = firstOfMonth.getDay();
   const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
   const calDays = [];
   for (let i = 0; i < startDow; i++) calDays.push(null);
   for (let d = 1; d <= daysInMonth; d++) calDays.push(d);
-
   const canPrevMonth = calYear > today.getFullYear() || calMonth > today.getMonth();
   const maxDate = new Date(today);
   maxDate.setDate(maxDate.getDate() + DAYS_AHEAD);
   const canNextMonth = new Date(calYear, calMonth + 1, 1) <= maxDate;
-
   const handleDateClick = (day) => {
-    const dateStr = calYear + '-' + String(calMonth + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+    const dateStr = calYear + "-" + String(calMonth + 1).padStart(2, "0") + "-" + String(day).padStart(2, "0");
     setSelectedDate(dateStr);
     setSelectedSlot(null);
   };
-
   const handleBook = async () => {
     if (!selectedSlot || !data.contactId) return;
     setBooking(true);
@@ -652,213 +616,94 @@ function StepBooking({ data, onBooked, onBack }) {
       const appt = await createAppointment(data.contactId, selectedSlot, data);
       onBooked(appt);
     } catch (e) {
-      console.error('Booking error:', e);
-      setError(e.message || 'Failed to book. Please try a different time.');
+      console.error("Booking error:", e);
+      setError(e.message || "Failed to book. Please try a different time.");
     }
     setBooking(false);
   };
-
-  const dayNames = ['Su','Mo','Tu','We','Th','Fr','Sa'];
-  const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
+  const dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const todayStr = toLocalDateStr(today);
-  const slotsForDate = selectedDate ? (slotsMap[selectedDate] || []) : [];
-
-  return (
-    <div>
-      <p className="text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2">Schedule a Call</p>
-      <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">Pick a time with Tom Martin</h2>
-      <p className="text-white/50 text-sm mb-1">Founder of MILO Insulation &bull; 30 minute call</p>
-      <p className="text-white/30 text-xs mb-6">Select a date and time that works for you</p>
-
-      {loadingSlots ? (
-        <div className="flex items-center justify-center py-12">
-          <svg className="spinner w-8 h-8 text-milo-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
-          </svg>
-          <span className="text-white/50 ml-3">Loading availability...</span>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Calendar */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <button onClick={() => { if (calMonth === 0) { setCalMonth(11); setCalYear(y=>y-1); } else setCalMonth(m=>m-1); }}
-                disabled={!canPrevMonth}
-                className={`w-8 h-8 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition ${!canPrevMonth ? 'opacity-20 cursor-default' : ''}`}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <span className="text-white font-semibold text-sm">{monthNames[calMonth]} {calYear}</span>
-              <button onClick={() => { if (calMonth === 11) { setCalMonth(0); setCalYear(y=>y+1); } else setCalMonth(m=>m+1); }}
-                disabled={!canNextMonth}
-                className={`w-8 h-8 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition ${!canNextMonth ? 'opacity-20 cursor-default' : ''}`}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </div>
-
-            <div className="grid grid-cols-7 gap-1 mb-1">
-              {dayNames.map(d => <div key={d} className="text-center text-white/30 text-xs font-semibold py-1">{d}</div>)}
-            </div>
-            <div className="grid grid-cols-7 gap-1">
-              {calDays.map((day, i) => {
-                if (!day) return <div key={'e'+i} />;
-                const dateStr = calYear + '-' + String(calMonth+1).padStart(2,'0') + '-' + String(day).padStart(2,'0');
-                const dateObj = new Date(calYear, calMonth, day);
-                const isPast = dateObj <= today;
-                const isBeyond = dateObj > maxDate;
-                const hasSlots = !!slotsMap[dateStr];
-                const disabled = isPast || isBeyond || !hasSlots;
-                const isSelected = dateStr === selectedDate;
-                const isToday = dateStr === todayStr;
-                return (
-                  <div key={dateStr}
-                    className={`cal-day ${isSelected ? 'cal-selected' : ''} ${disabled ? 'cal-disabled' : ''} ${isToday ? 'cal-today' : ''}`}
-                    onClick={() => !disabled && handleDateClick(day)}>
-                    {day}
-                  </div>
-                );
-              })}
-            </div>
-
-            {!selectedDate && (
-              <p className="text-white/30 text-xs mt-4 text-center">Select a date to see available times</p>
-            )}
-          </div>
-
-          {/* Time slots */}
-          <div>
-            {selectedDate && (
-              <div>
-                <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-3">
-                  {new Date(selectedDate + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
-                </p>
-                {slotsForDate.length === 0 ? (
-                  <p className="text-white/40 text-sm py-8 text-center">No available times on this date</p>
-                ) : (
-                  <div className="grid grid-cols-2 gap-2 max-h-[320px] overflow-y-auto pr-1">
-                    {slotsForDate.map(slot => (
-                      <div key={slot}
-                        className={`time-slot ${selectedSlot === slot ? 'ts-selected' : ''}`}
-                        onClick={() => setSelectedSlot(slot)}>
-                        {formatTime12(slot)}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {error && (
-        <div className="mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm">
-          {error}
-        </div>
-      )}
-
-      <NextButton onClick={handleBook} disabled={!selectedSlot} text="Book My Call" loading={booking} />
-      <BackButton onClick={onBack} />
-    </div>
-  );
+  const slotsForDate = selectedDate ? slotsMap[selectedDate] || [] : [];
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "text-milo-orange text-xs font-bold uppercase tracking-[0.2em] mb-2" }, "Schedule a Call"), /* @__PURE__ */ React.createElement("h2", { className: "text-white text-2xl md:text-3xl font-bold mb-2" }, "Pick a time with Tom Martin"), /* @__PURE__ */ React.createElement("p", { className: "text-white/50 text-sm mb-1" }, "Founder of MILO Insulation \u2022 30 minute call"), /* @__PURE__ */ React.createElement("p", { className: "text-white/30 text-xs mb-6" }, "Select a date and time that works for you"), loadingSlots ? /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-center py-12" }, /* @__PURE__ */ React.createElement("svg", { className: "spinner w-8 h-8 text-milo-orange", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ React.createElement("circle", { cx: "12", cy: "12", r: "10", strokeDasharray: "60", strokeDashoffset: "20" })), /* @__PURE__ */ React.createElement("span", { className: "text-white/50 ml-3" }, "Loading availability...")) : /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-6" }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { className: "flex items-center justify-between mb-4" }, /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => {
+        if (calMonth === 0) {
+          setCalMonth(11);
+          setCalYear((y) => y - 1);
+        } else setCalMonth((m) => m - 1);
+      },
+      disabled: !canPrevMonth,
+      className: `w-8 h-8 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition ${!canPrevMonth ? "opacity-20 cursor-default" : ""}`
+    },
+    /* @__PURE__ */ React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5" }, /* @__PURE__ */ React.createElement("path", { d: "M15 18l-6-6 6-6" }))
+  ), /* @__PURE__ */ React.createElement("span", { className: "text-white font-semibold text-sm" }, monthNames[calMonth], " ", calYear), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      onClick: () => {
+        if (calMonth === 11) {
+          setCalMonth(0);
+          setCalYear((y) => y + 1);
+        } else setCalMonth((m) => m + 1);
+      },
+      disabled: !canNextMonth,
+      className: `w-8 h-8 rounded-lg flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition ${!canNextMonth ? "opacity-20 cursor-default" : ""}`
+    },
+    /* @__PURE__ */ React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5" }, /* @__PURE__ */ React.createElement("path", { d: "M9 18l6-6-6-6" }))
+  )), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-7 gap-1 mb-1" }, dayNames.map((d) => /* @__PURE__ */ React.createElement("div", { key: d, className: "text-center text-white/30 text-xs font-semibold py-1" }, d))), /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-7 gap-1" }, calDays.map((day, i) => {
+    if (!day) return /* @__PURE__ */ React.createElement("div", { key: "e" + i });
+    const dateStr = calYear + "-" + String(calMonth + 1).padStart(2, "0") + "-" + String(day).padStart(2, "0");
+    const dateObj = new Date(calYear, calMonth, day);
+    const isPast = dateObj <= today;
+    const isBeyond = dateObj > maxDate;
+    const hasSlots = !!slotsMap[dateStr];
+    const disabled = isPast || isBeyond || !hasSlots;
+    const isSelected = dateStr === selectedDate;
+    const isToday = dateStr === todayStr;
+    return /* @__PURE__ */ React.createElement(
+      "div",
+      {
+        key: dateStr,
+        className: `cal-day ${isSelected ? "cal-selected" : ""} ${disabled ? "cal-disabled" : ""} ${isToday ? "cal-today" : ""}`,
+        onClick: () => !disabled && handleDateClick(day)
+      },
+      day
+    );
+  })), !selectedDate && /* @__PURE__ */ React.createElement("p", { className: "text-white/30 text-xs mt-4 text-center" }, "Select a date to see available times")), /* @__PURE__ */ React.createElement("div", null, selectedDate && /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "text-white/60 text-xs font-semibold uppercase tracking-wider mb-3" }, (/* @__PURE__ */ new Date(selectedDate + "T12:00:00")).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })), slotsForDate.length === 0 ? /* @__PURE__ */ React.createElement("p", { className: "text-white/40 text-sm py-8 text-center" }, "No available times on this date") : /* @__PURE__ */ React.createElement("div", { className: "grid grid-cols-2 gap-2 max-h-[320px] overflow-y-auto pr-1" }, slotsForDate.map((slot) => /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      key: slot,
+      className: `time-slot ${selectedSlot === slot ? "ts-selected" : ""}`,
+      onClick: () => setSelectedSlot(slot)
+    },
+    formatTime12(slot)
+  )))))), error && /* @__PURE__ */ React.createElement("div", { className: "mt-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm" }, error), /* @__PURE__ */ React.createElement(NextButton, { onClick: handleBook, disabled: !selectedSlot, text: "Book My Call", loading: booking }), /* @__PURE__ */ React.createElement(BackButton, { onClick: onBack }));
 }
-
-// ── Step 5: Confirmation ──
 function StepConfirmation({ data }) {
   const [confetti, setConfetti] = useState([]);
-
   useEffect(() => {
-    // Fire Meta Pixel Lead event
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead');
+    if (typeof fbq === "function") {
+      fbq("track", "Lead");
     }
-    // Confetti
-    const colors = ['#FF8200', '#288D11', '#50ACE1', '#FFD700', '#FF4444'];
-    const pieces = Array.from({length: 30}).map((_, i) => ({
+    const colors = ["#FF8200", "#288D11", "#50ACE1", "#FFD700", "#FF4444"];
+    const pieces = Array.from({ length: 30 }).map((_, i) => ({
       id: i,
       left: Math.random() * 100,
       color: colors[Math.floor(Math.random() * colors.length)],
       delay: Math.random() * 2,
-      size: 6 + Math.random() * 8,
+      size: 6 + Math.random() * 8
     }));
     setConfetti(pieces);
   }, []);
-
-  return (
-    <div className="text-center">
-      {confetti.map(c => (
-        <div key={c.id} className="confetti" style={{
-          left: `${c.left}%`,
-          backgroundColor: c.color,
-          width: `${c.size}px`,
-          height: `${c.size}px`,
-          animationDelay: `${c.delay}s`,
-        }} />
-      ))}
-
-      <div className="w-20 h-20 mx-auto mb-6 bg-milo-green/20 rounded-full flex items-center justify-center">
-        <svg className="w-10 h-10 text-milo-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
-      </div>
-
-      <h2 className="text-white text-3xl font-bold mb-3">You're All Set! 🎉</h2>
-      <p className="text-white/60 text-base mb-8">Your call with Tom Martin is booked.</p>
-
-      <div className="glass-card p-6 text-left space-y-4 mb-8">
-        <div className="flex items-start gap-3">
-          <span className="text-xl">👤</span>
-          <div>
-            <p className="text-white/40 text-xs uppercase font-semibold">With</p>
-            <p className="text-white font-medium">Tom Martin, Founder of MILO Insulation</p>
-          </div>
-        </div>
-        <div className="flex items-start gap-3">
-          <span className="text-xl">⏱️</span>
-          <div>
-            <p className="text-white/40 text-xs uppercase font-semibold">Duration</p>
-            <p className="text-white font-medium">30 minutes</p>
-          </div>
-        </div>
-        <div className="flex items-start gap-3">
-          <span className="text-xl">📧</span>
-          <div>
-            <p className="text-white/40 text-xs uppercase font-semibold">Confirmation</p>
-            <p className="text-white font-medium">Check your email for calendar details</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="glass-card p-5 text-left mb-6">
-        <p className="text-white/70 text-sm font-semibold mb-3">What to expect:</p>
-        <ul className="space-y-2">
-          <li className="flex items-start gap-2 text-white/50 text-sm">
-            <span className="text-milo-green mt-0.5">✓</span>
-            You'll receive a confirmation email shortly
-          </li>
-          <li className="flex items-start gap-2 text-white/50 text-sm">
-            <span className="text-milo-green mt-0.5">✓</span>
-            Tom will call you at the scheduled time
-          </li>
-          <li className="flex items-start gap-2 text-white/50 text-sm">
-            <span className="text-milo-green mt-0.5">✓</span>
-            Learn about available territories in your area
-          </li>
-          <li className="flex items-start gap-2 text-white/50 text-sm">
-            <span className="text-milo-green mt-0.5">✓</span>
-            No obligation — just an honest conversation
-          </li>
-        </ul>
-      </div>
-
-      <p className="text-white/30 text-xs">
-        🔒 Your information is secure and will never be shared.
-      </p>
-    </div>
-  );
+  return /* @__PURE__ */ React.createElement("div", { className: "text-center" }, confetti.map((c) => /* @__PURE__ */ React.createElement("div", { key: c.id, className: "confetti", style: {
+    left: `${c.left}%`,
+    backgroundColor: c.color,
+    width: `${c.size}px`,
+    height: `${c.size}px`,
+    animationDelay: `${c.delay}s`
+  } })), /* @__PURE__ */ React.createElement("div", { className: "w-20 h-20 mx-auto mb-6 bg-milo-green/20 rounded-full flex items-center justify-center" }, /* @__PURE__ */ React.createElement("svg", { className: "w-10 h-10 text-milo-green", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round", strokeLinejoin: "round" }, /* @__PURE__ */ React.createElement("polyline", { points: "20 6 9 17 4 12" }))), /* @__PURE__ */ React.createElement("h2", { className: "text-white text-3xl font-bold mb-3" }, "You're All Set! \u{1F389}"), /* @__PURE__ */ React.createElement("p", { className: "text-white/60 text-base mb-8" }, "Your call with Tom Martin is booked."), /* @__PURE__ */ React.createElement("div", { className: "glass-card p-6 text-left space-y-4 mb-8" }, /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ React.createElement("span", { className: "text-xl" }, "\u{1F464}"), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "text-white/40 text-xs uppercase font-semibold" }, "With"), /* @__PURE__ */ React.createElement("p", { className: "text-white font-medium" }, "Tom Martin, Founder of MILO Insulation"))), /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ React.createElement("span", { className: "text-xl" }, "\u23F1\uFE0F"), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "text-white/40 text-xs uppercase font-semibold" }, "Duration"), /* @__PURE__ */ React.createElement("p", { className: "text-white font-medium" }, "30 minutes"))), /* @__PURE__ */ React.createElement("div", { className: "flex items-start gap-3" }, /* @__PURE__ */ React.createElement("span", { className: "text-xl" }, "\u{1F4E7}"), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("p", { className: "text-white/40 text-xs uppercase font-semibold" }, "Confirmation"), /* @__PURE__ */ React.createElement("p", { className: "text-white font-medium" }, "Check your email for calendar details")))), /* @__PURE__ */ React.createElement("div", { className: "glass-card p-5 text-left mb-6" }, /* @__PURE__ */ React.createElement("p", { className: "text-white/70 text-sm font-semibold mb-3" }, "What to expect:"), /* @__PURE__ */ React.createElement("ul", { className: "space-y-2" }, /* @__PURE__ */ React.createElement("li", { className: "flex items-start gap-2 text-white/50 text-sm" }, /* @__PURE__ */ React.createElement("span", { className: "text-milo-green mt-0.5" }, "\u2713"), "You'll receive a confirmation email shortly"), /* @__PURE__ */ React.createElement("li", { className: "flex items-start gap-2 text-white/50 text-sm" }, /* @__PURE__ */ React.createElement("span", { className: "text-milo-green mt-0.5" }, "\u2713"), "Tom will call you at the scheduled time"), /* @__PURE__ */ React.createElement("li", { className: "flex items-start gap-2 text-white/50 text-sm" }, /* @__PURE__ */ React.createElement("span", { className: "text-milo-green mt-0.5" }, "\u2713"), "Learn about available territories in your area"), /* @__PURE__ */ React.createElement("li", { className: "flex items-start gap-2 text-white/50 text-sm" }, /* @__PURE__ */ React.createElement("span", { className: "text-milo-green mt-0.5" }, "\u2713"), "No obligation \u2014 just an honest conversation"))), /* @__PURE__ */ React.createElement("p", { className: "text-white/30 text-xs" }, "\u{1F512} Your information is secure and will never be shared."));
 }
-
-// ── Main App ──
 function App() {
   const [step, setStep] = useState(0);
   const [data, setData] = useState({});
@@ -866,100 +711,44 @@ function App() {
   const [error, setError] = useState(null);
   const containerRef = useRef(null);
   const totalSteps = 4;
-
   const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
     if (containerRef.current) containerRef.current.scrollTop = 0;
   };
-
-  const goNext = () => { setStep(s => s + 1); scrollTop(); setError(null); };
-  const goBack = () => { setStep(s => s - 1); scrollTop(); setError(null); };
-
-  // After contact info, create/find the contact then advance to widget
+  const goNext = () => {
+    setStep((s) => s + 1);
+    scrollTop();
+    setError(null);
+  };
+  const goBack = () => {
+    setStep((s) => s - 1);
+    scrollTop();
+    setError(null);
+  };
   const handleContactNext = async () => {
     setSubmitting(true);
     setError(null);
     try {
       const contact = await createContact(data);
-      setData(d => ({...d, contactId: contact.id}));
+      setData((d) => ({ ...d, contactId: contact.id }));
       setStep(3);
       scrollTop();
     } catch (err) {
-      console.error('Contact creation error:', err);
-      setError('Something went wrong saving your info. Please try again.');
+      console.error("Contact creation error:", err);
+      setError("Something went wrong saving your info. Please try again.");
     }
     setSubmitting(false);
   };
-
-  // When GHL widget confirms the booking
   const handleBooked = useCallback((eventData) => {
-    setData(d => ({...d, bookingEvent: eventData}));
+    setData((d) => ({ ...d, bookingEvent: eventData }));
     setStep(4);
     scrollTop();
   }, []);
-
-  return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <div className="text-center pt-8 pb-4 px-4">
-        <img src={CONFIG.LOGO_URL} alt="MILO Insulation" className="h-12 md:h-14 mx-auto mb-4" style={{ filter: 'brightness(0) invert(1)' }} />
-        {step < 4 && (
-          <h1 className="text-white text-lg md:text-xl font-semibold">
-            Start Your <span className="text-milo-orange">Franchise Journey</span>
-          </h1>
-        )}
-      </div>
-
-      {/* Progress */}
-      {step < 4 && (
-        <div className="px-4">
-          <ProgressBar step={step} total={totalSteps} />
-        </div>
-      )}
-
-      {/* Content */}
-      <div className="flex-1 flex items-start justify-center px-4 pb-8" ref={containerRef}>
-        <div className={`glass-card w-full ${step === 3 ? 'max-w-2xl' : 'max-w-xl'} p-6 md:p-8`}>
-          {error && (
-            <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm">
-              {error}
-            </div>
-          )}
-
-          <div className="step-enter step-active" key={step}>
-            {step === 0 && <StepQualifier data={data} setData={setData} onNext={goNext} />}
-            {step === 1 && <StepLocation data={data} setData={setData} onNext={goNext} onBack={goBack} />}
-            {step === 2 && <StepContact data={data} setData={setData} onNext={handleContactNext} onBack={goBack} />}
-            {step === 3 && <StepBooking data={data} onBooked={handleBooked} onBack={goBack} />}
-            {step === 4 && <StepConfirmation data={data} />}
-          </div>
-
-          {submitting && (
-            <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-              <div className="glass-card p-8 text-center">
-                <svg className="spinner w-12 h-12 text-milo-orange mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" strokeDasharray="60" strokeDashoffset="20" />
-                </svg>
-                <p className="text-white font-semibold">Saving your information...</p>
-                <p className="text-white/50 text-sm mt-1">Setting up your profile</p>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="text-center pb-6 px-4">
-        <p className="text-white/20 text-xs">
-          MILO Insulation™ — Nature's Very Best. © {new Date().getFullYear()}
-        </p>
-      </div>
-    </div>
-  );
+  return /* @__PURE__ */ React.createElement("div", { className: "min-h-screen flex flex-col" }, /* @__PURE__ */ React.createElement("div", { className: "text-center pt-8 pb-4 px-4" }, /* @__PURE__ */ React.createElement("img", { src: CONFIG.LOGO_URL, alt: "MILO Insulation", className: "h-12 md:h-14 mx-auto mb-4", style: { filter: "brightness(0) invert(1)" } }), step < 4 && /* @__PURE__ */ React.createElement("h1", { className: "text-white text-lg md:text-xl font-semibold" }, "Start Your ", /* @__PURE__ */ React.createElement("span", { className: "text-milo-orange" }, "Franchise Journey"))), step < 4 && /* @__PURE__ */ React.createElement("div", { className: "px-4" }, /* @__PURE__ */ React.createElement(ProgressBar, { step, total: totalSteps })), /* @__PURE__ */ React.createElement("div", { className: "flex-1 flex items-start justify-center px-4 pb-8", ref: containerRef }, /* @__PURE__ */ React.createElement("div", { className: `glass-card w-full ${step === 3 ? "max-w-2xl" : "max-w-xl"} p-6 md:p-8` }, error && /* @__PURE__ */ React.createElement("div", { className: "mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-sm" }, error), /* @__PURE__ */ React.createElement("div", { className: "step-enter step-active", key: step }, step === 0 && /* @__PURE__ */ React.createElement(StepQualifier, { data, setData, onNext: goNext }), step === 1 && /* @__PURE__ */ React.createElement(StepLocation, { data, setData, onNext: goNext, onBack: goBack }), step === 2 && /* @__PURE__ */ React.createElement(StepContact, { data, setData, onNext: handleContactNext, onBack: goBack }), step === 3 && /* @__PURE__ */ React.createElement(StepBooking, { data, onBooked: handleBooked, onBack: goBack }), step === 4 && /* @__PURE__ */ React.createElement(StepConfirmation, { data })), submitting && /* @__PURE__ */ React.createElement("div", { className: "fixed inset-0 bg-black/60 flex items-center justify-center z-50" }, /* @__PURE__ */ React.createElement("div", { className: "glass-card p-8 text-center" }, /* @__PURE__ */ React.createElement("svg", { className: "spinner w-12 h-12 text-milo-orange mx-auto mb-4", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2" }, /* @__PURE__ */ React.createElement("circle", { cx: "12", cy: "12", r: "10", strokeDasharray: "60", strokeDashoffset: "20" })), /* @__PURE__ */ React.createElement("p", { className: "text-white font-semibold" }, "Saving your information..."), /* @__PURE__ */ React.createElement("p", { className: "text-white/50 text-sm mt-1" }, "Setting up your profile"))))), /* @__PURE__ */ React.createElement("div", { className: "text-center pb-6 px-4" }, /* @__PURE__ */ React.createElement("p", { className: "text-white/20 text-xs" }, "MILO Insulation\u2122 \u2014 Nature's Very Best. \xA9 ", (/* @__PURE__ */ new Date()).getFullYear())));
 }
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(/* @__PURE__ */ React.createElement(App, null));
 
-// ── Render ──
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
 </script>
 </body>
+</html>
