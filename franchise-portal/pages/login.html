@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Login | MILO Franchisee Portal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+:root{--navy:#1B2A4A;--navy-light:#243557;--orange:#E87722;--orange-light:#F09040;--white:#fff;--gray-50:#F8F9FA;--gray-100:#F0F2F5;--gray-200:#E2E6EA;--gray-500:#8898AA;--green:#28A745;--sidebar:268px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--gray-50);color:#333;font-family:'Open Sans',sans-serif}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
+.shell{display:flex;min-height:100vh}
+.sidebar{width:var(--sidebar);min-width:var(--sidebar);background:var(--navy);color:#fff;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.sidebar-logo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:22px;color:var(--orange);letter-spacing:2px}
+.sidebar-logo span{display:block;color:#fff;font-weight:600;font-size:13px;letter-spacing:.5px;margin-top:2px}
+.sidebar-section{padding:16px 12px 8px}
+.sidebar-section-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-500);padding:0 8px;margin-bottom:8px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:8px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.72);text-decoration:none;margin-bottom:2px}
+.nav-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-item.active{background:var(--orange);color:#fff;font-weight:600}
+.nav-item.locked{opacity:.45;pointer-events:none}
+.nav-number{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,.1);font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;flex-shrink:0}
+.nav-item.active .nav-number{background:rgba(255,255,255,.25)}
+.status-dot{width:8px;height:8px;border-radius:50%;margin-left:auto;background:var(--gray-500);flex-shrink:0}
+.status-dot.complete{background:var(--green)}
+.status-dot.current{background:var(--orange)}
+.progress-section{padding:16px 20px;border-top:1px solid rgba(255,255,255,.1);margin-top:auto}
+.progress-text{font-size:11px;color:var(--gray-500);display:flex;justify-content:space-between}
+.progress-bar-bg{width:100%;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;margin-top:8px}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-light));width:0}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.top-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 28px;background:#fff;border-bottom:1px solid var(--gray-200);flex-wrap:wrap}
+.top-bar h2{font-size:18px;color:var(--navy)}
+.breadcrumb{font-size:12px;color:var(--gray-500)}
+.breadcrumb b{color:var(--navy);font-weight:600}
+.top-bar-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:12px;text-decoration:none;border:1px solid var(--gray-200);background:var(--gray-100);color:var(--navy);cursor:pointer}
+.btn:hover{background:var(--gray-200)}
+.btn.green{background:var(--green);border-color:var(--green);color:#fff}
+.btn.green:hover{background:#22953D}
+.btn.orange{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn.orange:hover{background:#D16A1E}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.content-area{flex:1;padding:24px;overflow:auto}
+.mobile-toggle{display:none;background:transparent;border:0;color:var(--navy);font-size:22px;cursor:pointer}
+.lock-banner{display:none;background:#FFF8F0;border:1px solid #F0D2B0;color:#7A3E0B;border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.lock-banner.show{display:block}
+.toast{display:none;position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:12px 16px;border-radius:10px;z-index:50;font-size:14px}
+.toast.show{display:block}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.dash-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:20px;text-decoration:none;color:inherit;border:1px solid transparent;display:block}
+.dash-card:hover{border-color:var(--orange)}
+.dash-card.locked{opacity:.55;pointer-events:none}
+.dash-card .num{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--orange);font-size:12px;letter-spacing:1px}
+.dash-card h3{color:var(--navy);margin:8px 0 6px;font-size:16px}
+.dash-card p{font-size:13px;color:#666;line-height:1.45}
+.hero-card{background:var(--navy);color:#fff;border-radius:14px;padding:28px;margin-bottom:20px}
+.hero-card h1{font-size:28px;margin:6px 0 8px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 8px}
+.stat{background:rgba(255,255,255,.08);border-radius:10px;padding:14px}
+.stat b{display:block;font-size:22px;color:var(--orange)}
+.admin-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}
+.admin-table th,.admin-table td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--gray-200);font-size:14px}
+.admin-table th{background:var(--navy);color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.4px}
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(1200px 600px at 20% 0%,#243557,var(--navy))}
+.login-card{width:100%;max-width:460px;background:#fff;border-radius:16px;padding:36px 32px;text-align:center}
+.login-card img{width:160px;margin:0 auto 16px;display:block}
+.login-card h1{color:var(--navy);font-size:24px;margin-bottom:8px}
+.login-card p{color:#555;line-height:1.6;margin-bottom:14px}
+.note{background:#F5F6FA;border-radius:10px;padding:12px;font-size:13px;color:#555}
+
+/* Keep original module cards readable inside the shell */
+.milo-portal{max-width:900px;margin:0 auto}
+.milo-portal-header{background:var(--navy);color:#fff;padding:40px;border-radius:12px;margin-bottom:30px;text-align:center}
+.milo-portal-header h1{font-size:2rem;margin:12px 0 8px;font-weight:700}
+.milo-portal-header .subtitle{font-size:1.05rem;opacity:.85;margin-bottom:16px}
+.milo-portal-header .progress-note{display:inline-block;background:rgba(255,255,255,.12);padding:10px 22px;border-radius:30px;font-size:.92rem;margin-top:6px}
+.module-badge{display:inline-block;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1.5px;padding:6px 18px;border-radius:30px;text-transform:uppercase}
+.content-card,.vendor-card,.milestone,.supply-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:30px;margin-bottom:20px}
+.section-title{font-size:1.35rem;font-weight:700;color:var(--navy);padding-bottom:10px;border-bottom:3px solid var(--orange);margin-bottom:20px;margin-top:10px}
+.info-box{background:#FFF8F0;border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:18px 24px;margin-bottom:20px;font-size:.95rem;line-height:1.6}
+.info-box.blue{background:#F0F4FF;border-left-color:var(--navy)}
+.contacts-grid,.supply-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.contact-card{background:#F5F6FA;border-radius:10px;padding:20px;text-align:center}
+.contact-card .contact-icon{font-size:2rem;margin-bottom:8px}
+.cta-button{display:inline-block;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;padding:14px 32px;border:none;border-radius:8px;text-decoration:none}
+.step-list{list-style:none;counter-reset:step-counter;padding:0}
+.step-list li{counter-increment:step-counter;display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid #eee;font-size:.97rem;line-height:1.55}
+.step-list li::before{content:counter(step-counter);flex-shrink:0;width:36px;height:36px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem}
+.timeline-bar{display:flex;gap:0;margin:20px 0}
+.timeline-bar .week{flex:1;text-align:center;padding:14px 8px;background:#F5F6FA;border:1px solid #e0e0e0;font-size:.85rem;font-weight:600;color:var(--navy)}
+.mascot-guide{display:flex;align-items:center;gap:18px;background:var(--navy);border-radius:14px;padding:20px 24px;margin:20px 0;color:#fff}
+.mascot-guide img,.mascot-header-img{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:3px solid var(--orange)}
+.mascot-header-img{width:100px;height:100px;margin:0 auto 12px;display:block}
+.vendor-card{display:flex;gap:22px;align-items:flex-start;border-left:4px solid var(--orange)}
+.checklist-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #eee}
+.checklist-item input[type=checkbox]{width:20px;height:20px;accent-color:var(--orange)}
+@media(max-width:900px){
+  .sidebar{position:fixed;z-index:40;transform:translateX(-105%);transition:transform .2s}
+  .sidebar.open{transform:none}
+  .mobile-toggle{display:inline-flex}
+  .stat-row{grid-template-columns:1fr}
+  .content-area{padding:16px}
+  .milo-portal-header{padding:28px 20px}
+}
+</style>
+</head>
+<body data-kind="login">
+<div class="login-wrap">
+  <div class="login-card">
+    <img src="https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main/assets/milo-logo.webp" alt="MILO Insulation">
+    <h1>Franchisee Portal</h1>
+    <p>Invite-only onboarding for MILO franchise owners. Use the email you were invited with.</p>
+    <p class="note">GHL Memberships handles the actual login on this page. If you do not see a login form, open this URL while logged out, or paste the Membership login widget into the GHL login page body above the loader.</p>
+    <p style="margin-top:18px;font-size:13px;color:#888">Need access? Email your corporate contact. Do not share portal URLs.</p>
+  </div>
+</div>
+</body>
+</html>

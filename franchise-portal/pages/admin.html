@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin Progress | MILO Franchisee Portal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+:root{--navy:#1B2A4A;--navy-light:#243557;--orange:#E87722;--orange-light:#F09040;--white:#fff;--gray-50:#F8F9FA;--gray-100:#F0F2F5;--gray-200:#E2E6EA;--gray-500:#8898AA;--green:#28A745;--sidebar:268px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--gray-50);color:#333;font-family:'Open Sans',sans-serif}
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
+.shell{display:flex;min-height:100vh}
+.sidebar{width:var(--sidebar);min-width:var(--sidebar);background:var(--navy);color:#fff;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.sidebar-logo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:22px;color:var(--orange);letter-spacing:2px}
+.sidebar-logo span{display:block;color:#fff;font-weight:600;font-size:13px;letter-spacing:.5px;margin-top:2px}
+.sidebar-section{padding:16px 12px 8px}
+.sidebar-section-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--gray-500);padding:0 8px;margin-bottom:8px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:8px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.72);text-decoration:none;margin-bottom:2px}
+.nav-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav-item.active{background:var(--orange);color:#fff;font-weight:600}
+.nav-item.locked{opacity:.45;pointer-events:none}
+.nav-number{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,.1);font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;flex-shrink:0}
+.nav-item.active .nav-number{background:rgba(255,255,255,.25)}
+.status-dot{width:8px;height:8px;border-radius:50%;margin-left:auto;background:var(--gray-500);flex-shrink:0}
+.status-dot.complete{background:var(--green)}
+.status-dot.current{background:var(--orange)}
+.progress-section{padding:16px 20px;border-top:1px solid rgba(255,255,255,.1);margin-top:auto}
+.progress-text{font-size:11px;color:var(--gray-500);display:flex;justify-content:space-between}
+.progress-bar-bg{width:100%;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;margin-top:8px}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-light));width:0}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.top-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 28px;background:#fff;border-bottom:1px solid var(--gray-200);flex-wrap:wrap}
+.top-bar h2{font-size:18px;color:var(--navy)}
+.breadcrumb{font-size:12px;color:var(--gray-500)}
+.breadcrumb b{color:var(--navy);font-weight:600}
+.top-bar-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:12px;text-decoration:none;border:1px solid var(--gray-200);background:var(--gray-100);color:var(--navy);cursor:pointer}
+.btn:hover{background:var(--gray-200)}
+.btn.green{background:var(--green);border-color:var(--green);color:#fff}
+.btn.green:hover{background:#22953D}
+.btn.orange{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn.orange:hover{background:#D16A1E}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.content-area{flex:1;padding:24px;overflow:auto}
+.mobile-toggle{display:none;background:transparent;border:0;color:var(--navy);font-size:22px;cursor:pointer}
+.lock-banner{display:none;background:#FFF8F0;border:1px solid #F0D2B0;color:#7A3E0B;border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.lock-banner.show{display:block}
+.toast{display:none;position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:12px 16px;border-radius:10px;z-index:50;font-size:14px}
+.toast.show{display:block}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.dash-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:20px;text-decoration:none;color:inherit;border:1px solid transparent;display:block}
+.dash-card:hover{border-color:var(--orange)}
+.dash-card.locked{opacity:.55;pointer-events:none}
+.dash-card .num{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--orange);font-size:12px;letter-spacing:1px}
+.dash-card h3{color:var(--navy);margin:8px 0 6px;font-size:16px}
+.dash-card p{font-size:13px;color:#666;line-height:1.45}
+.hero-card{background:var(--navy);color:#fff;border-radius:14px;padding:28px;margin-bottom:20px}
+.hero-card h1{font-size:28px;margin:6px 0 8px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 8px}
+.stat{background:rgba(255,255,255,.08);border-radius:10px;padding:14px}
+.stat b{display:block;font-size:22px;color:var(--orange)}
+.admin-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}
+.admin-table th,.admin-table td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--gray-200);font-size:14px}
+.admin-table th{background:var(--navy);color:#fff;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.4px}
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(1200px 600px at 20% 0%,#243557,var(--navy))}
+.login-card{width:100%;max-width:460px;background:#fff;border-radius:16px;padding:36px 32px;text-align:center}
+.login-card img{width:160px;margin:0 auto 16px;display:block}
+.login-card h1{color:var(--navy);font-size:24px;margin-bottom:8px}
+.login-card p{color:#555;line-height:1.6;margin-bottom:14px}
+.note{background:#F5F6FA;border-radius:10px;padding:12px;font-size:13px;color:#555}
+
+/* Keep original module cards readable inside the shell */
+.milo-portal{max-width:900px;margin:0 auto}
+.milo-portal-header{background:var(--navy);color:#fff;padding:40px;border-radius:12px;margin-bottom:30px;text-align:center}
+.milo-portal-header h1{font-size:2rem;margin:12px 0 8px;font-weight:700}
+.milo-portal-header .subtitle{font-size:1.05rem;opacity:.85;margin-bottom:16px}
+.milo-portal-header .progress-note{display:inline-block;background:rgba(255,255,255,.12);padding:10px 22px;border-radius:30px;font-size:.92rem;margin-top:6px}
+.module-badge{display:inline-block;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1.5px;padding:6px 18px;border-radius:30px;text-transform:uppercase}
+.content-card,.vendor-card,.milestone,.supply-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:30px;margin-bottom:20px}
+.section-title{font-size:1.35rem;font-weight:700;color:var(--navy);padding-bottom:10px;border-bottom:3px solid var(--orange);margin-bottom:20px;margin-top:10px}
+.info-box{background:#FFF8F0;border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:18px 24px;margin-bottom:20px;font-size:.95rem;line-height:1.6}
+.info-box.blue{background:#F0F4FF;border-left-color:var(--navy)}
+.contacts-grid,.supply-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.contact-card{background:#F5F6FA;border-radius:10px;padding:20px;text-align:center}
+.contact-card .contact-icon{font-size:2rem;margin-bottom:8px}
+.cta-button{display:inline-block;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;padding:14px 32px;border:none;border-radius:8px;text-decoration:none}
+.step-list{list-style:none;counter-reset:step-counter;padding:0}
+.step-list li{counter-increment:step-counter;display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid #eee;font-size:.97rem;line-height:1.55}
+.step-list li::before{content:counter(step-counter);flex-shrink:0;width:36px;height:36px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem}
+.timeline-bar{display:flex;gap:0;margin:20px 0}
+.timeline-bar .week{flex:1;text-align:center;padding:14px 8px;background:#F5F6FA;border:1px solid #e0e0e0;font-size:.85rem;font-weight:600;color:var(--navy)}
+.mascot-guide{display:flex;align-items:center;gap:18px;background:var(--navy);border-radius:14px;padding:20px 24px;margin:20px 0;color:#fff}
+.mascot-guide img,.mascot-header-img{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:3px solid var(--orange)}
+.mascot-header-img{width:100px;height:100px;margin:0 auto 12px;display:block}
+.vendor-card{display:flex;gap:22px;align-items:flex-start;border-left:4px solid var(--orange)}
+.checklist-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #eee}
+.checklist-item input[type=checkbox]{width:20px;height:20px;accent-color:var(--orange)}
+@media(max-width:900px){
+  .sidebar{position:fixed;z-index:40;transform:translateX(-105%);transition:transform .2s}
+  .sidebar.open{transform:none}
+  .mobile-toggle{display:inline-flex}
+  .stat-row{grid-template-columns:1fr}
+  .content-area{padding:16px}
+  .milo-portal-header{padding:28px 20px}
+}
+</style>
+</head>
+<body data-kind="admin">
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">MILO<span>Franchisee Portal</span></div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Onboarding</div>
+      <a class="nav-item" href="/dashboard">Dashboard</a>
+<a class="nav-item" data-module="1" href="/module-1"><span class="nav-number">1</span>Welcome<span class="status-dot"></span></a>
+<a class="nav-item" data-module="2" href="/module-2"><span class="nav-number">2</span>Legal Setup<span class="status-dot"></span></a>
+<a class="nav-item" data-module="3" href="/module-3"><span class="nav-number">3</span>Vendors<span class="status-dot"></span></a>
+<a class="nav-item" data-module="4" href="/module-4"><span class="nav-number">4</span>Equipment<span class="status-dot"></span></a>
+<a class="nav-item" data-module="5" href="/module-5"><span class="nav-number">5</span>Production<span class="status-dot"></span></a>
+<a class="nav-item" data-module="6" href="/module-6"><span class="nav-number">6</span>Sales<span class="status-dot"></span></a>
+<a class="nav-item" data-module="7" href="/module-7"><span class="nav-number">7</span>CRM / Ops<span class="status-dot"></span></a>
+<a class="nav-item" data-module="8" href="/module-8"><span class="nav-number">8</span>Marketing<span class="status-dot"></span></a>
+<a class="nav-item" data-module="9" href="/module-9"><span class="nav-number">9</span>Launch<span class="status-dot"></span></a>
+<a class="nav-item" href="/supply-hub">Supply Hub</a>
+<a class="nav-item active" id="admin-link" href="/admin">Admin</a>
+    </div>
+    <div class="progress-section">
+      <div class="progress-text"><span>Onboarding Progress</span><span id="progress-pct">0 of 9</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+    </div>
+  </aside>
+  <div class="main">
+    
+    <div class="top-bar">
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="mobile-toggle" type="button" onclick="MILO_TOGGLE_SIDEBAR()">Menu</button>
+        <div>
+          <div class="breadcrumb">Portal &rsaquo; <b>Admin Progress</b></div>
+          <h2>Admin Progress</h2>
+        </div>
+      </div>
+      <div class="top-bar-actions"><a class="btn" href="/dashboard">Dashboard</a></div>
+    </div>
+    
+    <div class="content-area">
+      
+      
+    <div class="content-card">
+      <h2 class="section-title">Admin view</h2>
+      <p style="line-height:1.6;margin-bottom:14px">This GHL portal stores progress on the franchisee contact record. The live roster is in GHL, not in GitHub HTML.</p>
+      <div class="info-box">Open <b>Contacts</b> in the MILO Franchising sub-account. Filter the smart list <b>Franchisee Onboarding</b> (create it once) by the nine Portal M# Complete fields. That is the admin dashboard.</div>
+      <table class="admin-table">
+        <thead><tr><th>Module</th><th>Name</th><th>Custom field key</th></tr></thead>
+        <tbody><tr><td>Module 1</td><td>Welcome to MILO</td><td><code>portal_m1_complete</code></td></tr><tr><td>Module 2</td><td>Legal &amp; Business Setup</td><td><code>portal_m2_complete</code></td></tr><tr><td>Module 3</td><td>Contacts &amp; Vendors</td><td><code>portal_m3_complete</code></td></tr><tr><td>Module 4</td><td>Equipment Ordering</td><td><code>portal_m4_complete</code></td></tr><tr><td>Module 5</td><td>Production Training</td><td><code>portal_m5_complete</code></td></tr><tr><td>Module 6</td><td>Sales Process</td><td><code>portal_m6_complete</code></td></tr><tr><td>Module 7</td><td>CRM &amp; Operations</td><td><code>portal_m7_complete</code></td></tr><tr><td>Module 8</td><td>Marketing Setup</td><td><code>portal_m8_complete</code></td></tr><tr><td>Module 9</td><td>Launch Checklist</td><td><code>portal_m9_complete</code></td></tr>
+        <tr><td>Meta</td><td>Role / Territory</td><td><code>portal_role</code> / <code>portal_territory</code></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:16px;font-size:14px;color:#555">Set <code>portal_role</code> to <b>admin</b> on corporate contacts so this page stays visible. Franchisee contacts should leave it blank.</p>
+    </div>
+    
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+  var P = window.MILO_PORTAL || {};
+  var CDN = 'https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main';
+  function truthy(v){
+    v = (v == null ? '' : String(v)).trim().toLowerCase();
+    if (!v || v === '{{contact.portal_m1_complete}}') return false;
+    return v === 'true' || v === 'yes' || v === 'checked' || v === 'on' || v === '1' || v === 'complete';
+  }
+  function done(n){ return truthy(P['m'+n]); }
+  function isAdmin(){
+    var r = (P.role || '').toString().toLowerCase();
+    return r === 'admin' || r === 'corporate' || r === 'true';
+  }
+  function countDone(){
+    var n = 0, i;
+    for (i = 1; i <= 9; i++) if (done(i)) n++;
+    return n;
+  }
+  function nextUnlocked(){
+    var i;
+    for (i = 1; i <= 9; i++) if (!done(i)) return i;
+    return 9;
+  }
+  function canOpen(n){
+    if (n <= 1) return true;
+    return done(n - 1);
+  }
+  function applyNav(){
+    var i, el, d, unlocked;
+    var nDone = countDone();
+    var fill = document.getElementById('progress-fill');
+    var pct = document.getElementById('progress-pct');
+    if (fill) fill.style.width = Math.round((nDone / 9) * 100) + '%';
+    if (pct) pct.textContent = nDone + ' of 9';
+    for (i = 1; i <= 9; i++) {
+      el = document.querySelector('[data-module="'+i+'"]');
+      if (!el) continue;
+      d = el.querySelector('.status-dot');
+      unlocked = canOpen(i);
+      if (!unlocked) el.classList.add('locked');
+      if (d) {
+        d.className = 'status-dot' + (done(i) ? ' complete' : (unlocked ? ' current' : ''));
+      }
+    }
+    var adminLink = document.getElementById('admin-link');
+    if (adminLink && !isAdmin()) adminLink.style.display = 'none';
+    var nameEl = document.getElementById('user-first');
+    if (nameEl) {
+      var nm = (P.firstName || '').replace(/\{\{.*\}\}/,'');
+      nameEl.textContent = nm || 'Franchisee';
+    }
+  }
+  function lockIfNeeded(n){
+    if (!n || canOpen(n)) return;
+    var b = document.getElementById('lock-banner');
+    if (b) b.classList.add('show');
+    var actions = document.getElementById('complete-btn');
+    if (actions) actions.setAttribute('aria-disabled','true');
+  }
+  function toast(msg){
+    var t = document.getElementById('toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+  function markComplete(n){
+    if (!canOpen(n)) return;
+    var email = (P.email || '').replace(/\{\{.*\}\}/,'');
+    var webhook = (P.webhook || '').replace(/PASTE_GHL_INBOUND_WEBHOOK_URL/,'').replace(/\{\{.*\}\}/,'');
+    function after(){
+      toast('Module ' + n + ' marked complete. Progress saves to your contact record.');
+      var btn = document.getElementById('complete-btn');
+      if (btn) { btn.textContent = 'Completed'; btn.setAttribute('aria-disabled','true'); }
+    }
+    if (!webhook || !email) { after(); return; }
+    fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        firstName: P.firstName || '',
+        module: n,
+        event: 'module_complete',
+        source: 'milo-franchise-portal'
+      })
+    }).then(function(r){ after(); }).catch(function(){ toast('Could not save progress. Try again or email corporate.'); });
+  }
+  window.MILO_MARK_COMPLETE = markComplete;
+  window.MILO_TOGGLE_SIDEBAR = function(){
+    var s = document.getElementById('sidebar');
+    if (s) s.classList.toggle('open');
+  };
+  applyNav();
+  var pageNum = parseInt(document.body.getAttribute('data-module') || '0', 10);
+  if (pageNum) lockIfNeeded(pageNum);
+  if (document.body.getAttribute('data-kind') === 'admin' && !isAdmin()) {
+    location.replace('/dashboard');
+  }
+})();
+</script>
+</body>
+</html>

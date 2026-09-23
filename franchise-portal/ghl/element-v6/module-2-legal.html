@@ -1,0 +1,132 @@
+<script>
+window.MILO_PORTAL = window.MILO_PORTAL || {
+  email: "{{contact.email}}",
+  firstName: "{{contact.first_name}}",
+  lastName: "{{contact.last_name}}",
+  role: "{{contact.portal_role}}",
+  territory: "{{contact.portal_territory}}",
+  webhook: "PASTE_GHL_INBOUND_WEBHOOK_URL",
+  m1: "{{contact.portal_m1_complete}}",
+  m2: "{{contact.portal_m2_complete}}",
+  m3: "{{contact.portal_m3_complete}}",
+  m4: "{{contact.portal_m4_complete}}",
+  m5: "{{contact.portal_m5_complete}}",
+  m6: "{{contact.portal_m6_complete}}",
+  m7: "{{contact.portal_m7_complete}}",
+  m8: "{{contact.portal_m8_complete}}",
+  m9: "{{contact.portal_m9_complete}}"
+};
+</script>
+
+<script>
+/* MILO Franchisee Portal loader v6 (in-place swap, GTM-safe) | module-2-legal */
+(function () {
+  var GH = 'https://cdn.jsdelivr.net/gh/betterbranding/MILO-Franchise@main';
+  var SRC = GH + '/franchise-portal/pages/module-2-legal.html?v=1';
+  var splash = null;
+  try {
+    splash = document.createElement('style');
+    splash.id = 'fastSplash';
+    splash.textContent = 'html{background:#1B2A4A!important}body>*{visibility:hidden!important}' +
+      'html::before{content:"";position:fixed;inset:0;z-index:2147483646;background-color:#1B2A4A;' +
+      'background-image:url(' + GH + '/assets/milo-logo.webp);background-repeat:no-repeat;' +
+      'background-position:center calc(50% - 26px);background-size:min(200px,52vw) auto}' +
+      'html::after{content:"";position:fixed;top:calc(50% + 34px);left:50%;width:26px;height:26px;margin-left:-13px;' +
+      'border-radius:50%;border:2px solid rgba(255,255,255,.18);border-top-color:#E87722;' +
+      'animation:fastspin .8s linear infinite;z-index:2147483647}' +
+      '@keyframes fastspin{to{transform:rotate(360deg)}}' +
+      '@media (prefers-reduced-motion:reduce){html::after{animation:none}}';
+    (document.head || document.documentElement).appendChild(splash);
+  } catch (e) {}
+
+  function ready() {
+    return new Promise(function (res) {
+      if (document.readyState !== 'loading') return res();
+      document.addEventListener('DOMContentLoaded', function () { res(); }, { once: true });
+    });
+  }
+  function isGtm(el) {
+    return /googletagmanager\.com/.test((el.getAttribute('src') || '') + (el.textContent || ''));
+  }
+  function fresh(old) {
+    var s = document.createElement('script');
+    for (var i = 0; i < old.attributes.length; i++) s.setAttribute(old.attributes[i].name, old.attributes[i].value);
+    s.textContent = old.textContent;
+    s.setAttribute('data-dr', '');
+    return s;
+  }
+  function dropSplash() { if (splash && splash.parentNode) splash.parentNode.removeChild(splash); }
+
+  function swap(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html');
+    var head = document.head, i, el, t;
+    var nativeGtm = !!document.querySelector('script[src*="googletagmanager.com/gtm.js"]') ||
+      (window.dataLayer || []).some(function (e) { return e && e['gtm.start']; });
+    var skipGtm = function (el) { return nativeGtm && isGtm(el); };
+
+    for (i = head.children.length - 1; i >= 0; i--) {
+      el = head.children[i]; t = el.tagName;
+      if (t === 'SCRIPT' && el.type !== 'application/ld+json') continue;
+      if (t === 'NOSCRIPT' || el === splash) continue;
+      if (t === 'META' && el.hasAttribute('charset')) continue;
+      head.removeChild(el);
+    }
+    var nh = doc.head;
+    while (nh.firstChild) {
+      el = nh.firstChild;
+      if (el.nodeType !== 1) { nh.removeChild(el); continue; }
+      if (el.tagName === 'META' && el.hasAttribute('charset')) { nh.removeChild(el); continue; }
+      if (el.tagName === 'SCRIPT') {
+        var g = skipGtm(el); nh.removeChild(el);
+        if (!g) head.appendChild(fresh(el));
+        continue;
+      }
+      el.setAttribute('data-dr', '');
+      head.appendChild(document.adoptNode(el));
+    }
+    var de = document.documentElement, sh = doc.documentElement;
+    for (i = de.attributes.length - 1; i >= 0; i--) de.removeAttribute(de.attributes[i].name);
+    for (i = 0; i < sh.attributes.length; i++) de.setAttribute(sh.attributes[i].name, sh.attributes[i].value);
+    var b = document.body, nb = doc.body;
+    for (i = b.attributes.length - 1; i >= 0; i--) b.removeAttribute(b.attributes[i].name);
+    for (i = 0; i < nb.attributes.length; i++) b.setAttribute(nb.attributes[i].name, nb.attributes[i].value);
+    while (b.firstChild) b.removeChild(b.firstChild);
+    while (nb.firstChild) b.appendChild(document.adoptNode(nb.firstChild));
+    var ns = b.querySelectorAll('noscript');
+    for (i = 0; i < ns.length; i++) if (nativeGtm && /googletagmanager/.test(ns[i].textContent)) ns[i].parentNode.removeChild(ns[i]);
+    var scripts = b.querySelectorAll('script');
+    for (i = 0; i < scripts.length; i++) {
+      el = scripts[i];
+      if (skipGtm(el)) { el.parentNode.removeChild(el); continue; }
+      if (el.type === 'application/ld+json') continue;
+      el.parentNode.replaceChild(fresh(el), el);
+    }
+    try {
+      var mo = new MutationObserver(function (muts) {
+        muts.forEach(function (m) {
+          m.addedNodes.forEach(function (n) {
+            if (n.nodeType !== 1 || n.hasAttribute('data-dr')) return;
+            var tn = n.tagName;
+            if (tn === 'STYLE' || tn === 'TITLE' || (tn === 'LINK' && /stylesheet/i.test(n.rel || ''))) {
+              if (n.parentNode) n.parentNode.removeChild(n);
+            }
+          });
+        });
+      });
+      mo.observe(head, { childList: true });
+      setTimeout(function () { mo.disconnect(); }, 15000);
+    } catch (e) {}
+    dropSplash();
+    if (location.hash) {
+      try { var tg = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (tg) tg.scrollIntoView(); } catch (e) {}
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'milo_portal_ready', page_title: document.title, page_path: location.pathname });
+  }
+
+  Promise.all([
+    fetch(SRC).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); }),
+    ready()
+  ]).then(function (a) { swap(a[0]); }).catch(function (e) { dropSplash(); });
+})();
+</script>
