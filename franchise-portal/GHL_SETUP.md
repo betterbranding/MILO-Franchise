@@ -72,7 +72,7 @@ Set `portal_role` to `admin` on corporate contacts so `/admin` stays visible.
 3. Find/create contact by email
 4. If `module` is 1, set Portal M1 Complete = `true` (same for 2–9)
 5. Copy the webhook URL
-6. Replace `PASTE_GHL_INBOUND_WEBHOOK_URL` in every `ghl/element-v6/*.html` body paste (all pages except Login)
+6. Replace `https://services.leadconnectorhq.com/hooks/862EsIISRtzQUOq3B1vZ/webhook-trigger/b8d4f685-1afb-4e85-a173-bdde2be1afdd` in every `ghl/element-v6/*.html` body paste (all pages except Login)
 
 Mark Complete on a module POSTs to that webhook. No PIT token in the frontend.
 

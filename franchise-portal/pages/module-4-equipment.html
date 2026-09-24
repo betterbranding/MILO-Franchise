@@ -471,7 +471,7 @@ h1,h2,h3,h4{font-family:'Montserrat',sans-serif}
       body: JSON.stringify({
         email: email,
         firstName: P.firstName || '',
-        module: n,
+        module: String(n),
         event: 'module_complete',
         source: 'milo-franchise-portal'
       })
